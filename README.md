@@ -16,11 +16,11 @@ Calculations to note:
   -The car is a Rear Wheel Drive car, and goes from 0-100kmh in ~9-10 seconds.
   -All wheel Tractions and calculations are calculated based on the selected power and mass of the vehicule, so changing them will require you to change in the wheel collider settings for realistic results
 
-Features:
+Applied Features:
   Car Features:
     -Interactive tyre smoke and print system: like real cars, in the case of:
       -wheel spins, for rear tyres(at low speeds).
-      -wheel lock(when braking hard), for rear and front wheels when using foot brake, or front wheels when using handbrake.
+      -wheel lock(when braking hard), for rear and front wheels when using foot brake, or rear wheels when using handbrake.
       -Drifting, if it passes a certain threshold
     -Interactive Light system:
       -After a certain speed(40), a trail light appears on the backlights, and fades away after going below that speed again.
