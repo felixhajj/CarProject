@@ -57,6 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\TrailBehavior.cs" />
+    <Compile Include="Assets\CinemachineCameras.cs" />
     <Compile Include="Assets\PowerToWheels.cs" />
     <Compile Include="Assets\CameraBehavior.cs" />
     <Compile Include="Assets\LightingManager.cs" />
@@ -776,9 +777,17 @@
       <Project>{E8E60BD5-A2B8-C1C4-0639-497D597993CE}</Project>
       <Name>Unity.EditorCoroutines.Editor</Name>
     </ProjectReference>
+    <ProjectReference Include="Cinemachine.csproj">
+      <Project>{DC417688-D8E2-0C38-5D13-0DEA80A5AD81}</Project>
+      <Name>Cinemachine</Name>
+    </ProjectReference>
     <ProjectReference Include="Unity.Services.Core.Analytics.csproj">
       <Project>{0D5DE8A4-96AE-1782-B1D7-5FB09C07883E}</Project>
       <Name>Unity.Services.Core.Analytics</Name>
+    </ProjectReference>
+    <ProjectReference Include="com.unity.cinemachine.editor.csproj">
+      <Project>{97AF54B9-0EFE-2BBA-FA44-F85B0121BFE7}</Project>
+      <Name>com.unity.cinemachine.editor</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.VisualScripting.Shared.Editor.csproj">
       <Project>{992EF556-DC9F-1A23-4721-3521632FA109}</Project>

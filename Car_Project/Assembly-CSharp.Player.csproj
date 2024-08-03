@@ -57,6 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\TrailBehavior.cs" />
+    <Compile Include="Assets\CinemachineCameras.cs" />
     <Compile Include="Assets\PowerToWheels.cs" />
     <Compile Include="Assets\CameraBehavior.cs" />
     <Compile Include="Assets\LightingManager.cs" />
@@ -667,6 +668,10 @@
     <ProjectReference Include="Unity.VisualScripting.Core.Player.csproj">
       <Project>{B7CCB1A7-139A-1A37-1822-C91A136860D9}</Project>
       <Name>Unity.VisualScripting.Core.Player</Name>
+    </ProjectReference>
+    <ProjectReference Include="Cinemachine.Player.csproj">
+      <Project>{41F3E8C4-1FA7-9E63-9AA4-B99BA2A963F0}</Project>
+      <Name>Cinemachine.Player</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.Services.Core.Analytics.Player.csproj">
       <Project>{50062736-B967-846F-7ADB-58B9A28D90A9}</Project>

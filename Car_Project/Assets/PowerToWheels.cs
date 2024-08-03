@@ -2,6 +2,7 @@ using JetBrains.Annotations;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 
@@ -55,12 +56,18 @@ public class PowerToWheels : MonoBehaviour
 	public TrailRenderer[] fronttyremarks;
 	public TrailRenderer[] backtyremarks;
 
+	bool engineturnon = false;
+
+	public AudioSource engineAudioSource;
+	public AudioClip engineStartupClip;
+	public AudioClip engineLoopClip;
+	public AudioClip engineShutdownClip;
 	void Start()
     {
 		rigidbody = GetComponent<Rigidbody>();
 		rigidbody.centerOfMass = centerofmass.transform.localPosition;
 
-        radius = backright.radius;
+		radius = backright.radius;
         wheelCircumference = 2f * Mathf.PI * radius;
     }
 
@@ -69,7 +76,60 @@ public class PowerToWheels : MonoBehaviour
 		rearrot = backleft.rpm;
 		frontrot = frontleft.rpm;
 
-		
+
+		if (Input.GetKeyDown(KeyCode.P))
+		{
+			engineturnon = !engineturnon;
+
+
+			if (engineturnon)
+			{
+				// Play engine startup audio
+				engineAudioSource.clip = engineStartupClip;
+				engineAudioSource.loop = false;
+				engineAudioSource.Play();
+			}
+			else
+			{
+				engineAudioSource.Stop();
+
+				// Play engine turnoff audio
+				engineAudioSource.clip = engineShutdownClip;
+				engineAudioSource.loop = false;
+				engineAudioSource.Play();
+
+			}
+		}
+		if (engineturnon && !engineAudioSource.isPlaying)
+		{
+
+			// Play engine loop
+			engineAudioSource.clip = engineLoopClip;
+			engineAudioSource.loop = true;
+			engineAudioSource.Play();
+
+		}
+		if (engineturnon)
+		{
+			if (Mathf.Abs(rearrot) < 2000f)
+			{
+				engineAudioSource.volume = 0.25f + (Mathf.Abs(rearrot) * (0.75f/2000)) ;
+				engineAudioSource.pitch = 1 + (Mathf.Abs(rearrot) / 2000f);
+			}
+			else
+			{
+				engineAudioSource.volume = 1;
+				if(engineAudioSource.pitch >= 2)
+				{
+					engineAudioSource.pitch -= 0.3f;
+				}
+				else
+				{
+					engineAudioSource.pitch += 0.01f;
+				}
+			}
+		}
+
 
 		if (frontlock() || frontwheelslide())
 		{
@@ -182,9 +242,6 @@ public class PowerToWheels : MonoBehaviour
 	}
 
 
-
-
-
     private void FixedUpdate()
     {
         animatewheels();
@@ -194,7 +251,10 @@ public class PowerToWheels : MonoBehaviour
 		
 		steering();
 
-		gas();
+		if (engineturnon == true)
+		{
+			gas();
+		}
 
 		
         Debug.DrawRay(transform.position, transform.position.normalized * 10);
