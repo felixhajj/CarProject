@@ -58,6 +58,7 @@
   <ItemGroup>
     <Compile Include="Assets\TrailBehavior.cs" />
     <Compile Include="Assets\CinemachineCameras.cs" />
+    <Compile Include="Assets\VehiculeTrailEffects.cs" />
     <Compile Include="Assets\PowerToWheels.cs" />
     <Compile Include="Assets\CameraBehavior.cs" />
     <Compile Include="Assets\LightingManager.cs" />

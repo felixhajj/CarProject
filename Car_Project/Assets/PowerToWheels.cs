@@ -9,9 +9,9 @@ using UnityEngine;
 //note!!!!!!!!!!! 1kmh is equal to 0.75 in the velocity of unity
 public class PowerToWheels : MonoBehaviour
 {
-    public float Torque = 500;
-	public float handBrakeTorque = 2400f;
-    public float BrakeTorque = 2400f;
+    public float Torque = 1000;
+	public float handBrakeTorque = 5000f;
+    public float BrakeTorque = 1500f;
 	private float slipangle;
 	public float gasinput;
 	public float brakeinput;
@@ -35,33 +35,28 @@ public class PowerToWheels : MonoBehaviour
 	public GameObject centerofmass;
 	private Rigidbody rigidbody;
 
-
-    public ParticleSystem frontLeftSmokePrefab;
-    public ParticleSystem frontRightSmokePrefab;
-    public ParticleSystem rearLeftSmokePrefab;
-    public ParticleSystem rearRightSmokePrefab;
+	public Rigidbody car;
 
 
-    private ParticleSystem frontleftsmoke;
-    private ParticleSystem frontrightsmoke;
-    private ParticleSystem rearleftsmoke;
-    private ParticleSystem rearrightsmoke;
+	
 
-	private bool rearleftsmokePlaying = false;
-	private bool rearrightsmokePlaying = false;
 
-	private bool frontleftsmokePlaying = false;
-	private bool frontrightsmokePlaying = false;
 
-	public TrailRenderer[] fronttyremarks;
+	public TrailRenderer[] fronttyremarks;/// <summary>
+	/// </summary>
 	public TrailRenderer[] backtyremarks;
 
 	bool engineturnon = false;
+	
 
 	public AudioSource engineAudioSource;
+	public AudioSource tirescreechAudioSource;
 	public AudioClip engineStartupClip;
 	public AudioClip engineLoopClip;
 	public AudioClip engineShutdownClip;
+	public AudioClip tirescreechingClip;
+	public AudioClip tirescreechingendClip;
+
 	void Start()
     {
 		rigidbody = GetComponent<Rigidbody>();
@@ -113,16 +108,17 @@ public class PowerToWheels : MonoBehaviour
 		{
 			if (Mathf.Abs(rearrot) < 2000f)
 			{
-				engineAudioSource.volume = 0.25f + (Mathf.Abs(rearrot) * (0.75f/2000)) ;
+				engineAudioSource.volume = 0.25f + (Mathf.Abs(rearrot) * (0.75f / 2000));
 				engineAudioSource.pitch = 1 + (Mathf.Abs(rearrot) / 2000f);
 			}
 			else
 			{
 				engineAudioSource.volume = 1;
-				if(engineAudioSource.pitch >= 2)
+				if (engineAudioSource.pitch >= 2)
 				{
 					engineAudioSource.pitch -= 0.3f;
 				}
+
 				else
 				{
 					engineAudioSource.pitch += 0.01f;
@@ -130,115 +126,7 @@ public class PowerToWheels : MonoBehaviour
 			}
 		}
 
-
-		if (frontlock() || frontwheelslide())
-		{
-			foreach(TrailRenderer T in fronttyremarks)
-			{
-				T.emitting = true;
-			}
-			if (frontleftsmoke == null)
-			{
-				frontleftsmoke = Instantiate(frontLeftSmokePrefab, frontleft.transform.position, Quaternion.identity);
-			}
-			else
-			{
-				frontleftsmoke.transform.position = frontleft.transform.position;
-				if (!frontleftsmokePlaying)
-				{
-					frontleftsmoke.Play();
-					frontleftsmokePlaying = true;
-					Debug.Log("Playing front left");
-				}
-			}
-
-			if (frontrightsmoke == null)
-			{
-				frontrightsmoke = Instantiate(frontRightSmokePrefab, frontright.transform.position, Quaternion.identity);
-			}
-			else
-			{
-				frontrightsmoke.transform.position = frontright.transform.position;
-				if (!frontrightsmokePlaying)
-				{
-					frontrightsmoke.Play();
-					frontrightsmokePlaying = true;
-					Debug.Log("Playing front right");
-				}
-			}
-		}
-		else
-		{
-			foreach (TrailRenderer T in fronttyremarks)
-			{
-				T.emitting = false;
-			}
-			if (frontleftsmokePlaying)
-			{
-				frontleftsmoke.Stop();
-				frontleftsmokePlaying = false;
-			}
-
-			if (frontrightsmokePlaying)
-			{
-				frontrightsmoke.Stop();
-				frontrightsmokePlaying = false;
-			}
-		}
-
-
-		if (CarSliding() || rearlock() || burnout())
-		{
-			foreach (TrailRenderer T in backtyremarks)
-			{
-				T.emitting = true;
-			}
-			if (rearleftsmoke == null)
-			{
-				rearleftsmoke = Instantiate(rearLeftSmokePrefab, backleft.transform.position, Quaternion.identity);
-			}
-			else
-			{
-				rearleftsmoke.transform.position = backleft.transform.position;
-				if (!rearleftsmokePlaying)
-				{
-					rearleftsmoke.Play();
-					rearleftsmokePlaying = true;
-				}
-			}
-
-			if (rearrightsmoke == null)
-			{
-				rearrightsmoke = Instantiate(rearRightSmokePrefab, backright.transform.position, Quaternion.identity);
-			}
-			else
-			{
-				rearrightsmoke.transform.position = backright.transform.position;
-				if (!rearrightsmokePlaying)
-				{
-					rearrightsmoke.Play();
-					rearrightsmokePlaying = true;
-				}
-			}
-		}
-		else
-		{
-			foreach (TrailRenderer T in backtyremarks)
-			{
-				T.emitting = false;
-			}
-			if (rearleftsmokePlaying)
-			{
-				rearleftsmoke.Stop();
-				rearleftsmokePlaying = false;
-			}
-
-			if (rearrightsmokePlaying)
-			{
-				rearrightsmoke.Stop();
-				rearrightsmokePlaying = false;
-			}
-		}
+		
 	}
 
 
@@ -248,14 +136,10 @@ public class PowerToWheels : MonoBehaviour
 		
 		braking();
 
-		
 		steering();
 
-		if (engineturnon == true)
-		{
-			gas();
-		}
-
+		gas();
+		
 		
         Debug.DrawRay(transform.position, transform.position.normalized * 10);
 	 	Debug.DrawRay(transform.position, transform.position.normalized * 10, Color.blue);
@@ -272,11 +156,11 @@ public class PowerToWheels : MonoBehaviour
 
         float dotProduct = Vector3.Dot(forwardVector, velocityVector);
 
-        float driftThreshold = 0.7f; 
+        float driftThreshold = 0.97f;
 
+		Debug.Log(dotProduct);
         return Mathf.Abs(dotProduct) < driftThreshold;
     }
-
     public bool frontwheelslide()
 	{
         Vector3 forwardVector = transform.forward;
@@ -303,7 +187,6 @@ public class PowerToWheels : MonoBehaviour
 			return false;
 		}
 	}
-
 	public bool frontlock()
 	{
         if (frontrot == 0 && Math.Abs(rigidbody.velocity.magnitude) > 5)
@@ -327,11 +210,19 @@ public class PowerToWheels : MonoBehaviour
 		}
 	}
 
-    void gas()
+	void gas()
 	{
-		float motor = gasinput * Torque * 5;
-		backleft.motorTorque = motor;
-		backright.motorTorque = motor;
+		if (engineturnon)
+		{
+			float motor = gasinput * Torque * 5;
+			backleft.motorTorque = motor;
+			backright.motorTorque = motor;
+		}
+		else
+		{
+			backleft.motorTorque = 0;
+			backright.motorTorque = 0;
+		}
 	}
 	void braking()
 	{
