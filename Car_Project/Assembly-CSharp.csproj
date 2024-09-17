@@ -58,10 +58,11 @@
   <ItemGroup>
     <Compile Include="Assets\TrailBehavior.cs" />
     <Compile Include="Assets\CinemachineCameras.cs" />
-    <Compile Include="Assets\VehiculeTrailEffects.cs" />
+    <Compile Include="Assets\AntiRollBar.cs" />
     <Compile Include="Assets\PowerToWheels.cs" />
     <Compile Include="Assets\CameraBehavior.cs" />
     <Compile Include="Assets\LightingManager.cs" />
+    <Compile Include="Assets\VehiculeTrailEffect.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Monqo Sci-Fi Car\READ ME!.txt" />

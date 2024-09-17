@@ -21,11 +21,12 @@ public class PowerToWheels : MonoBehaviour
 	float radius;
 	float wheelCircumference;
 
+	//if one of those is equal to 0, means the tyre is in the air, if its other, 1 would be for road, 2 for offroad,etc... should work more on it
+	public Dictionary<WheelCollider, int> wheelGroundStates;
 
-
-    public float steeringMax = 25;
-    public WheelCollider backright;
-    public WheelCollider backleft;
+	public float steeringMax = 25;
+    public WheelCollider rearright;
+    public WheelCollider rearleft;
 
     public WheelCollider frontleft;
     public WheelCollider frontright;
@@ -38,16 +39,16 @@ public class PowerToWheels : MonoBehaviour
 	public Rigidbody car;
 
 
-	
-
-
 
 	public TrailRenderer[] fronttyremarks;/// <summary>
 	/// </summary>
-	public TrailRenderer[] backtyremarks;
+	public TrailRenderer[] reartyremarks;
 
 	bool engineturnon = false;
-	
+
+	public float decelerationFactor = 1000f;
+	public float maxBrakeForce = 300f;
+	public float minRPM = 100f;
 
 	public AudioSource engineAudioSource;
 	public AudioSource tirescreechAudioSource;
@@ -62,21 +63,49 @@ public class PowerToWheels : MonoBehaviour
 		rigidbody = GetComponent<Rigidbody>();
 		rigidbody.centerOfMass = centerofmass.transform.localPosition;
 
-		radius = backright.radius;
+		radius = rearright.radius;
         wheelCircumference = 2f * Mathf.PI * radius;
-    }
+
+		wheelGroundStates = new Dictionary<WheelCollider, int>
+		{
+			{ frontleft, 0 },
+			{ frontright, 0 },
+			{ rearleft, 0 },
+			{ rearright, 0 }
+		};
+	}
 
 	void Update()
 	{
-		rearrot = backleft.rpm;
+			
+		UpdateWheelGroundState(frontleft);
+		UpdateWheelGroundState(frontright);
+		UpdateWheelGroundState(rearleft);
+		UpdateWheelGroundState(rearright);
+
+		if (Input.GetKeyDown(KeyCode.R))
+        {
+			Vector3 newRotation = transform.eulerAngles;
+
+			newRotation.z = 0;
+			newRotation.x = 0;
+			transform.eulerAngles = newRotation;
+
+
+
+			Vector3 newPosition = transform.position;
+			newPosition.y += 3;
+			transform.position = newPosition;
+
+
+		}
+		rearrot = rearleft.rpm;
 		frontrot = frontleft.rpm;
 
 
 		if (Input.GetKeyDown(KeyCode.P))
 		{
 			engineturnon = !engineturnon;
-
-
 			if (engineturnon)
 			{
 				// Play engine startup audio
@@ -95,6 +124,7 @@ public class PowerToWheels : MonoBehaviour
 
 			}
 		}
+
 		if (engineturnon && !engineAudioSource.isPlaying)
 		{
 
@@ -104,7 +134,8 @@ public class PowerToWheels : MonoBehaviour
 			engineAudioSource.Play();
 
 		}
-		if (engineturnon)
+
+		/*if (engineturnon)
 		{
 			if (Mathf.Abs(rearrot) < 2000f)
 			{
@@ -125,26 +156,26 @@ public class PowerToWheels : MonoBehaviour
 				}
 			}
 		}
+		*/
 
 		
 	}
-
 
     private void FixedUpdate()
-    {
-        animatewheels();
-		
+	{
+		gasinput = Input.GetAxis("Vertical");
+
+		//decelerator();
+
+		animatewheels();
 		braking();
-
 		steering();
-
 		gas();
-		
-		
-        Debug.DrawRay(transform.position, transform.position.normalized * 10);
-	 	Debug.DrawRay(transform.position, transform.position.normalized * 10, Color.blue);
-	 
+
+		Debug.DrawRay(transform.position, transform.position.normalized * 10);
+		Debug.DrawRay(transform.position, transform.position.normalized * 10, Color.blue);
 	}
+
     public bool CarSliding()
     {
         Vector3 forwardVector = transform.forward;
@@ -158,7 +189,6 @@ public class PowerToWheels : MonoBehaviour
 
         float driftThreshold = 0.97f;
 
-		Debug.Log(dotProduct);
         return Mathf.Abs(dotProduct) < driftThreshold;
     }
     public bool frontwheelslide()
@@ -210,25 +240,49 @@ public class PowerToWheels : MonoBehaviour
 		}
 	}
 
+	//void decelerator()
+	//{
+		// Apply brake torque to decelerate rear wheels when no gas input
+	//	if (Mathf.Abs(rearleft.rpm) > minRPM) // Check if wheels are still rotating
+	//	{
+	//		rearleft.brakeTorque = decelerationFactor * 0.7f * 5;
+	//		rearright.brakeTorque = decelerationFactor * 0.7f * 5;
+	//		Debug.Log("rearleft brakeTorque= " + rearleft.brakeTorque);
+	//	}
+		//else
+		//{
+		//	rearleft.brakeTorque = 0;  // Stop applying brakes when the car is stopped
+		//	rearright.brakeTorque = 0;
+		//}
+	//}
 	void gas()
 	{
 		if (engineturnon)
 		{
+			if(gasinput<0)
+			{
+				gasinput /= 1.5f;
+			}
 			float motor = gasinput * Torque * 5;
-			backleft.motorTorque = motor;
-			backright.motorTorque = motor;
+			rearleft.motorTorque = motor;
+			rearright.motorTorque = motor;
+
+			enginesound(motor);
 		}
 		else
 		{
-			backleft.motorTorque = 0;
-			backright.motorTorque = 0;
+			rearleft.motorTorque = 0;
+			rearright.motorTorque = 0;
 		}
 	}
 	void braking()
 	{
-		gasinput = Input.GetAxis("Vertical");
+		// Calculate slip angle first
 		slipangle = Vector3.Angle(transform.forward, rigidbody.velocity - transform.forward);
-		if (slipangle < 120f)
+
+
+		// Determine brake input based on forward or reverse movement
+		if (slipangle < 120f && rearrot > minRPM) // Moving forward, apply brakes if needed
 		{
 			if (gasinput < 0)
 			{
@@ -240,28 +294,36 @@ public class PowerToWheels : MonoBehaviour
 				brakeinput = 0;
 			}
 		}
-		else
+		else // Moving backward, no braking input applied
 		{
 			brakeinput = 0;
 		}
 
-		if (Input.GetKey(KeyCode.Space))//handbrake
+		// Apply handbrake if the space key is pressed
+		if (Input.GetKey(KeyCode.Space))
 		{
-			Debug.Log("handbrake");
-			backright.brakeTorque = handBrakeTorque;
-			backleft.brakeTorque = handBrakeTorque;
+			rearright.brakeTorque = handBrakeTorque;
+			rearleft.brakeTorque = handBrakeTorque;
 		}
 		else
 		{
-            frontright.brakeTorque = brakeinput * BrakeTorque * 0.7f * 5;
-            frontleft.brakeTorque = brakeinput * BrakeTorque * 0.7f * 5;
-            backleft.brakeTorque = brakeinput * BrakeTorque * 0.3f * 5;
-            backright.brakeTorque = brakeinput * BrakeTorque * 0.3f * 5;
-        }
-
-
-		
-
+			if (rearrot >= minRPM)
+			{
+				frontright.brakeTorque = brakeinput * BrakeTorque * 0.8f * 5;
+				frontleft.brakeTorque = brakeinput * BrakeTorque * 0.8f * 5;
+				rearleft.brakeTorque = decelerationFactor + brakeinput * BrakeTorque * 0.2f * 5;
+				rearright.brakeTorque = decelerationFactor + brakeinput * BrakeTorque * 0.2f * 5;
+			}
+			else
+			{
+				// Apply front and rear brake torques, including controlledBrakeTorque
+				frontright.brakeTorque = brakeinput * BrakeTorque * 0.8f * 5;
+				frontleft.brakeTorque = brakeinput * BrakeTorque * 0.8f * 5;
+				rearleft.brakeTorque = brakeinput * BrakeTorque * 0.2f * 5;
+				rearright.brakeTorque = brakeinput * BrakeTorque * 0.2f * 5;
+			}
+			
+		}
 	}
 	void steering()
 	{
@@ -285,12 +347,12 @@ public class PowerToWheels : MonoBehaviour
         {
             if (i == 0)
             {
-				backleft.GetWorldPose(out wheelposition, out wheelRotation);
+				rearleft.GetWorldPose(out wheelposition, out wheelRotation);
 
 			}
             else if(i==1) 
             {
-				backright.GetWorldPose(out wheelposition, out wheelRotation);
+				rearright.GetWorldPose(out wheelposition, out wheelRotation);
 			}
 			else if (i == 2)
 			{
@@ -304,5 +366,53 @@ public class PowerToWheels : MonoBehaviour
             wheels[i].transform.rotation = wheelRotation;
         }
     }
+
+	void enginesound(float motor)
+	{
+
+			//motor maximum value is 5000, so i want to divid the motor by a value greater than 7000 \, so i give part of the sound to the rearrot also.
+			Debug.Log("motor: " + Mathf.Abs(motor));
+
+
+			engineAudioSource.volume = 0.25f + (Mathf.Abs(motor) * (0.75f / 9000f));
+		if(MathF.Abs(rearrot)<=2000)
+		{
+			engineAudioSource.volume += (Mathf.Abs(rearrot) / 5000f);
+		}
+		else
+		{
+			engineAudioSource.volume += (2000/5000f);
+		}
+
+
+			engineAudioSource.pitch = 1 + (Mathf.Abs(motor) / 9000f);
+		if (MathF.Abs(rearrot) <= 2000)
+		{
+			engineAudioSource.pitch += (Mathf.Abs(rearrot) / 5000f);
+		}
+		else
+		{
+			engineAudioSource.pitch += (2000/5000f);
+		}
+
+	}
+	private void UpdateWheelGroundState(WheelCollider wheel)
+	{
+		if (IsWheelOnGround(wheel))
+		{
+			wheelGroundStates[wheel] = 1; // Wheel is on the ground
+		}
+		else
+		{
+			wheelGroundStates[wheel] = 0; // Wheel is off the ground
+		}
+	}
+
+	// Method to check if the wheel is on the ground
+	private bool IsWheelOnGround(WheelCollider wheel)
+	{
+		WheelHit hit;
+		return wheel.GetGroundHit(out hit);
+	}
 
 }
