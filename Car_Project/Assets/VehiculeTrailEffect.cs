@@ -37,6 +37,9 @@ public class VehiculeTrailEffect : MonoBehaviour
 
 	private PowerToWheels powertowheels;
 
+	public ParticleSystem[] frontwheelsmoke = new ParticleSystem[2];
+	public ParticleSystem[] rearwheelsmoke = new ParticleSystem[2]; 
+	
 	// Start is called before the first frame update
 	void Start()
 	{
@@ -59,8 +62,9 @@ public class VehiculeTrailEffect : MonoBehaviour
 		if (rigidbody.velocity.magnitude > 2)
 		{
 
-			if (powertowheels.frontlock() || powertowheels.frontwheelslide())
+			if (powertowheels.frontlock() != 0 || powertowheels.frontwheelslide() != 0)
 			{
+
 				/*
 				if (!frontlockstarted)
 				{
@@ -138,8 +142,8 @@ public class VehiculeTrailEffect : MonoBehaviour
 
 			}
 
-
-			if (powertowheels.CarSliding() || powertowheels.rearlock() || powertowheels.burnout())
+			
+			if (powertowheels.CarSliding()!=0 ||  powertowheels.rearlock()!=0  || powertowheels.burnout()!=0)
 			{
 				
 				foreach (TrailRenderer T in backtyremarks)
@@ -198,6 +202,7 @@ public class VehiculeTrailEffect : MonoBehaviour
 					rearrightsmokePlaying = false;
 				}
 			}
+			
 		}
 		else
 		{
