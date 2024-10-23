@@ -2,16 +2,17 @@ using JetBrains.Annotations;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 
 
-//note!!!!!!!!!!! 1kmh is equal to 0.75 in the velocity of unity
 public class PowerToWheels : MonoBehaviour
 {
 	public float speedKMH;
 
-	public float Torque = 700;
+	public float MaxTorque = 4000;
+	public float CurrTorque;
 	public float handBrakeTorque = 3000f;
 	public float BrakeTorque = 5000f;
 	private float slipangle;
@@ -22,6 +23,8 @@ public class PowerToWheels : MonoBehaviour
 	public float rearrot;
 	public float frontrot;
 	public float rearsidewaysfriction;
+	public bool istractioncontrol = false;
+	public float tractioncutoff = 0.35f;
 
 	float radius;
 	float wheelCircumference;
@@ -30,7 +33,7 @@ public class PowerToWheels : MonoBehaviour
 	public Dictionary<WheelCollider, int> wheelGroundStates;
 
 	public float steeringMax = 27;
-	float maxSpeed = 320f;
+	public float maxSpeed = 320f;
 	public AnimationCurve steeringCurve;
 	public WheelCollider rearright;
 	public WheelCollider rearleft;
@@ -41,18 +44,26 @@ public class PowerToWheels : MonoBehaviour
 	public GameObject[] wheels = new GameObject[4];
 
 
-	public float maxsmokesize;
-	
+	public float rpm;
 
 	public GameObject centerofmass;
 	private Rigidbody rigidbody;
 
 	public Rigidbody car;
 
+	private float rearoriginalSlip;
+
+	private float slipIncrement = 0.5f;
+	private float glitchThreshold = 100f;
+	private float exitThreshold = 100f;
+	private Queue<float> rearframeDifferences = new Queue<float>();
+
+	private int maxFrames = 60;
+	private bool inGlitchMode = false;
+	private float lastRearrot = 0f;
 
 
-	public TrailRenderer[] fronttyremarks;
-	public TrailRenderer[] reartyremarks;
+	
 
 	bool engineturnon = false;
 
@@ -67,6 +78,9 @@ public class PowerToWheels : MonoBehaviour
 
 	public float rearrighttorque;
 	public float rearlefttorque;
+
+	public TrailRenderer[] fronttyremarks;
+	public TrailRenderer[] reartyremarks;
 
 	public MeshRenderer cardimensions;
 	public MeshRenderer wheeldimensions;
@@ -84,13 +98,15 @@ public class PowerToWheels : MonoBehaviour
 
 	void Start()
 	{
+		CurrTorque = MaxTorque;
+		rpm = 0;
 
-		ParticleSystem.MainModule main = rearwheelsmoke[0].main;
-		maxsmokesize = main.startSize.constant;
 
-
+		rearoriginalSlip = rearleft.forwardFriction.extremumSlip;
+		lastRearrot = rearrot;
 
 		rearsidewaysfriction = rearleft.sidewaysFriction.stiffness;
+
 		Vector3 cardim = cardimensions.bounds.size;
 		Debug.Log("car dimensions (meters): " + cardim);
 
@@ -143,6 +159,7 @@ public class PowerToWheels : MonoBehaviour
 
 		if (Input.GetKeyDown(KeyCode.P))
 		{
+			rpm = 1000;
 			engineturnon = !engineturnon;
 			if (engineturnon)
 			{
@@ -195,8 +212,35 @@ public class PowerToWheels : MonoBehaviour
 			}
 		}
 		*/
+		
+		if (gasinput == 0 || rearrot<500)
+		{
+			float rearcurrentDifference = Mathf.Abs(rearrot - lastRearrot);
 
+			if ((rearcurrentDifference > glitchThreshold))
+			{
+				EnterGlitchMode();
 
+			}
+
+			rearframeDifferences.Enqueue(rearcurrentDifference);
+			if (rearframeDifferences.Count > maxFrames)
+			{
+				rearframeDifferences.Dequeue();
+			}
+
+			if ((inGlitchMode) && (rearframeDifferences.Sum() < exitThreshold))
+			{
+				ExitGlitchMode();
+			}
+		}
+		else
+		{
+			ExitGlitchMode();
+		}
+		
+		lastRearrot = rearrot;
+		
 	}
 
 	private void FixedUpdate()
@@ -226,135 +270,75 @@ public class PowerToWheels : MonoBehaviour
 		Debug.DrawRay(transform.position, transform.position.normalized * 10, Color.blue);
 	}
 
-	public float NormalizeSmokeSize(float value, float minThreshold, float maxThreshold)
+	/*
+	float gears(float ratio)
 	{
-		float normalizedValue = Mathf.InverseLerp(minThreshold, maxThreshold, value);
-		
-		return normalizedValue;
-	}
-	public float smokeintensity(float maxSmokeSize, float normalizedValue)
-	{
-		float smokeIntensity = Mathf.Lerp(0, maxSmokeSize, normalizedValue);
 
-		return smokeIntensity;
-	}
-
-	public float rearlock()
-	{
-		float rearsmoke = 0;
-		float maxsmoke = 2 * (maxsmokesize) / 3f;
-		float slipnormalizedvalue = 1;//cause there is only one threshold, so it is or actived or not
-		float speednormalizedvalue;
-		float finalnormalizedvalue;
-
-		if (rearrot == 0 && Math.Abs(speed) > 5)
+		if (rearrot < (1000 / ratio))
 		{
-			speednormalizedvalue = NormalizeSmokeSize(speedKMH, 0, maxSpeed);
-			finalnormalizedvalue = (slipnormalizedvalue + speednormalizedvalue) / 2f;
-
-			rearsmoke = smokeintensity(maxsmoke, finalnormalizedvalue);
+			Debug.Log("rearrot and ratio: " + rearrot * ratio);
+			Debug.Log("rpm: " + rpm);
+			rearleft.motorTorque = rpm * (Torque / 5000f);
+			rearright.motorTorque = rpm * (Torque / 5000f);
 		}
-		return rearsmoke;
-	}
-	public float CarSliding()
-	{
-		float rearsmoke = 0;
-		float maxsmoke = 2 * (maxsmokesize) / 3f;
-		float slipnormalizedvalue;
-		float speednormalizedvalue;
-		float finalnormalizedvalue;
-
-		Vector3 forwardVector = transform.forward;
-		Vector3 velocityVector = rigidbody.velocity;
-
-		forwardVector.Normalize();
-		velocityVector.Normalize();
-
-		//the lower the number of the dotProduct, the harder the curve is
-		float dotProduct = Vector3.Dot(forwardVector, velocityVector);
-
-		float driftThresholdMin = 0.99f;
-		float driftThresholdMax = 0.7f;
-
-		if (Mathf.Abs(dotProduct) > driftThresholdMin)
+		else
 		{
-			slipnormalizedvalue = NormalizeSmokeSize(Mathf.Abs(dotProduct), driftThresholdMin, driftThresholdMax);
-			speednormalizedvalue = NormalizeSmokeSize(speedKMH, 0, maxSpeed);
-			finalnormalizedvalue = (slipnormalizedvalue + speednormalizedvalue) / 2f;
-
-			rearsmoke = smokeintensity(maxsmoke, finalnormalizedvalue);
-		}
-		return rearsmoke;
-	}
-	public float burnout()
-	{
-		float rearsmoke = 0;
-		float maxsmoke = 2 * (maxsmokesize) / 3f;
-		float slipnormalizedvalue;
-		float speednormalizedvalue;
-		float finalnormalizedvalue;
-
-		float frontAbs = Math.Abs(frontrot);
-		float rearAbs = Math.Abs(rearrot);
-
-		float driftThresholdMin = frontAbs * 3f;
-		float driftThresholdMax = frontAbs * 4f;
-
-		if (rearAbs > driftThresholdMin && speedKMH > 4)
-		{
-			slipnormalizedvalue = NormalizeSmokeSize(rearAbs, driftThresholdMin, driftThresholdMax);
-			speednormalizedvalue = NormalizeSmokeSize(speedKMH, 0, maxSpeed);
-			finalnormalizedvalue = (slipnormalizedvalue + speednormalizedvalue) / 2f;
-
-			rearsmoke = smokeintensity(maxsmoke, finalnormalizedvalue);
-		}
-		return rearsmoke;
-	}
-
-
-	public float frontwheelslide()
-	{
-		float frontsmoke = 0;
-		float maxsmoke = 2 * (maxsmokesize) / 3f;
-		float slipnormalizedvalue = 1;//cause there is only one threshold, so it is or actived or not
-		float speednormalizedvalue;
-		float finalnormalizedvalue;
-
-		Vector3 forwardVector = transform.forward;
-		Vector3 velocityVector = rigidbody.velocity;
-
-		forwardVector.Normalize();
-		velocityVector.Normalize();
-
-		float dotProduct = Vector3.Dot(forwardVector, velocityVector);
-
-		float driftThreshold = 0.3f;
-
-		if (Mathf.Abs(dotProduct) < driftThreshold)
-		{
-			speednormalizedvalue = NormalizeSmokeSize(speedKMH, 0, maxSpeed);
-			finalnormalizedvalue = (slipnormalizedvalue + speednormalizedvalue) / 2f;
+			rpm = rearrot * ratio;
 		}
 
-		return frontsmoke;
+		return rpm;
+
 	}
-	public float frontlock()
+	*/
+	void EnterGlitchMode()
 	{
-		float frontsmoke = 0;
-		float maxsmoke = (maxsmokesize) / 3f;
-		float slipnormalizedvalue = 1;//cause there is only one threshold, so it is or actived or not
-		float speednormalizedvalue;
-		float finalnormalizedvalue;
-
-		if (frontrot == 0 && Math.Abs(speed) > 5)
+		if (!inGlitchMode)
 		{
-			speednormalizedvalue = NormalizeSmokeSize(speedKMH, 0, maxSpeed);
-			finalnormalizedvalue = (slipnormalizedvalue + speednormalizedvalue) / 2f;
+			inGlitchMode = true;
 
-			frontsmoke = smokeintensity(maxsmoke, finalnormalizedvalue);
+			WheelFrictionCurve leftFriction = rearleft.forwardFriction;
+			WheelFrictionCurve rightFriction = rearright.forwardFriction;
+
+			leftFriction.extremumSlip += slipIncrement;
+			rightFriction.extremumSlip += slipIncrement;
+
+			rearleft.forwardFriction = leftFriction;
+			rearright.forwardFriction = rightFriction;
+
+			//WheelFrictionCurve frontLeftFriction = frontleft.forwardFriction;
+			//WheelFrictionCurve frontRightFriction = frontright.forwardFriction;
+
+			//frontLeftFriction.extremumSlip += slipIncrement;
+			//frontRightFriction.extremumSlip += slipIncrement;
+
+			//frontleft.forwardFriction = frontLeftFriction;
+			//frontright.forwardFriction = frontRightFriction;
 		}
-		return frontsmoke;
-		
+	}
+	void ExitGlitchMode()
+	{
+		if (inGlitchMode)
+		{
+			inGlitchMode = false;
+
+			WheelFrictionCurve leftFriction = rearleft.forwardFriction;
+			WheelFrictionCurve rightFriction = rearright.forwardFriction;
+
+			leftFriction.extremumSlip = rearoriginalSlip;
+			rightFriction.extremumSlip = rearoriginalSlip;
+
+			rearleft.forwardFriction = leftFriction;
+			rearright.forwardFriction = rightFriction;
+
+			//WheelFrictionCurve frontLeftFriction = frontleft.forwardFriction;
+			//WheelFrictionCurve frontRightFriction = frontright.forwardFriction;
+
+			//frontLeftFriction.extremumSlip = rearoriginalSlip;
+			//frontRightFriction.extremumSlip = rearoriginalSlip;
+
+			//frontleft.forwardFriction = frontLeftFriction;
+			//frontright.forwardFriction = frontRightFriction;
+		}
 	}
 
 
@@ -367,16 +351,18 @@ public class PowerToWheels : MonoBehaviour
 				gasinput /= 1.5f;
 			}
 
-			float motor = gasinput * Torque;
+			CurrTorque = tractioncontrol(CurrTorque);
+			Debug.Log("after traction control: " + CurrTorque);
 
-			/*
-			if (Mathf.Abs(rearleft.rpm) >= 5000f)
-			{
-				motor = 0;
-			}
-			*/
-			rearleft.motorTorque = motor;
-			rearright.motorTorque = motor;
+			//float rpm = gears(2.26f);
+			//float motor = gasinput * rpm * (Torque / 5000f);
+
+			float motor = gasinput * CurrTorque;
+
+			
+
+			rearleft.motorTorque = motor / 2f;
+			rearright.motorTorque = motor / 2f;
 
 			enginesound(motor);
 		}
@@ -506,12 +492,29 @@ public class PowerToWheels : MonoBehaviour
 			wheels[i].transform.rotation = wheelRotation;
 		}
 	}
+	float tractioncontrol(float currtorque)
+	{
+		float threshold = 2f;
+		if ((MathF.Abs(rearrot) > MathF.Abs(threshold * frontrot)) && !istractioncontrol)
+		{
+			currtorque *= tractioncutoff;
+			Debug.Log("traction control yes");
 
+			istractioncontrol = true;
+		}
+		if((istractioncontrol) && (MathF.Abs(rearrot) <= MathF.Abs(frontrot + (frontrot/10f)) ))
+		{
+			currtorque = MaxTorque;
+			istractioncontrol = false;
+
+		}
+		return currtorque;
+	}
 	void enginesound(float motor)
 	{
 
 		//motor maximum value is 5000, so i want to divid the motor by a value greater than 7000 \, so i give part of the sound to the rearrot also.
-		Debug.Log("motor: " + Mathf.Abs(motor));
+		//Debug.Log("motor: " + Mathf.Abs(motor));
 
 
 		engineAudioSource.volume = 0.25f + (Mathf.Abs(motor) * (0.75f / 9000f));

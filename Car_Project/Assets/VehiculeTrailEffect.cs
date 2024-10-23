@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.ConstrainedExecution;
 using UnityEngine;
 
 
@@ -10,15 +12,6 @@ public class VehiculeTrailEffect : MonoBehaviour
 	public TrailRenderer[] fronttyremarks;
 	public TrailRenderer[] backtyremarks;
 
-	public ParticleSystem frontLeftSmokePrefab;
-	public ParticleSystem frontRightSmokePrefab;
-	public ParticleSystem rearLeftSmokePrefab;
-	public ParticleSystem rearRightSmokePrefab;
-
-	private ParticleSystem frontleftsmoke;
-	private ParticleSystem frontrightsmoke;
-	private ParticleSystem rearleftsmoke;
-	private ParticleSystem rearrightsmoke;
 
 
 
@@ -28,7 +21,7 @@ public class VehiculeTrailEffect : MonoBehaviour
 	private bool frontleftsmokePlaying = false;
 	private bool frontrightsmokePlaying = false;
 
-	bool frontlockstarted = false;
+	bool Frontlockstarted = false;
 
 
 	private bool isReady = true;
@@ -38,13 +31,22 @@ public class VehiculeTrailEffect : MonoBehaviour
 	private PowerToWheels powertowheels;
 
 	public ParticleSystem[] frontwheelsmoke = new ParticleSystem[2];
-	public ParticleSystem[] rearwheelsmoke = new ParticleSystem[2]; 
-	
+	public ParticleSystem[] rearwheelsmoke = new ParticleSystem[2];
+	public float maxsmokesize;
+	public float maxsmokespeed = 250f;
+	private SmokeDataRear rearsmokeData;
+	private SmokeDataFront frontsmokeData;
+
+
 	// Start is called before the first frame update
 	void Start()
 	{
-		powertowheels = GetComponent<PowerToWheels>();
+		ParticleSystem.MainModule main = rearwheelsmoke[0].main;
+		maxsmokesize = main.startSize.constant;
+		Debug.Log(maxsmokesize);
 
+
+		powertowheels = GetComponent<PowerToWheels>();
 		if (powertowheels == null)
 		{
 			Debug.LogError("PowerToWheels script not found on the same GameObject!");
@@ -52,7 +54,13 @@ public class VehiculeTrailEffect : MonoBehaviour
 
 		rigidbody = GetComponent<Rigidbody>();
 
-		
+		frontsmokeData = new SmokeDataFront();
+		rearsmokeData = new SmokeDataRear();
+
+		frontwheelsmoke[0].Stop();
+		frontwheelsmoke[1].Stop();
+		rearwheelsmoke[0].Stop();
+		rearwheelsmoke[1].Stop();
 	}
 
 	// Update is called once per frame
@@ -61,51 +69,60 @@ public class VehiculeTrailEffect : MonoBehaviour
 
 		if (rigidbody.velocity.magnitude > 2)
 		{
-
-			if (powertowheels.frontlock() != 0 || powertowheels.frontwheelslide() != 0)
+			
+			frontsmokeData.Frontwheelslide(transform.forward, rigidbody.velocity,0.3f);
+			frontsmokeData.Frontlock(powertowheels.frontrot, powertowheels.speed);
+			frontsmokeData.AddSpeed(powertowheels.speedKMH, maxsmokespeed);
+			if (frontsmokeData.slipNormalizedValueFrontSlide != 0 || frontsmokeData.slipNormalizedValueFrontLock != 0)
 			{
+				float frontsmoke = frontsmokeData.CalculateFinalSmokeIntensity(maxsmokesize);
+				ParticleSystem.MainModule left = frontwheelsmoke[0].main;
+				left.startSize = frontsmoke;
 
-				/*
-				if (!frontlockstarted)
-				{
-					tirescreechAudioSource.clip = tirescreechingClip;
-					tirescreechAudioSource.loop = false;
-					tirescreechAudioSource.Play();
-					frontlockstarted = true;
-				}
-				*/
+				ParticleSystem.MainModule right = frontwheelsmoke[1].main;
+				right.startSize = frontsmoke;
+
+				
+				//if (!Frontlockstarted)
+				//{
+				//	tirescreechAudioSource.clip = tirescreechingClip;
+				//	tirescreechAudioSource.loop = false;
+				//	tirescreechAudioSource.Play();
+				//	Frontlockstarted = true;
+				//}
+				
 				foreach (TrailRenderer T in fronttyremarks)
 				{
 					T.emitting = true;
 				}
 				if (powertowheels.wheelGroundStates[powertowheels.frontleft] == 1)/////////////////////////
 				{
-					if (frontleftsmoke == null)
+					if (frontwheelsmoke[0] == null)
 					{
-						frontleftsmoke = Instantiate(frontLeftSmokePrefab, powertowheels.frontleft.transform.position, Quaternion.identity);
+						frontwheelsmoke[0] = Instantiate(frontwheelsmoke[0], powertowheels.frontleft.transform.position, Quaternion.identity);
 					}
 					else
 					{
-						frontleftsmoke.transform.position = powertowheels.frontleft.transform.position;
+						frontwheelsmoke[0].transform.position = powertowheels.frontleft.transform.position;
 						if (!frontleftsmokePlaying)
 						{
-							frontleftsmoke.Play();
+							frontwheelsmoke[0].Play();
 							frontleftsmokePlaying = true;
 						}
 					}
 				}
 				if (powertowheels.wheelGroundStates[powertowheels.frontright] == 1)//////////////////////
 				{
-					if (frontrightsmoke == null)
+					if (frontwheelsmoke[1] == null)
 					{
-						frontrightsmoke = Instantiate(frontRightSmokePrefab, powertowheels.frontright.transform.position, Quaternion.identity);
+						frontwheelsmoke[1] = Instantiate(frontwheelsmoke[1], powertowheels.frontright.transform.position, Quaternion.identity);
 					}
 					else
 					{
-						frontrightsmoke.transform.position = powertowheels.frontright.transform.position;
+						frontwheelsmoke[1].transform.position = powertowheels.frontright.transform.position;
 						if (!frontrightsmokePlaying)
 						{
-							frontrightsmoke.Play();
+							frontwheelsmoke[1].Play();
 							frontrightsmokePlaying = true;
 						}
 					}
@@ -119,65 +136,75 @@ public class VehiculeTrailEffect : MonoBehaviour
 				}
 				if (frontleftsmokePlaying)
 				{
-					frontleftsmoke.Stop();
+					frontwheelsmoke[0].Stop();
 					frontleftsmokePlaying = false;
 				}
 
 				if (frontrightsmokePlaying)
 				{
-					frontrightsmoke.Stop();
+					frontwheelsmoke[1].Stop();
 					frontrightsmokePlaying = false;
 				}
 
 
-				if (frontlockstarted)
+				if (Frontlockstarted)
 				{
 					powertowheels.tirescreechAudioSource.Stop();
 
 					powertowheels.tirescreechAudioSource.clip = powertowheels.tirescreechingendClip;
 					powertowheels.tirescreechAudioSource.loop = false;
 					powertowheels.tirescreechAudioSource.Play();
-					frontlockstarted = false;
+					Frontlockstarted = false;
 				}
 
 			}
 
-			
-			if (powertowheels.CarSliding()!=0 ||  powertowheels.rearlock()!=0  || powertowheels.burnout()!=0)
+			rearsmokeData.Rearlock(powertowheels.rearrot, powertowheels.speed);
+			rearsmokeData.CarSliding(transform.forward, rigidbody.velocity, 0.99f, 0.7f);
+			rearsmokeData.Burnout(powertowheels.frontrot, powertowheels.rearrot);
+			rearsmokeData.AddSpeed(powertowheels.speedKMH, maxsmokespeed);
+			if (rearsmokeData.slipNormalizedValueRearlock != 0 || ((rearsmokeData.slipNormalizedValueCarSliding != 0) && powertowheels.speedKMH > 15  )|| rearsmokeData.slipNormalizedValueBurnout != 0)
 			{
-				
+				float rearsmoke = rearsmokeData.CalculateFinalSmokeIntensity(maxsmokesize);
+
+				ParticleSystem.MainModule left = rearwheelsmoke[0].main;
+				left.startSize = rearsmoke;
+
+				ParticleSystem.MainModule right = rearwheelsmoke[1].main;
+				right.startSize = rearsmoke;
+
 				foreach (TrailRenderer T in backtyremarks)
 				{
 					T.emitting = true;
 				}
 				if (powertowheels.wheelGroundStates[powertowheels.rearleft]==1)//////////////////////
 				{
-					if (rearleftsmoke == null)
+					if (rearwheelsmoke[0] == null)
 					{
-						rearleftsmoke = Instantiate(rearLeftSmokePrefab, powertowheels.rearleft.transform.position, Quaternion.identity);
+						rearwheelsmoke[0] = Instantiate(rearwheelsmoke[0], powertowheels.rearleft.transform.position, Quaternion.identity);
 					}
 					else
 					{
-						rearleftsmoke.transform.position = powertowheels.rearleft.transform.position;
+						rearwheelsmoke[0].transform.position = powertowheels.rearleft.transform.position;
 						if (!rearleftsmokePlaying)
 						{
-							rearleftsmoke.Play();
+							rearwheelsmoke[0].Play();
 							rearleftsmokePlaying = true;
 						}
 					}
 				}
 				if (powertowheels.wheelGroundStates[powertowheels.rearright] == 1)/////////////////////
 				{
-					if (rearrightsmoke == null)
+					if (rearwheelsmoke[1] == null)
 					{
-						rearrightsmoke = Instantiate(rearRightSmokePrefab, powertowheels.rearright.transform.position, Quaternion.identity);
+						rearwheelsmoke[1] = Instantiate(rearwheelsmoke[1], powertowheels.rearright.transform.position, Quaternion.identity);
 					}
 					else
 					{
-						rearrightsmoke.transform.position = powertowheels.rearright.transform.position;
+						rearwheelsmoke[1].transform.position = powertowheels.rearright.transform.position;
 						if (!rearrightsmokePlaying)
 						{
-							rearrightsmoke.Play();
+							rearwheelsmoke[1].Play();
 							rearrightsmokePlaying = true;
 						}
 					}
@@ -192,52 +219,194 @@ public class VehiculeTrailEffect : MonoBehaviour
 				}
 				if (rearleftsmokePlaying)
 				{
-					rearleftsmoke.Stop();
+					rearwheelsmoke[0].Stop();
 					rearleftsmokePlaying = false;
 				}
 
 				if (rearrightsmokePlaying)
 				{
-					rearrightsmoke.Stop();
+					rearwheelsmoke[1].Stop();
 					rearrightsmokePlaying = false;
 				}
 			}
 			
+			
+			
 		}
+		
 		else
 		{
+			
 			foreach (TrailRenderer T in fronttyremarks)
 			{
 				T.emitting = false;
 			}
 			if (frontleftsmokePlaying)
 			{
-				frontleftsmoke.Stop();
+				frontwheelsmoke[0].Stop();
 				frontleftsmokePlaying = false;
 			}
 
 			if (frontrightsmokePlaying)
 			{
-				frontrightsmoke.Stop();
+				frontwheelsmoke[1].Stop();
 				frontrightsmokePlaying = false;
 			}
 
 
 			if (rearleftsmokePlaying)
 			{
-				rearleftsmoke.Stop();
+				rearwheelsmoke[0].Stop();
 				rearleftsmokePlaying = false;
 			}
 
 			if (rearrightsmokePlaying)
 			{
-				rearrightsmoke.Stop();
+				rearwheelsmoke[1].Stop();
 				rearrightsmokePlaying = false;
 			}
+			
+		}
+		//if (Input.GetKeyDown(KeyCode.Y))
+		//{
+		//	Debug.Log("pressed Y");
+		//	ParticleSystem.MainModule left = rearwheelsmoke[0].main;
+		//	left.startSize = left.startSize.constant - 1;
+
+		//	ParticleSystem.MainModule right = rearwheelsmoke[1].main;
+		//	right.startSize = left.startSize.constant - 1;
+		//}
+		//if (Input.GetKeyDown(KeyCode.U))
+		//{
+		//	Debug.Log("pressed U");
+		//	ParticleSystem.MainModule left = rearwheelsmoke[0].main;
+		//	left.startSize = left.startSize.constant + 1;
+
+		//	ParticleSystem.MainModule right = rearwheelsmoke[1].main;
+		//	right.startSize = left.startSize.constant + 1;
+		//}
+		
+	}
+	public class SmokeDataRear
+	{
+		public float slipNormalizedValueRearlock;
+		public float slipNormalizedValueCarSliding;
+		public float slipNormalizedValueBurnout;
+		public float speedNormalizedValue;
+		public float smokeIntensity;
+
+		// Method to calculate the rearlock slip value (without speed normalization)
+		public float Rearlock(float rearRot, float speed)
+		{
+			if (rearRot == 0 && Mathf.Abs(speed) > 5)
+			{
+				slipNormalizedValueRearlock = 1; // Fully active
+			}
+			else
+			{
+				slipNormalizedValueRearlock = 0; // Not active
+			}
+
+			return slipNormalizedValueRearlock;
 		}
 
+		public float CarSliding(Vector3 forwardVector, Vector3 velocityVector, float driftThresholdMin, float driftThresholdMax)
+		{
+			float dotProduct = Vector3.Dot(forwardVector.normalized, velocityVector.normalized);
+
+			slipNormalizedValueCarSliding = Mathf.InverseLerp(driftThresholdMin, driftThresholdMax, Mathf.Abs(dotProduct));
+
+			return slipNormalizedValueCarSliding;
+		}
+
+		public float Burnout(float front, float rear)
+		{
+			float frontAbs = Math.Abs(front);
+			float rearAbs = Math.Abs(rear);
+			float driftThresholdMin = frontAbs * 3f;
+			float driftThresholdMax = frontAbs * 4f;
+
+			if (rearAbs > driftThresholdMin)
+			{
+				slipNormalizedValueBurnout = Mathf.InverseLerp(driftThresholdMin, driftThresholdMax, rearAbs);
+			}
+			else
+			{
+				slipNormalizedValueBurnout = 0;
+			}
+
+			return slipNormalizedValueBurnout;
+		}
+
+		public float AddSpeed(float speedKMH, float maxSpeed)
+		{
+			speedNormalizedValue = Mathf.InverseLerp(0, maxSpeed, speedKMH);
+			return speedNormalizedValue;
+		}
+
+		// Method to calculate the final smoke intensity
+		public float CalculateFinalSmokeIntensity(float maxSmokeSize)
+		{
+			float combinedValue = (slipNormalizedValueRearlock + slipNormalizedValueCarSliding + slipNormalizedValueBurnout + 2 * speedNormalizedValue) / 4f;
+			smokeIntensity = Mathf.Lerp(0, maxSmokeSize, combinedValue);
+
+			return smokeIntensity;
+		}
 	}
 
-	
+
+	public class SmokeDataFront
+	{
+		public float slipNormalizedValueFrontSlide;
+		public float slipNormalizedValueFrontLock;
+		public float speedNormalizedValue;
+		public float smokeIntensity;
+
+		public float Frontwheelslide(Vector3 forwardVector, Vector3 velocityVector, float driftThreshold)
+		{
+			float dotProduct = Vector3.Dot(forwardVector.normalized, velocityVector.normalized);
+
+			if (Mathf.Abs(dotProduct) < driftThreshold)
+			{
+				slipNormalizedValueFrontSlide = 1;
+			}
+			else
+			{
+				slipNormalizedValueFrontSlide = 0;
+			}
+
+			return slipNormalizedValueFrontSlide;
+		}
+
+		public float Frontlock(float frontRot, float speed)
+		{
+			if (frontRot == 0 && Mathf.Abs(speed) > 5)
+			{
+				slipNormalizedValueFrontLock = 1;
+			}
+			else
+			{
+				slipNormalizedValueFrontLock = 0;
+			}
+
+			return slipNormalizedValueFrontLock;
+		}
+
+		public float AddSpeed(float speedKMH, float maxSpeed)
+		{
+			speedNormalizedValue = Mathf.InverseLerp(0, maxSpeed, speedKMH);
+			return speedNormalizedValue;
+		}
+
+		public float CalculateFinalSmokeIntensity(float maxSmokeSize)
+		{
+			float combinedValue = (slipNormalizedValueFrontSlide + slipNormalizedValueFrontLock + 2 * speedNormalizedValue) / 3f;
+			smokeIntensity = Mathf.Lerp(0, maxSmokeSize, combinedValue);
+
+			return smokeIntensity;
+		}
+	}
+
+
 }
 
