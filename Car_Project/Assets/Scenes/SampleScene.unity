@@ -12645,7 +12645,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speedKMH: 0
-  Torque: 4000
+  MaxTorque: 4000
+  CurrTorque: 0
   handBrakeTorque: 8000
   BrakeTorque: 5000
   speed: 0
@@ -12655,6 +12656,9 @@ MonoBehaviour:
   rearrot: 0
   frontrot: 0
   rearsidewaysfriction: 0
+  istractioncontrol: 0
+  tractioncutoff: 0.35
+  maxtorqueRPM: 5000
   steeringMax: 27
   maxSpeed: 320
   steeringCurve:
@@ -12711,10 +12715,6 @@ MonoBehaviour:
   rpm: 0
   centerofmass: {fileID: 1287422547}
   car: {fileID: 0}
-  fronttyremarks:
-  - {fileID: 561129691}
-  - {fileID: 2078522956}
-  reartyremarks: []
   decelerationFactor: 0
   minRPM: 100
   frontLeftLoad: 0
@@ -12723,6 +12723,10 @@ MonoBehaviour:
   rearRightLoad: 0
   rearrighttorque: 0
   rearlefttorque: 0
+  fronttyremarks:
+  - {fileID: 561129691}
+  - {fileID: 2078522956}
+  reartyremarks: []
   cardimensions: {fileID: 1572974588}
   wheeldimensions: {fileID: 472212763}
   housedimensions: {fileID: 489267898}
@@ -12908,6 +12912,78 @@ MonoBehaviour:
   WheelL: {fileID: 817844711}
   WheelR: {fileID: 606411643}
   AntiRoll: 0
+--- !u!114 &671144292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 671144280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8efdb35c1fd70b044bb5082e61c9210c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gear: 0
+  gearratio: 0
+  maxtorquepercent: 0
+  torque:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 10.314163
+      value: -5.8977356
+      inSlope: 0.19650964
+      outSlope: 0.19650964
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 2594.078
+      value: 501.83673
+      inSlope: 0.14247835
+      outSlope: 0.14247835
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.13471307
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 4997.382
+      value: 655.59924
+      inSlope: 0.0016197298
+      outSlope: 0.0016197298
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 1
+      outWeight: 0.29366064
+    - serializedVersion: 3
+      time: 6679.0073
+      value: 626.1431
+      inSlope: -0.04836947
+      outSlope: -0.04836947
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.34097624
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 9049.659
+      value: 408.28583
+      inSlope: -0.06576585
+      outSlope: -0.06576585
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.21264075
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  engineresistance:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &673490212
 GameObject:
   m_ObjectHideFlags: 0
@@ -19700,8 +19776,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1095524556}
-  m_LocalRotation: {x: 0.69184744, y: 0.11273679, z: -0.1107052, w: 0.70454377}
-  m_LocalPosition: {x: -5.92964, y: -52.824745, z: -23.687424}
+  m_LocalRotation: {x: 0.69184756, y: 0.1127351, z: -0.11070348, w: 0.70454425}
+  m_LocalPosition: {x: -5.9296436, y: -52.824738, z: -23.68747}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
