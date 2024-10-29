@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Gears : MonoBehaviour
+public class Gears
 {
     public Car car;
     public int gear;

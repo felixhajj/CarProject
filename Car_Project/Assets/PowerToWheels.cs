@@ -9,6 +9,7 @@ using UnityEngine;
 
 public class PowerToWheels : MonoBehaviour
 {
+    Car currcar;
     public float finalwheeltorque;
     public float speedKMH;
 
@@ -137,6 +138,8 @@ public class PowerToWheels : MonoBehaviour
         firstcar.Wheelradius = rearright.radius;
         wheelCircumference = 2f * Mathf.PI * firstcar.Wheelradius;
         firstcar.Wheelmass = rearright.mass;
+
+        currcar = firstcar;
 }
 
     void Update()
@@ -399,8 +402,8 @@ public class PowerToWheels : MonoBehaviour
         // Apply handbrake if the space key is pressed
         if (Input.GetKey(KeyCode.Space))
         {
-            rearright.brakeTorque = handBrakeTorque / 2;
-            rearleft.brakeTorque = handBrakeTorque / 2;
+            rearright.brakeTorque = HandBrakeTorque / 2;
+            rearleft.brakeTorque = HandBrakeTorque / 2;
             if (rearrot == 0)
             {
                 WheelFrictionCurve rearLeftFriction = rearleft.sidewaysFriction;
