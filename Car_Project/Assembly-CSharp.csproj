@@ -65,6 +65,7 @@
     <Compile Include="Assets\LightingManager.cs" />
     <Compile Include="Assets\VehiculeTrailEffect.cs" />
     <Compile Include="Assets\Car.cs" />
+    <Compile Include="Assets\CarController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Monqo Sci-Fi Car\READ ME!.txt" />

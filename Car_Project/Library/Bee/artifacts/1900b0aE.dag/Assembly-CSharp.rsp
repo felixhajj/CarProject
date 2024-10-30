@@ -357,6 +357,7 @@
 "Assets/AntiRollBar.cs"
 "Assets/CameraBehavior.cs"
 "Assets/Car.cs"
+"Assets/CarController.cs"
 "Assets/CinemachineCameras.cs"
 "Assets/Gears.cs"
 "Assets/LightingManager.cs"

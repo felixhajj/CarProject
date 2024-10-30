@@ -9,7 +9,7 @@ using UnityEngine;
 
 public class PowerToWheels : MonoBehaviour
 {
-    Car currcar;
+    CarController carcontroller;
     public float finalwheeltorque;
     public float speedKMH;
 
@@ -23,30 +23,17 @@ public class PowerToWheels : MonoBehaviour
     public float frontrot;
     public float rearsidewaysfriction;
     public bool istractioncontrol = false;
-    //public float maxtorqueRPM = 5000f;//RPM
+
     public AnimationCurve torque;
     public AnimationCurve steeringCurve;
     float wheelCircumference;
 
-    //if one of those is equal to 0, means the tyre is in the air, if its other, 1 would be for road, 2 for offroad,etc... should work more on it
-    public Dictionary<WheelCollider, int> wheelGroundStates;
-
     
-    public WheelCollider rearright;
-    public WheelCollider rearleft;
-
-    public WheelCollider frontleft;
-    public WheelCollider frontright;
-
-    public GameObject[] wheels = new GameObject[4];
 
 
     //public float rpm;
 
-    public GameObject centerofmass;
-    private Rigidbody rigidbody;
-
-    public Rigidbody car;
+   
 
    
     //tyre glitch fix
@@ -70,86 +57,36 @@ public class PowerToWheels : MonoBehaviour
     //public float maxBrakeForce = 200f;
     public float minRPM = 100f;
 
-    public float frontLeftLoad;
-    public float frontRightLoad;
-    public float rearLeftLoad;
-    public float rearRightLoad;
+    
 
     public float rearrighttorque;
     public float rearlefttorque;
 
-    public TrailRenderer[] fronttyremarks;
-    public TrailRenderer[] reartyremarks;
-
-    public MeshRenderer cardimensions;
-    public MeshRenderer wheeldimensions;
-    public MeshRenderer housedimensions;
-
-    public AudioSource engineAudioSource;
-    public AudioSource tirescreechAudioSource;
-    public AudioClip engineStartupClip;
-    public AudioClip engineLoopClip;
-    public AudioClip engineShutdownClip;
-    public AudioClip tirescreechingClip;
-    public AudioClip tirescreechingendClip;
+   
 
 
 
     void Start()
     {
 
-        rearoriginalSlip = rearleft.forwardFriction.extremumSlip;
+        rearoriginalSlip = carcontroller.rearleft.forwardFriction.extremumSlip;
         lastRearrot = rearrot;
 
-        rearsidewaysfriction = rearleft.sidewaysFriction.stiffness;
+        rearsidewaysfriction = carcontroller.rearleft.sidewaysFriction.stiffness;
 
-        Vector3 cardim = cardimensions.bounds.size;
-        Debug.Log("car dimensions (meters): " + cardim);
-
-        Vector3 wheeldim = wheeldimensions.bounds.size;
-        Debug.Log("wheel dimensions (meters): " + wheeldim);
-
-        Vector3 housedim = housedimensions.bounds.size;
-        Debug.Log("house dimensions (meters): " + housedim);
-        rigidbody = GetComponent<Rigidbody>();
-        rigidbody.centerOfMass = centerofmass.transform.localPosition;
+        
 
 
-        wheelGroundStates = new Dictionary<WheelCollider, int>
-        {
-            { frontleft, 0 },
-            { frontright, 0 },
-            { rearleft, 0 },
-            { rearright, 0 }
-        };
-
-        Car firstcar = new Car();
-        firstcar.MaxTorque = 656;
-        firstcar.Torque = torque;
-        firstcar.BrakeTorque = 5000f;
-        firstcar.HandBrakeTorque = 3000f;
-        firstcar.SteeringMax = 27;
-        firstcar.MaxSpeed = 320f;
-        firstcar.SteeringCurve = steeringCurve;
-        firstcar.Tractioncutoff = 0.35f;
-        firstcar.Finaldriveaxle = 3.7f;
-        firstcar.Drivingwheels = 2;
-        firstcar.Mass = 1800;
-        firstcar.Wheelradius = rearright.radius;
-        wheelCircumference = 2f * Mathf.PI * firstcar.Wheelradius;
-        firstcar.Wheelmass = rearright.mass;
-
-        currcar = firstcar;
 }
 
     void Update()
     {
-        speed = rigidbody.velocity.magnitude;
+        speed = GetComponent<Rigidbody>().velocity.magnitude;
         speedKMH = Mathf.RoundToInt(speed) * 3.6f;
 
         //debugger
-        rearlefttorque = rearleft.motorTorque;
-        rearrighttorque = rearright.motorTorque;
+        rearlefttorque = carcontroller.rearleft.motorTorque;
+        rearrighttorque = carcontroller.rearright.motorTorque;
         //
 
         if (Input.GetKeyDown(KeyCode.R))
@@ -378,7 +315,7 @@ public class PowerToWheels : MonoBehaviour
     void braking()
     {
         // Calculate slip angle first
-        slipangle = Vector3.Angle(transform.forward, rigidbody.velocity - transform.forward);
+        slipangle = Vector3.Angle(transform.forward, GetComponent<Rigidbody>().velocity - transform.forward);
 
 
         // Determine brake input based on forward or reverse movement
@@ -467,6 +404,25 @@ public class PowerToWheels : MonoBehaviour
 
 
     }
+    float tractioncontrol(float currtorque)
+    {
+        float threshold = 2f;
+        if ((MathF.Abs(rearrot) > MathF.Abs(threshold * frontrot)) && !istractioncontrol)
+        {
+            currtorque *= tractioncutoff;
+            Debug.Log("traction control yes");
+
+            istractioncontrol = true;
+        }
+        if ((istractioncontrol) && (MathF.Abs(rearrot) <= MathF.Abs(frontrot + (frontrot / 10f))))
+        {
+            currtorque = MaxTorque;
+            istractioncontrol = false;
+
+        }
+        return currtorque;
+    }
+
     void animatewheels()
     {
         Vector3 wheelposition = Vector3.zero;
@@ -494,24 +450,6 @@ public class PowerToWheels : MonoBehaviour
             wheels[i].transform.position = wheelposition;
             wheels[i].transform.rotation = wheelRotation;
         }
-    }
-    float tractioncontrol(float currtorque)
-    {
-        float threshold = 2f;
-        if ((MathF.Abs(rearrot) > MathF.Abs(threshold * frontrot)) && !istractioncontrol)
-        {
-            currtorque *= tractioncutoff;
-            Debug.Log("traction control yes");
-
-            istractioncontrol = true;
-        }
-        if ((istractioncontrol) && (MathF.Abs(rearrot) <= MathF.Abs(frontrot + (frontrot / 10f))))
-        {
-            currtorque = MaxTorque;
-            istractioncontrol = false;
-
-        }
-        return currtorque;
     }
     void enginesound(float motor)
     {

@@ -1,11 +1,34 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.ConstrainedExecution;
 using Unity.VisualScripting;
 using UnityEngine;
 using static Unity.VisualScripting.Dependencies.Sqlite.SQLite3;
 
-public class Car
+public interface ICar
+{
+
+    public ICar SetName(string name);
+    public ICar SetMaxTorque(float maxTorque);
+    public ICar SetTorque(AnimationCurve torque);
+    public ICar SetBrakeTorque(float brakeTorque);
+    public ICar SetHandBrakeTorque(float handbrakeTorque);
+    public ICar SetSteeringMax(float steeringmax);
+    public ICar SetMaxSpeed(float maxspeed);
+    public ICar SetSteeringCurve(AnimationCurve steeringcurve);
+    public ICar SetTractionCutoff(float tractioncutoff);
+    public ICar SetFinalDriveAxle(float finaldriveaxle);
+    public ICar SetDrivingWheels(int drivingwheels);
+    public ICar SetMass(float mass);
+    public ICar SetWheelRadius(float wheelradius);
+    public ICar SetWheelMass(float wheelmass);
+
+    public ICar Clone(string carRole);
+
+}
+
+public class Car : ICar
 {
     public string Name { get; set; }
     public float MaxTorque { get; set; } // Nm max torque out of crankshaft (engine torque)
@@ -24,152 +47,158 @@ public class Car
     public float WheelRadius { get; set; } // Radius of the wheel in meters
     public float WheelMass { get; set; } // Mass of the wheel in kg
 
+    public ICar SetName(string name)
+    {
+        Name = name;
+        return this;
+    }
+    public ICar SetMaxTorque(float maxTorque)
+    {
+        MaxTorque = maxTorque;
+        return this;
+    }
+    public ICar SetTorque(AnimationCurve torque)
+    {
+        Torque = torque;
+        return this;
+    }
+    public ICar SetBrakeTorque(float brakeTorque)
+    {
+        BrakeTorque = brakeTorque;
+        return this;
+    }
+    public ICar SetHandBrakeTorque(float handbrakeTorque)
+    {
+        HandBrakeTorque = handbrakeTorque;
+        return this;
+    }
+    public ICar SetSteeringMax(float steeringmax)
+    {
+        SteeringMax = steeringmax;
+        return this;
+    }
+    public ICar SetMaxSpeed(float maxspeed)
+    {
+        MaxSpeed = maxspeed;
+        return this;
+    }
+    public ICar SetSteeringCurve(AnimationCurve steeringcurve)
+    {
+        SteeringCurve = steeringcurve;
+        return this;
+    }
+    public ICar SetTractionCutoff(float tractioncutoff)
+    {
+        TractionCutoff = tractioncutoff;
+        return this;
+    }
+    public ICar SetFinalDriveAxle(float finaldriveaxle)
+    {
+        FinalDriveAxle = finaldriveaxle;
+        return this;
+    }
+    public ICar SetDrivingWheels(int drivingwheels)
+    {
+        DrivingWheels = drivingwheels;
+        return this;
+    }
+    public ICar SetMass(float mass)
+    {
+        Mass = mass;
+        return this;
+    }
+    public ICar SetWheelRadius(float wheelradius)
+    {
+        WheelRadius = wheelradius;
+        return this;
+    }
+    public ICar SetWheelMass(float wheelmass)
+    {
+        WheelMass = wheelmass;
+        return this;
+    }
+
+
+    public ICar Clone(string carRole)
+    {
+        switch (carRole)
+        {
+            case "PlayerCar":
+                return new PlayerCar
+                {
+                    Name = this.Name,
+                    MaxTorque = this.MaxTorque,
+                    Torque = new AnimationCurve(this.Torque.keys), // Deep copy of AnimationCurve
+                    BrakeTorque = this.BrakeTorque,
+                    HandBrakeTorque = this.HandBrakeTorque,
+                    SteeringMax = this.SteeringMax,
+                    MaxSpeed = this.MaxSpeed,
+                    SteeringCurve = new AnimationCurve(this.SteeringCurve.keys), // Deep copy of AnimationCurve
+                    TractionCutoff = this.TractionCutoff,
+                    FinalDriveAxle = this.FinalDriveAxle,
+                    DrivingWheels = this.DrivingWheels,
+                    Mass = this.Mass,
+                    WheelRadius = this.WheelRadius,
+                    WheelMass = this.WheelMass,
+                };
+
+            case "BotCar":
+                return new BotCar
+                {
+                    Name = this.Name,
+                    MaxTorque = this.MaxTorque,
+                    Torque = new AnimationCurve(this.Torque.keys), // Deep copy of AnimationCurve
+                    BrakeTorque = this.BrakeTorque,
+                    HandBrakeTorque = this.HandBrakeTorque,
+                    SteeringMax = this.SteeringMax,
+                    MaxSpeed = this.MaxSpeed,
+                    SteeringCurve = new AnimationCurve(this.SteeringCurve.keys), // Deep copy of AnimationCurve
+                    TractionCutoff = this.TractionCutoff,
+                    FinalDriveAxle = this.FinalDriveAxle,
+                    DrivingWheels = this.DrivingWheels,
+                    Mass = this.Mass,
+                    WheelRadius = this.WheelRadius,
+                    WheelMass = this.WheelMass,
+                };
+
+            default:
+                throw new ArgumentException("Invalid car type provided: " + carRole);
+        }
+    }
 }
-//we do a builder to configure the properties
-public class CarBuilder
+
+public class PlayerCar : Car
 {
-    private Car _car= new Car();
 
-    public CarBuilder SetName(string name)
-    {
-        _car.Name = name;
-        return this;
-    }
-    public CarBuilder SetMaxTorque(float maxTorque)
-    {
-        _car.MaxTorque = maxTorque;
-        return this;
-    }
-    public CarBuilder SetTorque(AnimationCurve torque)
-    {
-        _car.Torque = torque; 
-        return this;
-    }
-    public CarBuilder SetBrakeTorque(float brakeTorque)
-    {
-        _car.BrakeTorque = brakeTorque;
-        return this;
-    }
-    public CarBuilder SetHandBrakeTorque(float handbrakeTorque)
-    {
-        _car.HandBrakeTorque = handbrakeTorque;
-        return this;
-    }
-    public CarBuilder SetSteeringMax(float steeringmax)
-    {
-        _car.SteeringMax = steeringmax;
-        return this;
-    }
-    public CarBuilder SetMaxSpeed(float maxspeed)
-    {
-        _car.MaxSpeed = maxspeed;
-        return this;
-    }
-    public CarBuilder SetSteeringCurve(AnimationCurve steeringcurve)
-    {
-        _car.SteeringCurve = steeringcurve;
-        return this;
-    }
-    public CarBuilder SetTractionCutoff(float tractioncutoff)
-    {
-        _car.TractionCutoff = tractioncutoff;
-        return this;
-    }
-    public CarBuilder SetFinalDriveAxle(float finaldriveaxle)
-    {
-        _car.FinalDriveAxle = finaldriveaxle;
-        return this;
-    }
-    public CarBuilder SetDrivingWheels(int drivingwheels)
-    {
-        _car.DrivingWheels = drivingwheels;
-        return this;
-    }
-    public CarBuilder SetMass(float mass)
-    {
-        _car.Mass= mass;
-        return this;
-    }
-    public CarBuilder SetWheelRadius(float wheelradius)
-    {
-        _car.WheelRadius = wheelradius;
-        return this;
-    }
-    public CarBuilder SetWheelMass(float wheelmass)
-    {
-        _car.WheelMass = wheelmass;
-        return this;
-    }
+}
 
-    public Car Build()
-    {
-        return _car;
-    }
+public class BotCar : Car
+{
 
-    public Car Clone()
-    {
-        Car newCar = new Car();
-        newCar.Name = _car.Name;
-        newCar.MaxTorque = _car.MaxTorque;
-        newCar.Torque = new AnimationCurve(_car.Torque.keys); // Deep copy of AnimationCurve
-        newCar.BrakeTorque = _car.BrakeTorque;
-        newCar.HandBrakeTorque = _car.HandBrakeTorque;
-        newCar.SteeringMax = _car.SteeringMax;
-        newCar.MaxSpeed = _car.MaxSpeed;
-        newCar.SteeringCurve = new AnimationCurve(_car.SteeringCurve.keys); // Deep copy of AnimationCurve
-        newCar.TractionCutoff = _car.TractionCutoff;
-        newCar.FinalDriveAxle = _car.FinalDriveAxle;
-        newCar.DrivingWheels = _car.DrivingWheels;
-        newCar.Mass = _car.Mass;
-        newCar.WheelRadius = _car.WheelRadius;
-        newCar.WheelMass = _car.WheelMass;
-
-        return newCar;
-    }
-
-    
 }
 
 public class Inventory
 {
-    CarBuilder car;
-    public Inventory(CarBuilder carr)
+    ICar car;
+    public Inventory(ICar carr)
     {
         car = carr;
     }
 
-    public Car createcar()
+    public ICar createcar(string carRole)
     {
-        return car.Clone();
+        return car.Clone(carRole);
     }
 }
 
 
-
-
-Car sportcar = new CarBuilder().SetBrakeTorque().Build();
+/*
+ICar sportcar = new Car().SetName().SetBrakeTorque();
+//inventory made to make cars in general, without specifying them to a certain task. like if they were in the menu, before playing the game
 
 Inventory sportcarinv = new Inventory(sportcar);
 
-var sportcar2 = sportcarinv.createcar();
-
-
-
-
-//example usage:
-//// Storing template
-//Car sportsCarTemplate = new CarBuilder().SetMaxTorque(656).SetBrakeTorque(5000f).Build();
-//carConfigs["SportsCar"] = sportsCarTemplate;
-
-// Cloning the car
-//Car newSportsCar = carConfigs["SportsCar"].Clone();
-
-
-
-
-
-//private static readonly Dictionary<string, Car> carPresets = new Dictionary<string, Car>
-//    {
-//        { "SportsCar", new PlayerCar { MaxTorque = 656, BrakeTorque = 5000f, HandBrakeTorque = 3000f, SteeringMax = 27, MaxSpeed = 320f, TractionCutoff = 0.35f, FinalDriveAxle = 3.7f, DrivingWheels = 2, Mass = 1800, WheelRadius = 0.34f, WheelMass = 25f }},
-//      //{ "SUV", new BotCar { MaxTorque = 400, BrakeTorque = 3500f, HandBrakeTorque = 2000f, SteeringMax = 30, MaxSpeed = 200f, TractionCutoff = 0.4f, FinalDriveAxle = 4.1f, DrivingWheels = 4, Mass = 2200, WheelRadius = 0.38f, WheelMass = 30f }}
-//    };
+//i create clone of cars, which can be either a PlayerCar or BotCar
+var sportcar1 = sportcarinv.createcar("PlayerCar");
+var sportcar2 = sportcarinv.createcar("BotCar");
+*/
