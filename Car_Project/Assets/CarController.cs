@@ -1,10 +1,16 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class CarController : MonoBehaviour
 {
+    //everything related to the car and its logic, and not mechanic related,(the wheelgroundstate, centerofmass,etc.. are not considered mechanic).
+    //also a middleman(using mediator pattern maybe?) between the Car class and other classes that needs it.
     public Car CarData { get; private set; }
+    public PowerToWheels powertowheels { get; private set; }
+
+    public bool engineturnon = false;
 
     //if one of those is equal to 0, means the tyre is in the air, if its other, 1 would be for road, 2 for offroad,etc... should work more on it
     public Dictionary<WheelCollider, int> wheelGroundStates;
@@ -44,6 +50,7 @@ public class CarController : MonoBehaviour
     public AudioClip tirescreechingClip;
     public AudioClip tirescreechingendClip;
 
+    float wheelCircumference;
 
     void Start()
     {
@@ -68,6 +75,7 @@ public class CarController : MonoBehaviour
         rigidbody = GetComponent<Rigidbody>();
         GetComponent<Rigidbody>().centerOfMass = centerofmass.transform.localPosition;
 
+        wheelCircumference = 2f * Mathf.PI * CarData.WheelRadius;
 
         wheelGroundStates = new Dictionary<WheelCollider, int>
         {
@@ -81,6 +89,156 @@ public class CarController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            //rpm = 1000;
+            engineturnon = !engineturnon;
+            if (engineturnon)
+            {
+                // Play engine startup audio
+                engineAudioSource.clip = engineStartupClip;
+                engineAudioSource.loop = false;
+                engineAudioSource.Play();
+            }
+            else
+            {
+                engineAudioSource.Stop();
+
+                // Play engine turnoff audio
+                engineAudioSource.clip = engineShutdownClip;
+                engineAudioSource.loop = false;
+                engineAudioSource.Play();
+
+            }
+        }
+
+        if (engineturnon && !engineAudioSource.isPlaying)
+        {
+
+            // Play engine loop
+            engineAudioSource.clip = engineLoopClip;
+            engineAudioSource.loop = true;
+            engineAudioSource.Play();
+
+        }
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            Vector3 newRotation = transform.eulerAngles;
+
+            newRotation.z = 0;
+            newRotation.x = 0;
+            transform.eulerAngles = newRotation;
+
+
+
+            Vector3 newPosition = transform.position;
+            newPosition.y += 3;
+            transform.position = newPosition;
+
+
+        }
     }
+    private void FixedUpdate()
+    {
+        UpdateWheelGroundState(frontleft);
+        UpdateWheelGroundState(frontright);
+        UpdateWheelGroundState(rearleft);
+        UpdateWheelGroundState(rearright);
+
+
+        frontLeftLoad = GetWheelLoad(frontleft);
+        frontRightLoad = GetWheelLoad(frontright);
+        rearLeftLoad = GetWheelLoad(rearleft);
+        rearRightLoad = GetWheelLoad(rearright);
+
+        animatewheels();
+
+    }
+    void animatewheels()
+    {
+        Vector3 wheelposition = Vector3.zero;
+        Quaternion wheelRotation = Quaternion.identity;
+
+        for (int i = 0; i < 4; i++)
+        {
+            if (i == 0)
+            {
+                rearleft.GetWorldPose(out wheelposition, out wheelRotation);
+
+            }
+            else if (i == 1)
+            {
+                rearright.GetWorldPose(out wheelposition, out wheelRotation);
+            }
+            else if (i == 2)
+            {
+                frontleft.GetWorldPose(out wheelposition, out wheelRotation);
+            }
+            else if (i == 3)
+            {
+                frontright.GetWorldPose(out wheelposition, out wheelRotation);
+            }
+            wheels[i].transform.position = wheelposition;
+            wheels[i].transform.rotation = wheelRotation;
+        }
+    }
+    public void enginesound(float motor)
+    {
+
+        //motor maximum value is 5000, so i want to divid the motor by a value greater than 7000 \, so i give part of the sound to the rearrot also.
+        //Debug.Log("motor: " + Mathf.Abs(motor));
+
+
+        engineAudioSource.volume = 0.25f + (Mathf.Abs(motor) * (0.75f / 9000f));
+        if (MathF.Abs(powertowheels.rearrot) <= 2000)
+        {
+            engineAudioSource.volume += (Mathf.Abs(powertowheels.rearrot) / 5000f);
+        }
+        else
+        {
+            engineAudioSource.volume += (2000 / 5000f);
+        }
+
+
+        engineAudioSource.pitch = 1 + (Mathf.Abs(motor) / 9000f);
+        if (MathF.Abs(powertowheels.rearrot) <= 2000)
+        {
+            engineAudioSource.pitch += (Mathf.Abs(powertowheels.rearrot) / 5000f);
+        }
+        else
+        {
+            engineAudioSource.pitch += (2000 / 5000f);
+        }
+
+    }
+
+
+    private void UpdateWheelGroundState(WheelCollider wheel)
+    {
+        if (IsWheelOnGround(wheel))
+        {
+            wheelGroundStates[wheel] = 1; // Wheel is on the ground
+        }
+        else
+        {
+            wheelGroundStates[wheel] = 0; // Wheel is off the ground
+        }
+    }
+    private bool IsWheelOnGround(WheelCollider wheel)
+    {
+        WheelHit hit;
+        return wheel.GetGroundHit(out hit);
+    }
+    private float GetWheelLoad(WheelCollider wheel)
+    {
+        WheelHit hit;
+        if (wheel.GetGroundHit(out hit))
+        {
+            return hit.force;
+        }
+
+        return 0f;
+    }
+
 }
