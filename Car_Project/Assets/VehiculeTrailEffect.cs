@@ -7,7 +7,10 @@ using UnityEngine;
 
 public class VehiculeTrailEffect : MonoBehaviour
 {
-	private Rigidbody rigidbody;
+
+    private PowTrailContMediator mediator;
+
+    private Rigidbody rigidbody;
 
 	public TrailRenderer[] fronttyremarks;
 	public TrailRenderer[] backtyremarks;
@@ -82,137 +85,156 @@ public class VehiculeTrailEffect : MonoBehaviour
 				ParticleSystem.MainModule right = frontwheelsmoke[1].main;
 				right.startSize = frontsmoke;
 
-				
-				//if (!Frontlockstarted)
-				//{
-				//	tirescreechAudioSource.clip = tirescreechingClip;
-				//	tirescreechAudioSource.loop = false;
-				//	tirescreechAudioSource.Play();
-				//	Frontlockstarted = true;
-				//}
-				
-				foreach (TrailRenderer T in fronttyremarks)
-				{
-					T.emitting = true;
-				}
-				if (powertowheels.wheelGroundStates[powertowheels.frontleft] == 1)/////////////////////////
-				{
-					if (frontwheelsmoke[0] == null)
-					{
-						frontwheelsmoke[0] = Instantiate(frontwheelsmoke[0], powertowheels.frontleft.transform.position, Quaternion.identity);
-					}
-					else
-					{
-						frontwheelsmoke[0].transform.position = powertowheels.frontleft.transform.position;
-						if (!frontleftsmokePlaying)
-						{
-							frontwheelsmoke[0].Play();
-							frontleftsmokePlaying = true;
-						}
-					}
-				}
-				if (powertowheels.wheelGroundStates[powertowheels.frontright] == 1)//////////////////////
-				{
-					if (frontwheelsmoke[1] == null)
-					{
-						frontwheelsmoke[1] = Instantiate(frontwheelsmoke[1], powertowheels.frontright.transform.position, Quaternion.identity);
-					}
-					else
-					{
-						frontwheelsmoke[1].transform.position = powertowheels.frontright.transform.position;
-						if (!frontrightsmokePlaying)
-						{
-							frontwheelsmoke[1].Play();
-							frontrightsmokePlaying = true;
-						}
-					}
-				}
-			}
-			else
-			{
-				foreach (TrailRenderer T in fronttyremarks)
-				{
-					T.emitting = false;
-				}
-				if (frontleftsmokePlaying)
-				{
-					frontwheelsmoke[0].Stop();
-					frontleftsmokePlaying = false;
-				}
 
-				if (frontrightsmokePlaying)
-				{
-					frontwheelsmoke[1].Stop();
-					frontrightsmokePlaying = false;
-				}
+                //if (!Frontlockstarted)
+                //{
+                //	tirescreechAudioSource.clip = tirescreechingClip;
+                //	tirescreechAudioSource.loop = false;
+                //	tirescreechAudioSource.Play();
+                //	Frontlockstarted = true;
+                //}
+
+                foreach (TrailRenderer T in fronttyremarks)
+                {
+                    T.emitting = true;
+                }
+
+                // Handle front-left wheel ground state
+                if (mediator.GetWheelGroundStates()[mediator.GetWheelCollider("frontleft")] == 1)
+                {
+                    if (frontwheelsmoke[0] == null)
+                    {
+                        frontwheelsmoke[0] = Instantiate(frontwheelsmoke[0], mediator.GetWheelTransform("frontleft").position, Quaternion.identity);
+                    }
+                    else
+                    {
+                        frontwheelsmoke[0].transform.position = mediator.GetWheelTransform("frontleft").position;
+                        if (!frontleftsmokePlaying)
+                        {
+                            frontwheelsmoke[0].Play();
+                            frontleftsmokePlaying = true;
+                        }
+                    }
+                }
+
+                // Handle front-right wheel ground state
+                if (mediator.GetWheelGroundStates()[mediator.GetWheelCollider("frontright")] == 1)
+                {
+                    if (frontwheelsmoke[1] == null)
+                    {
+                        frontwheelsmoke[1] = Instantiate(frontwheelsmoke[1], mediator.GetWheelTransform("frontright").position, Quaternion.identity);
+                    }
+                    else
+                    {
+                        frontwheelsmoke[1].transform.position = mediator.GetWheelTransform("frontright").position;
+                        if (!frontrightsmokePlaying)
+                        {
+                            frontwheelsmoke[1].Play();
+                            frontrightsmokePlaying = true;
+                        }
+                    }
+                }
+            }
+            else
+            {
+                // Deactivate the trail effect for the front wheels
+                foreach (TrailRenderer T in fronttyremarks)
+                {
+                    T.emitting = false;
+                }
+
+                // Stop front-left smoke if it's playing
+                if (frontleftsmokePlaying)
+                {
+                    frontwheelsmoke[0].Stop();
+                    frontleftsmokePlaying = false;
+                }
+
+                // Stop front-right smoke if it's playing
+                if (frontrightsmokePlaying)
+                {
+                    frontwheelsmoke[1].Stop();
+                    frontrightsmokePlaying = false;
+                }
+
+                // Handle tire screech audio when front lock starts
+                if (Frontlockstarted)
+                {
+                    // Stop the tire screech audio
+                    mediator.GetTireScreechAudioSource().Stop();
+
+                    // Set new audio clip and play it
+                    mediator.GetTireScreechAudioSource().clip = mediator.GetTireScreechingEndClip();
+                    mediator.GetTireScreechAudioSource().loop = false;
+                    mediator.GetTireScreechAudioSource().Play();
+
+                    // Reset the front lock started flag
+                    Frontlockstarted = false;
+                }
+            }
 
 
-				if (Frontlockstarted)
-				{
-					powertowheels.tirescreechAudioSource.Stop();
-
-					powertowheels.tirescreechAudioSource.clip = powertowheels.tirescreechingendClip;
-					powertowheels.tirescreechAudioSource.loop = false;
-					powertowheels.tirescreechAudioSource.Play();
-					Frontlockstarted = false;
-				}
-
-			}
-
-			rearsmokeData.Rearlock(powertowheels.rearrot, powertowheels.speed);
+            rearsmokeData.Rearlock(powertowheels.rearrot, powertowheels.speed);
 			rearsmokeData.CarSliding(transform.forward, rigidbody.velocity, 0.99f, 0.7f);
 			rearsmokeData.Burnout(powertowheels.frontrot, powertowheels.rearrot);
 			rearsmokeData.AddSpeed(powertowheels.speedKMH, maxsmokespeed);
-			if (rearsmokeData.slipNormalizedValueRearlock != 0 || ((rearsmokeData.slipNormalizedValueCarSliding != 0) && powertowheels.speedKMH > 15  )|| rearsmokeData.slipNormalizedValueBurnout != 0)
-			{
-				float rearsmoke = rearsmokeData.CalculateFinalSmokeIntensity(maxsmokesize);
+            if (rearsmokeData.slipNormalizedValueRearlock != 0 || ((rearsmokeData.slipNormalizedValueCarSliding != 0) && powertowheels.speedKMH > 15) || rearsmokeData.slipNormalizedValueBurnout != 0)
+            {
+                // Calculate the final smoke intensity
+                float rearsmoke = rearsmokeData.CalculateFinalSmokeIntensity(maxsmokesize);
 
-				ParticleSystem.MainModule left = rearwheelsmoke[0].main;
-				left.startSize = rearsmoke;
+                // Set the particle system's size for both rear wheels
+                ParticleSystem.MainModule left = rearwheelsmoke[0].main;
+                left.startSize = rearsmoke;
 
-				ParticleSystem.MainModule right = rearwheelsmoke[1].main;
-				right.startSize = rearsmoke;
+                ParticleSystem.MainModule right = rearwheelsmoke[1].main;
+                right.startSize = rearsmoke;
 
-				foreach (TrailRenderer T in backtyremarks)
-				{
-					T.emitting = true;
-				}
-				if (powertowheels.wheelGroundStates[powertowheels.rearleft]==1)//////////////////////
-				{
-					if (rearwheelsmoke[0] == null)
-					{
-						rearwheelsmoke[0] = Instantiate(rearwheelsmoke[0], powertowheels.rearleft.transform.position, Quaternion.identity);
-					}
-					else
-					{
-						rearwheelsmoke[0].transform.position = powertowheels.rearleft.transform.position;
-						if (!rearleftsmokePlaying)
-						{
-							rearwheelsmoke[0].Play();
-							rearleftsmokePlaying = true;
-						}
-					}
-				}
-				if (powertowheels.wheelGroundStates[powertowheels.rearright] == 1)/////////////////////
-				{
-					if (rearwheelsmoke[1] == null)
-					{
-						rearwheelsmoke[1] = Instantiate(rearwheelsmoke[1], powertowheels.rearright.transform.position, Quaternion.identity);
-					}
-					else
-					{
-						rearwheelsmoke[1].transform.position = powertowheels.rearright.transform.position;
-						if (!rearrightsmokePlaying)
-						{
-							rearwheelsmoke[1].Play();
-							rearrightsmokePlaying = true;
-						}
-					}
-				}
+                // Activate the trail effect for the rear wheels
+                foreach (TrailRenderer T in backtyremarks)
+                {
+                    T.emitting = true;
+                }
 
-			}
-			else
-			{
+                // Handle rear-left wheel ground state using the mediator
+                if (mediator.GetWheelGroundStates()[mediator.GetWheelCollider("rearleft")] == 1)
+                {
+                    if (rearwheelsmoke[0] == null)
+                    {
+                        rearwheelsmoke[0] = Instantiate(rearwheelsmoke[0], mediator.GetWheelTransform("rearleft").position, Quaternion.identity);
+                    }
+                    else
+                    {
+                        rearwheelsmoke[0].transform.position = mediator.GetWheelTransform("rearleft").position;
+                        if (!rearleftsmokePlaying)
+                        {
+                            rearwheelsmoke[0].Play();
+                            rearleftsmokePlaying = true;
+                        }
+                    }
+                }
+
+                // Handle rear-right wheel ground state using the mediator
+                if (mediator.GetWheelGroundStates()[mediator.GetWheelCollider("rearright")] == 1)
+                {
+                    if (rearwheelsmoke[1] == null)
+                    {
+                        rearwheelsmoke[1] = Instantiate(rearwheelsmoke[1], mediator.GetWheelTransform("rearright").position, Quaternion.identity);
+                    }
+                    else
+                    {
+                        rearwheelsmoke[1].transform.position = mediator.GetWheelTransform("rearright").position;
+                        if (!rearrightsmokePlaying)
+                        {
+                            rearwheelsmoke[1].Play();
+                            rearrightsmokePlaying = true;
+                        }
+                    }
+                }
+            }
+
+            else
+            {
 				foreach (TrailRenderer T in backtyremarks)
 				{
 					T.emitting = false;

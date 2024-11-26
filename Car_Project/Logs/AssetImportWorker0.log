@@ -15,7 +15,7 @@ C:/Projects/Car_Project_Git/CarProject/Car_Project
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-60074
+50014
 Successfully changed project path to: C:/Projects/Car_Project_Git/CarProject/Car_Project
 C:/Projects/Car_Project_Git/CarProject/Car_Project
 [UnityMemory] Configuration Parameters - Can be set up in boot.config
@@ -47,11 +47,11 @@ C:/Projects/Car_Project_Git/CarProject/Car_Project
     "memorysetup-temp-allocator-size-cloud-worker=32768"
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gfx=262144"
-Player connection [21776] Host "[IP] 192.168.0.102 [Port] 0 [Flags] 2 [Guid] 4202374199 [EditorId] 4202374199 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-9B3REL2) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
+Player connection [17080] Host "[IP] 192.168.0.102 [Port] 0 [Flags] 2 [Guid] 349387904 [EditorId] 349387904 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-9B3REL2) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
 
-Player connection [21776] Host "[IP] 192.168.0.102 [Port] 0 [Flags] 2 [Guid] 4202374199 [EditorId] 4202374199 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-9B3REL2) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
+Player connection [17080] Host "[IP] 192.168.0.102 [Port] 0 [Flags] 2 [Guid] 349387904 [EditorId] 349387904 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-9B3REL2) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
 
-Refreshing native plugins compatible for Editor in 58.37 ms, found 5 plugins.
+Refreshing native plugins compatible for Editor in 63.81 ms, found 5 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2021.3.17f1 (3e8111cac19d)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2021.3.17f1/Editor/Data/Resources/UnitySubsystems
@@ -67,75 +67,75 @@ Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2021.3.17f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2021.3.17f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/2021.3.17f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56704
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56592
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.3.17f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.003701 seconds.
+Registered in 0.005874 seconds.
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 57.08 ms, found 5 plugins.
+Refreshing native plugins compatible for Editor in 56.91 ms, found 5 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.449 seconds
+- Completed reload, in  0.470 seconds
 Domain Reload Profiling:
-	ReloadAssembly (449ms)
-		BeginReloadAssembly (50ms)
+	ReloadAssembly (471ms)
+		BeginReloadAssembly (76ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (0ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
 			CreateAndSetChildDomain (1ms)
-		EndReloadAssembly (324ms)
-			LoadAssemblies (49ms)
+		EndReloadAssembly (317ms)
+			LoadAssemblies (75ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (72ms)
+			SetupTypeCache (69ms)
 			ReleaseScriptCaches (0ms)
 			RebuildScriptCaches (18ms)
-			SetupLoadedEditorAssemblies (198ms)
+			SetupLoadedEditorAssemblies (195ms)
 				LogAssemblyErrors (0ms)
 				InitializePlatformSupportModulesInManaged (5ms)
 				SetLoadedEditorAssemblies (0ms)
 				RefreshPlugins (57ms)
 				BeforeProcessingInitializeOnLoad (1ms)
 				ProcessInitializeOnLoadAttributes (99ms)
-				ProcessInitializeOnLoadMethodAttributes (35ms)
+				ProcessInitializeOnLoadMethodAttributes (32ms)
 				AfterProcessingInitializeOnLoad (0ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (0ms)
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.003365 seconds.
+Registered in 0.003238 seconds.
 Begin MonoManager ReloadAssembly
 Symbol file LoadedFromMemory doesn't match image C:\Projects\Car_Project_Git\CarProject\Car_Project\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
 Symbol file LoadedFromMemory doesn't match image C:\Projects\Car_Project_Git\CarProject\Car_Project\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.55 ms, found 5 plugins.
+Refreshing native plugins compatible for Editor in 0.52 ms, found 5 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.745 seconds
+- Completed reload, in  0.779 seconds
 Domain Reload Profiling:
-	ReloadAssembly (746ms)
-		BeginReloadAssembly (80ms)
+	ReloadAssembly (780ms)
+		BeginReloadAssembly (76ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (4ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
 			CreateAndSetChildDomain (14ms)
-		EndReloadAssembly (583ms)
-			LoadAssemblies (61ms)
+		EndReloadAssembly (620ms)
+			LoadAssemblies (101ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
 			SetupTypeCache (182ms)
 			ReleaseScriptCaches (0ms)
 			RebuildScriptCaches (38ms)
-			SetupLoadedEditorAssemblies (275ms)
+			SetupLoadedEditorAssemblies (271ms)
 				LogAssemblyErrors (0ms)
 				InitializePlatformSupportModulesInManaged (4ms)
 				SetLoadedEditorAssemblies (0ms)
 				RefreshPlugins (1ms)
 				BeforeProcessingInitializeOnLoad (62ms)
-				ProcessInitializeOnLoadAttributes (186ms)
-				ProcessInitializeOnLoadMethodAttributes (19ms)
+				ProcessInitializeOnLoadAttributes (181ms)
+				ProcessInitializeOnLoadMethodAttributes (20ms)
 				AfterProcessingInitializeOnLoad (4ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
@@ -144,12 +144,12 @@ Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
 Launched and connected shader compiler UnityShaderCompiler.exe after 0.03 seconds
-Refreshing native plugins compatible for Editor in 0.51 ms, found 5 plugins.
+Refreshing native plugins compatible for Editor in 0.48 ms, found 5 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 3686 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 43 unused Assets / (184.3 KB). Loaded Objects now: 4144.
+Unloading 3687 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 43 unused Assets / (184.3 KB). Loaded Objects now: 4145.
 Memory consumption went from 201.8 MB to 201.6 MB.
-Total: 2.554400 ms (FindLiveObjects: 0.201700 ms CreateObjectMapping: 0.087600 ms MarkObjects: 2.151000 ms  DeleteObjects: 0.113200 ms)
+Total: 2.454100 ms (FindLiveObjects: 0.208200 ms CreateObjectMapping: 0.085400 ms MarkObjects: 2.064300 ms  DeleteObjects: 0.094700 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
@@ -163,49 +163,79 @@ AssetImportParameters requested are different than current active one (requested
   custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
 Received Import Request.
-  Time since last request: 174830.102521 seconds.
-  path: Assets/PowerToWheels.cs
-  artifactKey: Guid(ff190aca93a3c9a408bd2a18b7b89d2e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/PowerToWheels.cs using Guid(ff190aca93a3c9a408bd2a18b7b89d2e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c5356ac85354fcf32d852e3140f9b003') in 0.040372 seconds 
+  Time since last request: 8012.568379 seconds.
+  path: Assets/PowContMediator.cs
+  artifactKey: Guid(de1d497092de8c04b95d469a95fbb5e8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PowContMediator.cs using Guid(de1d497092de8c04b95d469a95fbb5e8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '802ae81c2b530fb281e53d1b7e069f05') in 0.038321 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 2766.061809 seconds.
-  path: Assets/PowerToWheels.cs
-  artifactKey: Guid(ff190aca93a3c9a408bd2a18b7b89d2e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/PowerToWheels.cs using Guid(ff190aca93a3c9a408bd2a18b7b89d2e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '617e47af46782b04a108b1e18789d8fb') in 0.008039 seconds 
+  Time since last request: 49.727676 seconds.
+  path: Assets/PowTrailContMediator.cs
+  artifactKey: Guid(4c69d829b626cfb498228f4dc3096b79) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PowTrailContMediator.cs using Guid(4c69d829b626cfb498228f4dc3096b79) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '191cf916475f6dc398c082653f7dd0a1') in 0.008564 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 669.864070 seconds.
-  path: Assets/PowerToWheels.cs
-  artifactKey: Guid(ff190aca93a3c9a408bd2a18b7b89d2e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/PowerToWheels.cs using Guid(ff190aca93a3c9a408bd2a18b7b89d2e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a95b8813ef7400489338804a1808c42e') in 0.002646 seconds 
+  Time since last request: 30.655555 seconds.
+  path: Assets/PowTrailContMediator.cs
+  artifactKey: Guid(4c69d829b626cfb498228f4dc3096b79) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PowTrailContMediator.cs using Guid(4c69d829b626cfb498228f4dc3096b79) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b5e66ad74fbe43cfce7715a9c44184f3') in 0.002048 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 5.993653 seconds.
-  path: Assets/PowerToWheels.cs
-  artifactKey: Guid(ff190aca93a3c9a408bd2a18b7b89d2e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/PowerToWheels.cs using Guid(ff190aca93a3c9a408bd2a18b7b89d2e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c5c08908c091fec03580896ffc7cdd06') in 0.002262 seconds 
+  Time since last request: 364.801712 seconds.
+  path: Assets/IMediator.cs
+  artifactKey: Guid(4490d7f3d5dbf2b469a88898031cdd57) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/IMediator.cs using Guid(4490d7f3d5dbf2b469a88898031cdd57) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8d507e04b85fdd48fe44e17b242ef197') in 0.009906 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 44.087501 seconds.
-  path: Assets/PowerToWheels.cs
-  artifactKey: Guid(ff190aca93a3c9a408bd2a18b7b89d2e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/PowerToWheels.cs using Guid(ff190aca93a3c9a408bd2a18b7b89d2e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b39e9cf26f8358fa3c377d9f7564665f') in 0.002983 seconds 
+  Time since last request: 11.329103 seconds.
+  path: Assets/IMediator.cs
+  artifactKey: Guid(4490d7f3d5dbf2b469a88898031cdd57) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/IMediator.cs using Guid(4490d7f3d5dbf2b469a88898031cdd57) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4ba0e69a7a5d6bfce7ad1203c105e140') in 0.001958 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 113.887050 seconds.
-  path: Assets/PowerToWheels.cs
-  artifactKey: Guid(ff190aca93a3c9a408bd2a18b7b89d2e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/PowerToWheels.cs using Guid(ff190aca93a3c9a408bd2a18b7b89d2e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '953227e7f6866d1af187079775e74f6d') in 0.002414 seconds 
+  Time since last request: 5.679457 seconds.
+  path: Assets/IMediator.cs
+  artifactKey: Guid(4490d7f3d5dbf2b469a88898031cdd57) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/IMediator.cs using Guid(4490d7f3d5dbf2b469a88898031cdd57) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5e0b00b565852fb6cb89e0d56860663f') in 0.002061 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 38.901388 seconds.
+  Time since last request: 3205.037493 seconds.
   path: Assets/PowerToWheels.cs
   artifactKey: Guid(ff190aca93a3c9a408bd2a18b7b89d2e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/PowerToWheels.cs using Guid(ff190aca93a3c9a408bd2a18b7b89d2e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8c916ee798d59bd5fcb254a60e1c04cf') in 0.002215 seconds 
+Start importing Assets/PowerToWheels.cs using Guid(ff190aca93a3c9a408bd2a18b7b89d2e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8e3e01dfea551ca583eef38f7e706802') in 0.009471 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 758.974924 seconds.
+  Time since last request: 226.298411 seconds.
   path: Assets/PowerToWheels.cs
   artifactKey: Guid(ff190aca93a3c9a408bd2a18b7b89d2e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/PowerToWheels.cs using Guid(ff190aca93a3c9a408bd2a18b7b89d2e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '89a6b425725d2e349c4cf2c18e2c2369') in 0.002705 seconds 
+Start importing Assets/PowerToWheels.cs using Guid(ff190aca93a3c9a408bd2a18b7b89d2e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5b25cfeb0e047e5fff8002009d98e76c') in 0.003757 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 2018.162449 seconds.
+  path: Assets/PowerToWheels.cs
+  artifactKey: Guid(ff190aca93a3c9a408bd2a18b7b89d2e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PowerToWheels.cs using Guid(ff190aca93a3c9a408bd2a18b7b89d2e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd60cb976d04c334ae4136095e0a0975b') in 0.002857 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 268.468346 seconds.
+  path: Assets/PowerToWheels.cs
+  artifactKey: Guid(ff190aca93a3c9a408bd2a18b7b89d2e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PowerToWheels.cs using Guid(ff190aca93a3c9a408bd2a18b7b89d2e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3145b88056eef958bf1923f7eac9b17f') in 0.002745 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 340.778627 seconds.
+  path: Assets/PowerToWheels.cs
+  artifactKey: Guid(ff190aca93a3c9a408bd2a18b7b89d2e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PowerToWheels.cs using Guid(ff190aca93a3c9a408bd2a18b7b89d2e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'be2e80230f4c52379f390114dbab8cce') in 0.003332 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 2740.154407 seconds.
+  path: Assets/PowerToWheels.cs
+  artifactKey: Guid(ff190aca93a3c9a408bd2a18b7b89d2e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PowerToWheels.cs using Guid(ff190aca93a3c9a408bd2a18b7b89d2e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5e353ef07c8b18b4c5f136d859610ec9') in 0.002934 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 1147.339777 seconds.
+  path: Assets/PowerToWheels.cs
+  artifactKey: Guid(ff190aca93a3c9a408bd2a18b7b89d2e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PowerToWheels.cs using Guid(ff190aca93a3c9a408bd2a18b7b89d2e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f4a3d2fad416964ddf56657215146e7c') in 0.002612 seconds 

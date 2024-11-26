@@ -360,8 +360,10 @@
 "Assets/CarController.cs"
 "Assets/CinemachineCameras.cs"
 "Assets/Gears.cs"
+"Assets/IMediator.cs"
 "Assets/LightingManager.cs"
 "Assets/PowerToWheels.cs"
+"Assets/PowTrailContMediator.cs"
 "Assets/TrailBehavior.cs"
 "Assets/VehiculeTrailEffect.cs"
 -langversion:9.0

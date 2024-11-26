@@ -66,6 +66,8 @@
     <Compile Include="Assets\VehiculeTrailEffect.cs" />
     <Compile Include="Assets\Car.cs" />
     <Compile Include="Assets\CarController.cs" />
+    <Compile Include="Assets\PowTrailContMediator.cs" />
+    <Compile Include="Assets\IMediator.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Monqo Sci-Fi Car\READ ME!.txt" />

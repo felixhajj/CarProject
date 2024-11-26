@@ -183,35 +183,7 @@ public class CarController : MonoBehaviour
             wheels[i].transform.rotation = wheelRotation;
         }
     }
-    public void enginesound(float motor)
-    {
-
-        //motor maximum value is 5000, so i want to divid the motor by a value greater than 7000 \, so i give part of the sound to the rearrot also.
-        //Debug.Log("motor: " + Mathf.Abs(motor));
-
-
-        engineAudioSource.volume = 0.25f + (Mathf.Abs(motor) * (0.75f / 9000f));
-        if (MathF.Abs(powertowheels.rearrot) <= 2000)
-        {
-            engineAudioSource.volume += (Mathf.Abs(powertowheels.rearrot) / 5000f);
-        }
-        else
-        {
-            engineAudioSource.volume += (2000 / 5000f);
-        }
-
-
-        engineAudioSource.pitch = 1 + (Mathf.Abs(motor) / 9000f);
-        if (MathF.Abs(powertowheels.rearrot) <= 2000)
-        {
-            engineAudioSource.pitch += (Mathf.Abs(powertowheels.rearrot) / 5000f);
-        }
-        else
-        {
-            engineAudioSource.pitch += (2000 / 5000f);
-        }
-
-    }
+    
 
 
     private void UpdateWheelGroundState(WheelCollider wheel)
