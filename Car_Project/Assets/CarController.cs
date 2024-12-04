@@ -6,8 +6,8 @@ using UnityEngine;
 public class CarController : MonoBehaviour
 {
     //everything related to the car and its logic, and not mechanic related,(the wheelgroundstate, centerofmass,etc.. are not considered mechanic).
-    //also a middleman(using mediator pattern maybe?) between the Car class and other classes that needs it.
-    public Car CarData { get; private set; }
+    private CarMediator carMediator;
+
     public PowerToWheels powertowheels { get; private set; }
 
     public bool engineturnon = false;
@@ -35,8 +35,8 @@ public class CarController : MonoBehaviour
     public Rigidbody car;
 
 
-    public TrailRenderer[] fronttyremarks;
-    public TrailRenderer[] reartyremarks;
+    //public TrailRenderer[] fronttyremarks;
+    //public TrailRenderer[] reartyremarks;
 
     public MeshRenderer cardimensions;
     public MeshRenderer wheeldimensions;
@@ -52,18 +52,13 @@ public class CarController : MonoBehaviour
 
     float wheelCircumference;
 
+    public void Initialize(CarMediator mediator)
+    {
+        this.carMediator = mediator;
+    }
+
     void Start()
     {
-        ICar sportcar = new Car().SetName("SRT Challenger").SetBrakeTorque(5000);//....continue all
-        
-        //inventory made to make cars in general, without specifying them to a certain task. like if they were in the menu, before playing the game
-        Inventory sportcarinv = new Inventory(sportcar);
-
-        //i create clone of already available cars by using the car's inventory, and assign to be either a PlayerCar or BotCar
-        var sportcar1 = sportcarinv.createcar("PlayerCar");
-        var sportcar2 = sportcarinv.createcar("BotCar");
-
-
         Vector3 cardim = cardimensions.bounds.size;
         Debug.Log("car dimensions (meters): " + cardim);
 
@@ -75,7 +70,7 @@ public class CarController : MonoBehaviour
         rigidbody = GetComponent<Rigidbody>();
         GetComponent<Rigidbody>().centerOfMass = centerofmass.transform.localPosition;
 
-        wheelCircumference = 2f * Mathf.PI * CarData.WheelRadius;
+        wheelCircumference = 2f * Mathf.PI * carMediator.GetWheelRadius();
 
         wheelGroundStates = new Dictionary<WheelCollider, int>
         {

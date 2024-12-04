@@ -8,7 +8,7 @@ using static Unity.VisualScripting.Dependencies.Sqlite.SQLite3;
 
 public interface ICar
 {
-
+    //not put a gameobject field because it is more of the data than the actual physical car.(might change that later?)
     public ICar SetName(string name);
     public ICar SetMaxTorque(float maxTorque);
     public ICar SetTorque(AnimationCurve torque);
