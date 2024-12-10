@@ -110,7 +110,6 @@ public class PowerToWheels : MonoBehaviour
             if ((rearcurrentDifference > glitchThreshold))
             {
                 EnterGlitchMode();
-
             }
 
             rearframeDifferences.Enqueue(rearcurrentDifference);
@@ -220,7 +219,7 @@ public class PowerToWheels : MonoBehaviour
             rearRight.motorTorque = 0;
         }
     }
-    
+    //should use number of driving wheels to divide torque per number of wheels
     /*
     float gears(float ratio)
     {

@@ -19,7 +19,7 @@ public interface ICar
     public ICar SetSteeringCurve(AnimationCurve steeringcurve);
     public ICar SetTractionCutoff(float tractioncutoff);
     public ICar SetFinalDriveAxle(float finaldriveaxle);
-    public ICar SetDrivingWheels(int drivingwheels);
+    public ICar SetDrivingWheels(float drivingwheels);
     public ICar SetMass(float mass);
     public ICar SetWheelRadius(float wheelradius);
     public ICar SetWheelMass(float wheelmass);
@@ -40,7 +40,7 @@ public class Car : ICar
     public AnimationCurve SteeringCurve { get; set; }
     public float TractionCutoff { get; set; }
     public float FinalDriveAxle { get; set; }
-    public int DrivingWheels { get; set; } // Number of driving wheels (e.g., 2 for RWD)
+    public float DrivingWheels { get; set; } // Number of driving wheels (e.g., 2 for RWD)
 
     // Properties to be set dynamically based on the game environment
     public float Mass { get; set; } // Mass of the car in kg
@@ -97,7 +97,7 @@ public class Car : ICar
         FinalDriveAxle = finaldriveaxle;
         return this;
     }
-    public ICar SetDrivingWheels(int drivingwheels)
+    public ICar SetDrivingWheels(float drivingwheels)
     {
         DrivingWheels = drivingwheels;
         return this;

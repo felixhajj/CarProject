@@ -64,12 +64,12 @@
     <Compile Include="Assets\AntiRollBar.cs" />
     <Compile Include="Assets\PowerToWheels.cs" />
     <Compile Include="Assets\CameraBehavior.cs" />
+    <Compile Include="Assets\GameManager.cs" />
     <Compile Include="Assets\CarMediator.cs" />
     <Compile Include="Assets\LightingManager.cs" />
     <Compile Include="Assets\VehiculeTrailEffect.cs" />
     <Compile Include="Assets\Car.cs" />
     <Compile Include="Assets\CarController.cs" />
-    <Compile Include="Assets\GameManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Monqo Sci-Fi Car\READ ME!.txt" />
