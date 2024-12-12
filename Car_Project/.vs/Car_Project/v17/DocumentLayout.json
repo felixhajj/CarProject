@@ -75,7 +75,7 @@
               "RelativeDocumentMoniker": "Assets\\GameManager.cs",
               "ToolTip": "C:\\Projects\\Car_Project_Git\\CarProject\\Car_Project\\Assets\\GameManager.cs",
               "RelativeToolTip": "Assets\\GameManager.cs",
-              "ViewState": "AgIAAFIAAAAAAAAAAAAIwIMAAAANAAAAAAAAAA==",
+              "ViewState": "AgIAAFcAAAAAAAAAAAAAAHUAAAAXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-04T13:38:13.516Z",
               "EditorCaption": ""
@@ -90,7 +90,8 @@
               "RelativeToolTip": "Assets\\CarMediator.cs",
               "ViewState": "AgIAAAUAAAAAAAAAAAAAAAkAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-02T12:16:23.501Z"
+              "WhenOpened": "2024-12-02T12:16:23.501Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -102,8 +103,7 @@
               "RelativeToolTip": "Assets\\PowerToWheels.cs",
               "ViewState": "AgIAAEIAAAAAAAAAAAAIwN0AAABPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-19T10:47:45.613Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-19T10:47:45.613Z"
             },
             {
               "$type": "Document",
@@ -125,7 +125,7 @@
               "RelativeDocumentMoniker": "Assets\\Car.cs",
               "ToolTip": "C:\\Projects\\Car_Project_Git\\CarProject\\Car_Project\\Assets\\Car.cs",
               "RelativeToolTip": "Assets\\Car.cs",
-              "ViewState": "AgIAACoAAAAAAAAAAAAIwGMAAAAmAAAAAAAAAA==",
+              "ViewState": "AgIAACYAAAAAAAAAAAAIwHkAAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-28T14:22:20.399Z",
               "EditorCaption": ""

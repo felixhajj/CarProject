@@ -5207,6 +5207,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6df59c0a12770a5449f5d7c4980769db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  filePath: 
   carPrefabs: []
 --- !u!4 &89490776
 Transform:
@@ -19704,8 +19705,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1095524556}
-  m_LocalRotation: {x: 0.6918471, y: 0.112739526, z: -0.110707924, w: 0.70454323}
-  m_LocalPosition: {x: -5.9296436, y: -52.824734, z: -23.687454}
+  m_LocalRotation: {x: 0.69184726, y: 0.11273911, z: -0.110707544, w: 0.70454323}
+  m_LocalPosition: {x: -5.929632, y: -52.82475, z: -23.687393}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

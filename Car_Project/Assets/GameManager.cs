@@ -3,17 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using static UnityEngine.EventSystems.EventTrigger;
 using System.IO;
+using UnityEditor;
 
 
 public class GameManager : MonoBehaviour
 {
-    private string filePath;//save car data into Json
+    public string filePath;//save car data into Json
+
+    public enum CarRole
+    {
+        PlayerCar,
+        BotCar
+    }
 
     //!!everything done or related to this class should be done before starting the game.
     [System.Serializable]
     public class CarPrefabEntry
     {
         public GameObject Object;
+        public CarRole carRole;
         public string carName;//not of the inventory, but of this one specific car(can be the same as the inventory name)
         public int maxtorque;
         public AnimationCurve torque;
@@ -28,48 +36,60 @@ public class GameManager : MonoBehaviour
         public float mass;
         public float wheelradius;
         public float wheelmass;
+
     }
     public Dictionary<string, ICar> CarsDict = new Dictionary<string, ICar>();
     private Dictionary<string, Inventory> CarsInvDict = new Dictionary<string, Inventory>();
 
     public List<CarPrefabEntry> carPrefabs; // A list to define multiple prefabs via Unity Inspector
 
+
+
+
     void Start()
     {
         filePath = Path.Combine(Application.persistentDataPath, "carData.json");
         LoadCarData();
 
-        
+
 
         foreach (var prefabEntry in carPrefabs)
         {
-            string uniqueCarName = EnsureUniqueCarNames(prefabEntry.carName);
+            //if ()
+            //{
+                string uniqueCarName = EnsureUniqueCarNames(prefabEntry.carName);
 
-            // Create a new car instance based on the CarPrefabEntry values
-            ICar car = new Car()
-                .SetName(uniqueCarName)
-                .SetMaxTorque(prefabEntry.maxtorque)
-                .SetBrakeTorque(prefabEntry.braketorque)
-                .SetHandBrakeTorque(prefabEntry.handbraketorque)
-                .SetSteeringMax(prefabEntry.steeringmax)
-                .SetMaxSpeed(prefabEntry.maxspeed)
-                .SetSteeringCurve(prefabEntry.steeringcurve)
-                .SetTractionCutoff(prefabEntry.tractioncutoff)
-                .SetFinalDriveAxle(prefabEntry.finaldriveaxle)
-                .SetDrivingWheels(prefabEntry.drivingwheels)
-                .SetMass(prefabEntry.mass)
-                .SetWheelRadius(prefabEntry.wheelradius)
-                .SetWheelMass(prefabEntry.wheelmass);
+                // Create a new car instance based on the CarPrefabEntry values
+                ICar car = new Car()
+                    .SetName(uniqueCarName)
+                    .SetMaxTorque(prefabEntry.maxtorque)
+                    .SetBrakeTorque(prefabEntry.braketorque)
+                    .SetHandBrakeTorque(prefabEntry.handbraketorque)
+                    .SetSteeringMax(prefabEntry.steeringmax)
+                    .SetMaxSpeed(prefabEntry.maxspeed)
+                    .SetSteeringCurve(prefabEntry.steeringcurve)
+                    .SetTractionCutoff(prefabEntry.tractioncutoff)
+                    .SetFinalDriveAxle(prefabEntry.finaldriveaxle)
+                    .SetDrivingWheels(prefabEntry.drivingwheels)
+                    .SetMass(prefabEntry.mass)
+                    .SetWheelRadius(prefabEntry.wheelradius)
+                    .SetWheelMass(prefabEntry.wheelmass);
 
-            // Add the new car to the CarsDict
-            CarsDict.Add(prefabEntry.carName, car);
+                // Add the new car to the CarsDict
+                CarsDict.Add(prefabEntry.carName, car);
 
-            // Create and add the inventory for the car to CarsInvDict
-            CarsInvDict.Add(prefabEntry.carName, new Inventory(car));
-
+                // Create and add the inventory for the car to CarsInvDict
+                CarsInvDict.Add(prefabEntry.carName, new Inventory(car));
+            //}
             // Create the car in the scene
-            CreateCar(prefabEntry.carName, CarsInvDict[prefabEntry.carName], prefabEntry);
+            CreateCar(prefabEntry.carRole.ToString(), CarsInvDict[prefabEntry.carName], prefabEntry);
         }
+
+
+
+
+
+
 
         //create default car if i do not have a car in the dictionnary with this key(name)
         if (!CarsDict.ContainsKey("SRT Challenger"))
@@ -91,27 +111,27 @@ public class GameManager : MonoBehaviour
             });// Add the default entry if the list is empty
         }
         //i put SaveCarData here so i dont have to call is multiple times, and i call it once after iterating through all the Cars
-        SaveCarData();
+        //SaveCarData();
 
     }
 
-    private void OnApplicationQuit()
-    {
-        
-        SaveCarData(); // Save data before the application quits if i ever added some extra Cars when the application is running.
-    }
+    //private void OnApplicationQuit()
+    //{
+
+    //    SaveCarData(); // Save data before the application quits if i ever added some extra Cars when the application is running.
+    //}
 
 
 
 
-    private void CreateCar(string carType, Inventory inventory, CarPrefabEntry prefab)
+    private void CreateCar(string carRole, Inventory inventory, CarPrefabEntry prefab)
     {
 
         // Instantiate the car GameObject
         var carInstanceGO = Instantiate(prefab.Object);
 
         // Initialize the Car instance for the car using inventory
-        var carInstance = inventory.createcar(carType);
+        var carInstance = inventory.createcar(carRole);
 
         // Initialize CarMediator with the specific Car instance
         var carMediator = carInstanceGO.GetComponent<CarMediator>();
@@ -144,13 +164,13 @@ public class GameManager : MonoBehaviour
     }
 
 
-    private void SaveCarData()
+    public void SaveCarData()
     {
         string json = JsonUtility.ToJson(this); // Convert the object to JSON
         File.WriteAllText(filePath, json); // Save to file
     }
 
-    private void LoadCarData()
+    public void LoadCarData()
     {
         if (File.Exists(filePath))
         {
@@ -159,4 +179,86 @@ public class GameManager : MonoBehaviour
         }
     }
 
+
 }
+
+
+[CustomEditor(typeof(GameManager))]
+public class GameManagerEditor : Editor
+{
+    public override void OnInspectorGUI()
+    {
+        // Draw the default inspector (displays all existing fields like the original Inspector)
+        DrawDefaultInspector();
+
+        // Get reference to the target GameManager instance
+        GameManager gameManager = (GameManager)target;
+
+        // Add a section for custom buttons for each CarPrefabEntry
+        EditorGUILayout.Space();
+        EditorGUILayout.LabelField("Car Prefab Controls", EditorStyles.boldLabel);
+
+        for (int i = 0; i < gameManager.carPrefabs.Count; i++)
+        {
+            var carPrefab = gameManager.carPrefabs[i];
+
+            // Add a button for cloning the CarPrefabEntry
+            if (GUILayout.Button($"Clone {carPrefab.carName}"))
+            {
+                CloneCarPrefabEntry(gameManager, carPrefab);
+            }
+        }
+
+        EditorGUILayout.Space();
+        EditorGUILayout.LabelField("Save and Load Controls", EditorStyles.boldLabel);
+
+        // Create a horizontal layout for buttons
+        EditorGUILayout.BeginHorizontal();
+
+        // Add "Load" button to the left
+        if (GUILayout.Button("Load", GUILayout.MaxWidth(80)))
+        {
+            gameManager.filePath = Path.Combine(Application.persistentDataPath, "carData.json");
+
+            gameManager.LoadCarData();
+        }
+
+        // Add "Save" button to the right
+        if (GUILayout.Button("Save", GUILayout.MaxWidth(80)))
+        {
+            gameManager.SaveCarData();
+        }
+
+        EditorGUILayout.EndHorizontal();
+    }
+
+    private void CloneCarPrefabEntry(GameManager gameManager, GameManager.CarPrefabEntry original)
+    {
+        // Clone the CarPrefabEntry
+        GameManager.CarPrefabEntry clonedCarPrefab = new GameManager.CarPrefabEntry()
+        {
+            carName = original.carName + " (Clone)", // Add "(Clone)" to the name
+            Object = original.Object,
+            maxtorque = original.maxtorque,
+            torque = original.torque,
+            braketorque = original.braketorque,
+            handbraketorque = original.handbraketorque,
+            steeringmax = original.steeringmax,
+            maxspeed = original.maxspeed,
+            steeringcurve = original.steeringcurve,
+            tractioncutoff = original.tractioncutoff,
+            finaldriveaxle = original.finaldriveaxle,
+            drivingwheels = original.drivingwheels,
+            mass = original.mass,
+            wheelradius = original.wheelradius,
+            wheelmass = original.wheelmass
+        };
+
+        // Add the cloned entry to the list
+        gameManager.carPrefabs.Add(clonedCarPrefab);
+
+        // Mark the GameManager as dirty to save changes in the Editor
+        EditorUtility.SetDirty(gameManager);
+    }
+}
+
