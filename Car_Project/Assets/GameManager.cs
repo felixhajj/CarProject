@@ -48,15 +48,21 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        filePath = Path.Combine(Application.persistentDataPath, "carData.json");
-        LoadCarData();
 
+    }
 
+    public void LoadCarData()
+    {
+        if (File.Exists(filePath))
+        {
+            string json = File.ReadAllText(filePath);
+            JsonUtility.FromJsonOverwrite(json, this); // Load data into this instance
+        }
 
         foreach (var prefabEntry in carPrefabs)
         {
-            //if ()
-            //{
+            if ()
+            {
                 string uniqueCarName = EnsureUniqueCarNames(prefabEntry.carName);
 
                 // Create a new car instance based on the CarPrefabEntry values
@@ -75,21 +81,14 @@ public class GameManager : MonoBehaviour
                     .SetWheelRadius(prefabEntry.wheelradius)
                     .SetWheelMass(prefabEntry.wheelmass);
 
-                // Add the new car to the CarsDict
                 CarsDict.Add(prefabEntry.carName, car);
 
-                // Create and add the inventory for the car to CarsInvDict
                 CarsInvDict.Add(prefabEntry.carName, new Inventory(car));
-            //}
+            }
+
             // Create the car in the scene
             CreateCar(prefabEntry.carRole.ToString(), CarsInvDict[prefabEntry.carName], prefabEntry);
         }
-
-
-
-
-
-
 
         //create default car if i do not have a car in the dictionnary with this key(name)
         if (!CarsDict.ContainsKey("SRT Challenger"))
@@ -110,16 +109,13 @@ public class GameManager : MonoBehaviour
                 wheelmass = 36
             });// Add the default entry if the list is empty
         }
-        //i put SaveCarData here so i dont have to call is multiple times, and i call it once after iterating through all the Cars
-        //SaveCarData();
-
     }
 
-    //private void OnApplicationQuit()
-    //{
-
-    //    SaveCarData(); // Save data before the application quits if i ever added some extra Cars when the application is running.
-    //}
+    public void SaveCarData()
+    {
+        string json = JsonUtility.ToJson(this); // Convert the object to JSON
+        File.WriteAllText(filePath, json); // Save to file
+    }
 
 
 
@@ -127,7 +123,7 @@ public class GameManager : MonoBehaviour
     private void CreateCar(string carRole, Inventory inventory, CarPrefabEntry prefab)
     {
 
-        // Instantiate the car GameObject
+        // instantiate a physical object into the unity world, but i dont need it at the current moment
         var carInstanceGO = Instantiate(prefab.Object);
 
         // Initialize the Car instance for the car using inventory
@@ -164,20 +160,7 @@ public class GameManager : MonoBehaviour
     }
 
 
-    public void SaveCarData()
-    {
-        string json = JsonUtility.ToJson(this); // Convert the object to JSON
-        File.WriteAllText(filePath, json); // Save to file
-    }
 
-    public void LoadCarData()
-    {
-        if (File.Exists(filePath))
-        {
-            string json = File.ReadAllText(filePath);
-            JsonUtility.FromJsonOverwrite(json, this); // Load data into this instance
-        }
-    }
 
 
 }

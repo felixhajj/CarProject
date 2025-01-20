@@ -7,6 +7,10 @@
       "RelativeMoniker": "D:0:0:{CFB8AFEE-4BDC-AFD7-5821-58397BFB9025}|Assembly-CSharp.csproj|solutionrelative:assets\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{CFB8AFEE-4BDC-AFD7-5821-58397BFB9025}|Assembly-CSharp.csproj|C:\\Projects\\Car_Project_Git\\CarProject\\Car_Project\\assets\\carmediator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CFB8AFEE-4BDC-AFD7-5821-58397BFB9025}|Assembly-CSharp.csproj|solutionrelative:assets\\carmediator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{CFB8AFEE-4BDC-AFD7-5821-58397BFB9025}|Assembly-CSharp.csproj|C:\\Projects\\Car_Project_Git\\CarProject\\Car_Project\\assets\\car.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CFB8AFEE-4BDC-AFD7-5821-58397BFB9025}|Assembly-CSharp.csproj|solutionrelative:assets\\car.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -17,10 +21,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{CFB8AFEE-4BDC-AFD7-5821-58397BFB9025}|Assembly-CSharp.csproj|C:\\Projects\\Car_Project_Git\\CarProject\\Car_Project\\assets\\vehiculetraileffect.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CFB8AFEE-4BDC-AFD7-5821-58397BFB9025}|Assembly-CSharp.csproj|solutionrelative:assets\\vehiculetraileffect.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CFB8AFEE-4BDC-AFD7-5821-58397BFB9025}|Assembly-CSharp.csproj|C:\\Projects\\Car_Project_Git\\CarProject\\Car_Project\\assets\\carmediator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CFB8AFEE-4BDC-AFD7-5821-58397BFB9025}|Assembly-CSharp.csproj|solutionrelative:assets\\carmediator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{CFB8AFEE-4BDC-AFD7-5821-58397BFB9025}|Assembly-CSharp.csproj|C:\\Projects\\Car_Project_Git\\CarProject\\Car_Project\\assets\\carcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -75,27 +75,26 @@
               "RelativeDocumentMoniker": "Assets\\GameManager.cs",
               "ToolTip": "C:\\Projects\\Car_Project_Git\\CarProject\\Car_Project\\Assets\\GameManager.cs",
               "RelativeToolTip": "Assets\\GameManager.cs",
-              "ViewState": "AgIAABoAAAAAAAAAAAD4vzIAAAAKAAAAAAAAAA==",
+              "ViewState": "AgIAACEAAAAAAAAAAAAIwDwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-04T13:38:13.516Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 1,
               "Title": "CarMediator.cs",
               "DocumentMoniker": "C:\\Projects\\Car_Project_Git\\CarProject\\Car_Project\\Assets\\CarMediator.cs",
               "RelativeDocumentMoniker": "Assets\\CarMediator.cs",
               "ToolTip": "C:\\Projects\\Car_Project_Git\\CarProject\\Car_Project\\Assets\\CarMediator.cs",
               "RelativeToolTip": "Assets\\CarMediator.cs",
-              "ViewState": "AgIAAAUAAAAAAAAAAAAAAAkAAAAMAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-02T12:16:23.501Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-02T12:16:23.501Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "PowerToWheels.cs",
               "DocumentMoniker": "C:\\Projects\\Car_Project_Git\\CarProject\\Car_Project\\Assets\\PowerToWheels.cs",
               "RelativeDocumentMoniker": "Assets\\PowerToWheels.cs",
@@ -107,7 +106,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "VehiculeTrailEffect.cs",
               "DocumentMoniker": "C:\\Projects\\Car_Project_Git\\CarProject\\Car_Project\\Assets\\VehiculeTrailEffect.cs",
               "RelativeDocumentMoniker": "Assets\\VehiculeTrailEffect.cs",
@@ -119,7 +118,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "Car.cs",
               "DocumentMoniker": "C:\\Projects\\Car_Project_Git\\CarProject\\Car_Project\\Assets\\Car.cs",
               "RelativeDocumentMoniker": "Assets\\Car.cs",
@@ -127,8 +126,7 @@
               "RelativeToolTip": "Assets\\Car.cs",
               "ViewState": "AgIAACYAAAAAAAAAAAAIwHkAAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-28T14:22:20.399Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-28T14:22:20.399Z"
             },
             {
               "$type": "Document",
