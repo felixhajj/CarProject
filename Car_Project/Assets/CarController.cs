@@ -1,46 +1,36 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.ConstrainedExecution;
 using UnityEngine;
 
-public class CarController : MonoBehaviour
+public class CarController : MonoBehaviour, IcarInitializer
 {
     //everything related to the car and its logic, and not mechanic related,(the wheelgroundstate, centerofmass,etc.. are not considered mechanic).
-    private CarMediator carMediator;
-
-    public PowerToWheels powertowheels { get; private set; }
+    //or accessing car parts from different script, you put them here and other scripts use them from here(like wheelcolliders and centerofmass) ?????doesnt make sense as other scripts are accessing car parts like fronttyremarks in vehiculetraukeffect and lights in Lighting Manager
+    private Car car;
 
     public bool engineturnon = false;
 
     //if one of those is equal to 0, means the tyre is in the air, if its other, 1 would be for road, 2 for offroad,etc... should work more on it
     public Dictionary<WheelCollider, int> wheelGroundStates;
 
+    public Dictionary<string, WheelCollider> wheelColliders = new Dictionary<string, WheelCollider>();
+
+
+    public Dictionary<string, GameObject> wheelsToAnimate = new Dictionary<string, GameObject>();
+
     public float frontLeftLoad;
     public float frontRightLoad;
     public float rearLeftLoad;
     public float rearRightLoad;
 
-
-    public WheelCollider rearright;
-    public WheelCollider rearleft;
-
-    public WheelCollider frontleft;
-    public WheelCollider frontright;
-
-    public GameObject[] wheels = new GameObject[4];
-
     public GameObject centerofmass;
-    private Rigidbody rigidbody;
-
-    public Rigidbody car;
 
 
     //public TrailRenderer[] fronttyremarks;
     //public TrailRenderer[] reartyremarks;
 
-    public MeshRenderer cardimensions;
-    public MeshRenderer wheeldimensions;
-    public MeshRenderer housedimensions;
 
     public AudioSource engineAudioSource;
     public AudioSource tirescreechAudioSource;
@@ -52,32 +42,60 @@ public class CarController : MonoBehaviour
 
     float wheelCircumference;
 
-    public void Initialize(CarMediator mediator)
+
+    public void Initialize(Car ccar)
     {
-        this.carMediator = mediator;
+        this.car = ccar;
     }
 
     void Start()
     {
-        Vector3 cardim = cardimensions.bounds.size;
-        Debug.Log("car dimensions (meters): " + cardim);
+        //Vector3 cardim = cardimensions.bounds.size;
 
-        Vector3 wheeldim = wheeldimensions.bounds.size;
-        Debug.Log("wheel dimensions (meters): " + wheeldim);
+        foreach (WheelCollider wheelcollider in GetComponentsInChildren<WheelCollider>())
+        {
+            if (wheelcollider == null)
+            {
+                Debug.LogError($"[CarController] Missing WheelCollider on {gameObject.name}");
+                continue;
+            }
 
-        Vector3 housedim = housedimensions.bounds.size;
-        Debug.Log("house dimensions (meters): " + housedim);
-        rigidbody = GetComponent<Rigidbody>();
+            wheelColliders[wheelcollider.name] = wheelcollider;
+        }
+
+        foreach (Transform wheeltoanimate in GetComponentsInChildren<Transform>())
+        {
+            if (wheeltoanimate.name.EndsWith("Wheel"))
+            {
+                if (wheeltoanimate.gameObject == null)
+                {
+                    Debug.LogError($"[CarController] Missing visual wheel object for {wheeltoanimate.name} in {gameObject.name}");
+                    continue;
+                }
+
+                wheelsToAnimate[wheeltoanimate.name] = wheeltoanimate.gameObject;
+            }
+        }
+
+
+        centerofmass = transform.Find("CenterOfMass")?.gameObject;
+
+        if (centerofmass == null)
+        {
+            Debug.LogError("Center of Mass not found in " + gameObject.name);
+        }
+
         GetComponent<Rigidbody>().centerOfMass = centerofmass.transform.localPosition;
 
-        wheelCircumference = 2f * Mathf.PI * carMediator.GetWheelRadius();
+
+        wheelCircumference = 2f * Mathf.PI * car.WheelRadius;
 
         wheelGroundStates = new Dictionary<WheelCollider, int>
         {
-            { frontleft, 0 },
-            { frontright, 0 },
-            { rearleft, 0 },
-            { rearright, 0 }
+            { wheelColliders["FrontLeft"], 0 },
+            { wheelColliders["FrontRight"], 0 },
+            { wheelColliders["RearLeft"], 0 },
+            { wheelColliders["RearRight"], 0 }
         };
     }
 
@@ -136,16 +154,16 @@ public class CarController : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        UpdateWheelGroundState(frontleft);
-        UpdateWheelGroundState(frontright);
-        UpdateWheelGroundState(rearleft);
-        UpdateWheelGroundState(rearright);
+        UpdateWheelGroundState(wheelColliders["FrontLeft"]);
+        UpdateWheelGroundState(wheelColliders["FrontRight"]);
+        UpdateWheelGroundState(wheelColliders["RearLeft"]);
+        UpdateWheelGroundState(wheelColliders["RearRight"]);
 
 
-        frontLeftLoad = GetWheelLoad(frontleft);
-        frontRightLoad = GetWheelLoad(frontright);
-        rearLeftLoad = GetWheelLoad(rearleft);
-        rearRightLoad = GetWheelLoad(rearright);
+        frontLeftLoad = GetWheelLoad(wheelColliders["FrontLeft"]);
+        frontRightLoad = GetWheelLoad(wheelColliders["FrontRight"]);
+        rearLeftLoad = GetWheelLoad(wheelColliders["RearLeft"]);
+        rearRightLoad = GetWheelLoad(wheelColliders["RearRight"]);
 
         animatewheels();
 
@@ -155,27 +173,15 @@ public class CarController : MonoBehaviour
         Vector3 wheelposition = Vector3.zero;
         Quaternion wheelRotation = Quaternion.identity;
 
-        for (int i = 0; i < 4; i++)
+        foreach (var pair in wheelColliders) // Iterates through all wheel colliders
         {
-            if (i == 0)
-            {
-                rearleft.GetWorldPose(out wheelposition, out wheelRotation);
+            pair.Value.GetWorldPose(out wheelposition, out wheelRotation); // Get the position & rotation
 
-            }
-            else if (i == 1)
+            if (wheelsToAnimate.ContainsKey(pair.Key + "Wheel")) // Match the correct visual wheel
             {
-                rearright.GetWorldPose(out wheelposition, out wheelRotation);
+                wheelsToAnimate[pair.Key + "Wheel"].transform.position = wheelposition;
+                wheelsToAnimate[pair.Key + "Wheel"].transform.rotation = wheelRotation;
             }
-            else if (i == 2)
-            {
-                frontleft.GetWorldPose(out wheelposition, out wheelRotation);
-            }
-            else if (i == 3)
-            {
-                frontright.GetWorldPose(out wheelposition, out wheelRotation);
-            }
-            wheels[i].transform.position = wheelposition;
-            wheels[i].transform.rotation = wheelRotation;
         }
     }
     

@@ -9,6 +9,7 @@ public class LightingManager : MonoBehaviour
 	bool isHoldingL = false;
 	float timeLPressed = 0f;
 	public Rigidbody car;
+
 	public GameObject frontleftlow;
 	public GameObject frontrightlow;
 	public GameObject highbeamleft;

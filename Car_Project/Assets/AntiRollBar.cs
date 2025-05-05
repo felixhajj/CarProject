@@ -2,9 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AntiRollBar : MonoBehaviour {
+public class AntiRollBar : MonoBehaviour 
+{
 
-	public WheelCollider WheelL;
+	CarController carController;
+
+
+    public WheelCollider WheelL;
 	public WheelCollider WheelR;
 	public float AntiRoll = 3000;
 
@@ -12,7 +16,17 @@ public class AntiRollBar : MonoBehaviour {
 
 	void Start(){
 		car = GetComponent<Rigidbody> ();
-	}
+        carController = GetComponent<CarController>();
+        if (carController != null)
+        {
+            WheelL = carController.wheelColliders["FrontLeft"];
+            WheelR = carController.wheelColliders["FrontRight"];
+        }
+        else
+        {
+            Debug.LogError("[AntiRollBar] CarController not found on " + gameObject.name);
+        }
+    }
 
 	void FixedUpdate ()
 	{
@@ -22,12 +36,14 @@ public class AntiRollBar : MonoBehaviour {
 
 
 		bool groundedL = WheelL.GetGroundHit (out hit);
-		if (groundedL) {
+		if (groundedL) 
+		{
 			travelL = (-WheelL.transform.InverseTransformPoint (hit.point).y - WheelL.radius) / WheelL.suspensionDistance;
 		}
 
 		bool groundedR = WheelR.GetGroundHit (out hit);
-		if (groundedR) {
+		if (groundedR) 
+		{
 			travelR = (-WheelR.transform.InverseTransformPoint (hit.point).y - WheelR.radius) / WheelR.suspensionDistance;
 		}
 

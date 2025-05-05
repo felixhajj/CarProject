@@ -7,17 +7,19 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 
-public class PowerToWheels : MonoBehaviour
+public class PowerToWheels : MonoBehaviour, IcarInitializer
 {
     //-the mechanics of the car. everything related to steering, and power translated to the wheels.
 
-    private PowTrailContMediator mediator;
-    private CarMediator carMediator;
+//here, it contains values that are not static, and change overtime. thats why they're here and not 
+    private CarController carcontroller;
+    private Car car;
 
+
+
+    //tracking values
     public float finalwheeltorque;
     public float speedKMH;
-
-    //public float CurrTorque;
     private float slipangle;
     public float speed;
     public float gasinput;
@@ -25,13 +27,11 @@ public class PowerToWheels : MonoBehaviour
     public float brakeinput;
     public float rearrot;
     public float frontrot;
-    public float rearsidewaysfriction;
-    public bool istractioncontrol = false;
+    public float rearsidewayfrictionstiffness;
+    public float rearrighttorque;
+    public float rearlefttorque;
 
-    public AnimationCurve torque;
-    public AnimationCurve steeringCurve;
 
-   
     //tyre glitch fix
     private float rearoriginalSlip;
 
@@ -45,38 +45,29 @@ public class PowerToWheels : MonoBehaviour
     private float lastRearrot = 0f;
     //
 
-
-
-
-    //public float decelerationFactor = 300f;
-    //public float maxBrakeForce = 200f;
+    //other glitch fixes
     public float minRPM = 100f;
+    //
+
 
     
 
-    public float rearrighttorque;
-    public float rearlefttorque;
 
-
-
-    public void Initialize(PowTrailContMediator mediator)
+    public void Initialize(Car ccar)
     {
-        this.mediator = mediator;
-    }
-
-    public void Initialize(CarMediator mediator)
-    {
-        this.carMediator = mediator;
+        this.car = ccar;
     }
 
     void Start()
     {
-        var rearLeftFriction = mediator.GetWheelCollider("rearleft").forwardFriction;
+        carcontroller = GetComponent<CarController>();
+
+        var rearLeftFriction = carcontroller.wheelColliders["RearLeft"].forwardFriction;
         rearoriginalSlip = rearLeftFriction.extremumSlip;
         lastRearrot = rearrot;
 
         // Other initialization logic using the mediator
-        rearsidewaysfriction = mediator.GetWheelCollider("rearleft").sidewaysFriction.stiffness;
+        rearsidewayfrictionstiffness = carcontroller.wheelColliders["RearLeft"].sidewaysFriction.stiffness;
     }
 
     void Update()
@@ -85,16 +76,16 @@ public class PowerToWheels : MonoBehaviour
         speedKMH = Mathf.RoundToInt(speed) * 3.6f;
 
         // Using mediator to get motorTorque and rpm values
-        rearlefttorque = mediator.GetWheelCollider("rearleft").motorTorque;
-        rearrighttorque = mediator.GetWheelCollider("rearright").motorTorque;
+        rearlefttorque = carcontroller.wheelColliders["RearLeft"].motorTorque;
+        rearrighttorque = carcontroller.wheelColliders["RearRight"].motorTorque;
 
-        rearrot = mediator.GetWheelCollider("rearleft").rpm;
-        frontrot = mediator.GetWheelCollider("frontleft").rpm;
+        rearrot = carcontroller.wheelColliders["RearLeft"].rpm;
+        frontrot = carcontroller.wheelColliders["FrontLeft"].rpm;
     }
 
 
     private void FixedUpdate()
-    { 
+    {
         gasinput = Input.GetAxis("Vertical");
         steeringInput = Input.GetAxis("Horizontal");
 
@@ -141,57 +132,48 @@ public class PowerToWheels : MonoBehaviour
     {
         if (!inGlitchMode)
         {
+            WheelCollider rearLeftWheel = carcontroller.wheelColliders["RearLeft"];
+            WheelCollider rearRightWheel = carcontroller.wheelColliders["RearRight"];
+
             inGlitchMode = true;
 
-            WheelFrictionCurve leftFriction = mediator.GetWheelCollider("rearleft").forwardFriction;
-            WheelFrictionCurve rightFriction = mediator.GetWheelCollider("rearright").forwardFriction;
+            WheelFrictionCurve leftFriction = rearLeftWheel.forwardFriction;
+            WheelFrictionCurve rightFriction = rearRightWheel.forwardFriction;
 
             leftFriction.extremumSlip += slipIncrement;
             rightFriction.extremumSlip += slipIncrement;
 
-            mediator.UpdateFriction(mediator.GetWheelCollider("rearleft"), leftFriction);
-            mediator.UpdateFriction(mediator.GetWheelCollider("rearright"), rightFriction);
 
-            //WheelFrictionCurve frontLeftFriction = frontleft.forwardFriction;
-            //WheelFrictionCurve frontRightFriction = frontright.forwardFriction;
+            rearLeftWheel.forwardFriction = leftFriction;
+            rearRightWheel.forwardFriction = rightFriction;
 
-            //frontLeftFriction.extremumSlip += slipIncrement;
-            //frontRightFriction.extremumSlip += slipIncrement;
-
-            //frontleft.forwardFriction = frontLeftFriction;
-            //frontright.forwardFriction = frontRightFriction;
         }
     }
     void ExitGlitchMode()
     {
         if (inGlitchMode)
         {
+            WheelCollider rearLeftWheel = carcontroller.wheelColliders["RearLeft"];
+            WheelCollider rearRightWheel = carcontroller.wheelColliders["RearRight"];
+
             inGlitchMode = false;
 
-            WheelFrictionCurve leftFriction = mediator.GetWheelCollider("rearleft").forwardFriction;
-            WheelFrictionCurve rightFriction = mediator.GetWheelCollider("rearright").forwardFriction;
+            WheelFrictionCurve leftFriction = rearLeftWheel.forwardFriction;
+            WheelFrictionCurve rightFriction = rearRightWheel.forwardFriction;
 
             leftFriction.extremumSlip = rearoriginalSlip;
             rightFriction.extremumSlip = rearoriginalSlip;
 
-            mediator.UpdateFriction(mediator.GetWheelCollider("rearleft"), leftFriction);
-            mediator.UpdateFriction(mediator.GetWheelCollider("rearright"), rightFriction);
+            rearLeftWheel.forwardFriction = leftFriction;
+            rearRightWheel.forwardFriction = rightFriction;
 
-            //WheelFrictionCurve frontLeftFriction = frontleft.forwardFriction;
-            //WheelFrictionCurve frontRightFriction = frontright.forwardFriction;
-
-            //frontLeftFriction.extremumSlip = rearoriginalSlip;
-            //frontRightFriction.extremumSlip = rearoriginalSlip;
-
-            //frontleft.forwardFriction = frontLeftFriction;
-            //frontright.forwardFriction = frontRightFriction;
         }
     }
 
 
     void gas()
     {
-        if (mediator.IsEngineTurnedOn())
+        if (carcontroller.engineturnon)
         {
             if (gasinput < 0)
             {
@@ -200,7 +182,7 @@ public class PowerToWheels : MonoBehaviour
 
             //do the rest of the code here
             finalwheeltorque = TractionControl(finalwheeltorque);
-            
+
             /*
              example of adding torque using the mediator
             WheelCollider rearLeft = mediator.GetWheelCollider("rearleft");
@@ -212,8 +194,8 @@ public class PowerToWheels : MonoBehaviour
         }
         else
         {
-            WheelCollider rearLeft = mediator.GetWheelCollider("rearleft");
-            WheelCollider rearRight = mediator.GetWheelCollider("rearright");
+            WheelCollider rearLeft = carcontroller.wheelColliders["RearLeft"];
+            WheelCollider rearRight = carcontroller.wheelColliders["RearRight"];
 
             rearLeft.motorTorque = 0;
             rearRight.motorTorque = 0;
@@ -237,6 +219,11 @@ public class PowerToWheels : MonoBehaviour
     */
     void braking()
     {
+        WheelCollider rearLeftWheel = carcontroller.wheelColliders["RearLeft"];
+        WheelCollider rearRightWheel = carcontroller.wheelColliders["RearRight"];
+        WheelCollider frontLeftWheel = carcontroller.wheelColliders["FrontLeft"];
+        WheelCollider frontRightWheel = carcontroller.wheelColliders["FrontRight"];
+
         // Calculate slip angle first
         slipangle = Vector3.Angle(transform.forward, GetComponent<Rigidbody>().velocity - transform.forward);
 
@@ -261,91 +248,87 @@ public class PowerToWheels : MonoBehaviour
         // Apply handbrake if the space key is pressed
         if (Input.GetKey(KeyCode.Space))
         {
-            float handBrakeTorque = carMediator.GetHandBrakeTorque();
-            mediator.SetBrakeTorque(mediator.GetWheelCollider("rearleft"), handBrakeTorque / 2);
-            mediator.SetBrakeTorque(mediator.GetWheelCollider("rearright"), handBrakeTorque / 2);
+            float handBrakeTorque = car.HandBrakeTorque;
+            rearLeftWheel.brakeTorque = handBrakeTorque / 2;
+            rearRightWheel.brakeTorque = handBrakeTorque / 2;
+
 
             if (rearrot == 0)
             {
-                // Modify friction for handbrake
-                WheelFrictionCurve rearLeftFriction = mediator.GetWheelCollider("rearleft").sidewaysFriction;
-                rearLeftFriction.stiffness = 0.1f;
-                mediator.UpdateFriction(mediator.GetWheelCollider("rearleft"), rearLeftFriction);
+                // when rearwheels locked, they start sliding sideways
 
-                WheelFrictionCurve rearRightFriction = mediator.GetWheelCollider("rearright").sidewaysFriction;
+                //we use wheelFrictionCurve not because there is a curve, but because wheelcollider stores the friction data like this.
+                WheelFrictionCurve rearLeftFriction = rearLeftWheel.sidewaysFriction;
+                rearLeftFriction.stiffness = 0.1f;
+                rearLeftWheel.sidewaysFriction = rearLeftFriction;
+
+
+                WheelFrictionCurve rearRightFriction = rearRightWheel.sidewaysFriction;
                 rearRightFriction.stiffness = 0.1f;
-                mediator.UpdateFriction(mediator.GetWheelCollider("rearright"), rearRightFriction);
+                rearRightWheel.sidewaysFriction = rearRightFriction;
+
             }
         }
         else
         {
-            float brakeTorque = carMediator.GetBrakeTorque();
+            float brakeTorque = car.BrakeTorque;
             //to fix later
-            //float decelerationFactor = carMediator.GetDecelerationFactor();
+            //float decelerationFactor = car.GetDecelerationFactor();
 
             //70% front wheel, 30% rear wheels
-            if (Math.Abs(rearrot) >= minRPM)
-            {
-                mediator.SetBrakeTorque(mediator.GetWheelCollider("frontright"), brakeinput * brakeTorque * 0.35f);
-                mediator.SetBrakeTorque(mediator.GetWheelCollider("frontleft"), brakeinput * brakeTorque * 0.35f);
-                mediator.SetBrakeTorque(mediator.GetWheelCollider("rearleft"), /*(decelerationFactor / 2f)*/ + brakeinput * brakeTorque * 0.15f);
-                mediator.SetBrakeTorque(mediator.GetWheelCollider("rearright"),/* (decelerationFactor / 2f)*/ + brakeinput * brakeTorque * 0.15f);
-            }
-            else
-            {
-                // Apply front and rear brake torques, including controlledBrakeTorque
-                mediator.SetBrakeTorque(mediator.GetWheelCollider("frontright"), brakeinput * brakeTorque * 0.35f);
-                mediator.SetBrakeTorque(mediator.GetWheelCollider("frontleft"), brakeinput * brakeTorque * 0.35f);
-                mediator.SetBrakeTorque(mediator.GetWheelCollider("rearleft"), brakeinput * brakeTorque * 0.15f);
-                mediator.SetBrakeTorque(mediator.GetWheelCollider("rearright"), brakeinput * brakeTorque * 0.15f);
-            }
+            frontRightWheel.brakeTorque = brakeinput * brakeTorque * 0.35f;
+            frontLeftWheel.brakeTorque = brakeinput * brakeTorque * 0.35f;
+            rearLeftWheel.brakeTorque = brakeinput * brakeTorque * 0.35f;
+            rearRightWheel.brakeTorque = brakeinput * brakeTorque * 0.35f;
         }
 
         if (rearrot != 0)
         {
-            // Update friction based on the slip angle
-            WheelFrictionCurve rearLeftFriction = mediator.GetWheelCollider("rearleft").sidewaysFriction;
-            rearLeftFriction.stiffness = rearsidewaysfriction;
-            mediator.UpdateFriction(mediator.GetWheelCollider("rearleft"), rearLeftFriction);
+            WheelFrictionCurve rearLeftFriction = rearLeftWheel.sidewaysFriction;
+            rearLeftFriction.stiffness = rearsidewayfrictionstiffness;
+            rearLeftWheel.sidewaysFriction = rearLeftFriction;
 
-            WheelFrictionCurve rearRightFriction = mediator.GetWheelCollider("rearright").sidewaysFriction;
-            rearRightFriction.stiffness = rearsidewaysfriction;
-            mediator.UpdateFriction(mediator.GetWheelCollider("rearright"), rearRightFriction);
+            WheelFrictionCurve rearRightFriction = rearRightWheel.sidewaysFriction;
+            rearRightFriction.stiffness = rearsidewayfrictionstiffness;
+            rearRightWheel.sidewaysFriction = rearRightFriction;
         }
     }
 
     void steering()
     {
-        float steeringAngle = steeringInput * steeringCurve.Evaluate(speedKMH);
+        WheelCollider frontLeftWheel = carcontroller.wheelColliders["Frontleft"];
+        WheelCollider frontRightWheel = carcontroller.wheelColliders["FrontRight"];
+
+        float steeringAngle = steeringInput * car.SteeringCurve.Evaluate(speedKMH);
 
         if (Input.GetAxis("Horizontal") != 0)
         {
-            mediator.GetWheelCollider("frontleft").steerAngle = steeringAngle;
-            mediator.GetWheelCollider("frontright").steerAngle = steeringAngle;
+            frontLeftWheel.steerAngle = steeringAngle;
+            frontRightWheel.steerAngle = steeringAngle;
         }
         else
         {
-            mediator.GetWheelCollider("frontleft").steerAngle = 0;
-            mediator.GetWheelCollider("frontright").steerAngle = 0;
+            frontLeftWheel.steerAngle = 0;
+            frontRightWheel.steerAngle = 0;
         }
     }
 
     float TractionControl(float currTorque)
     {
         float threshold = 2f;
-        float tractionCutoff = carMediator.GetTractionCutoff(); // Access via mediator
-        float maxTorque = carMediator.GetMaxTorque(); // Access via mediator
+        float tractionCutoff = car.TractionCutoff; // Access via mediator
+        float maxTorque = car.MaxTorque; // Access via mediator
 
-        if ((Mathf.Abs(rearrot) > Mathf.Abs(threshold * frontrot)) && !istractioncontrol)
+        if ((Mathf.Abs(rearrot) > Mathf.Abs(threshold * frontrot)) && !car.IsTractionControl)
         {
             currTorque *= tractionCutoff;
             Debug.Log("traction control yes");
-            istractioncontrol = true;
+            car.IsTractionControl = true;
         }
-        if ((istractioncontrol) && (Mathf.Abs(rearrot) <= Mathf.Abs(frontrot + (frontrot / 10f))))
+        if ((car.IsTractionControl) && (Mathf.Abs(rearrot) <= Mathf.Abs(frontrot + (frontrot / 10f))))
         {
             currTorque = maxTorque;
-            istractioncontrol = false;
+            car.IsTractionControl = false;
         }
 
         return currTorque;
@@ -353,8 +336,8 @@ public class PowerToWheels : MonoBehaviour
 
     public void enginesound(float motor)
     {
-        AudioSource engineAudioSource = mediator.GetEngineAudioSource(); // Get the AudioSource through the mediator
-        float rearrot = Mathf.Abs(mediator.GetWheelCollider("rearleft").rpm); // Access the rearleft wheel's rpm through the mediator
+        AudioSource engineAudioSource = carcontroller.engineAudioSource; // Get the AudioSource through the mediator
+        float rearrot = Mathf.Abs(carcontroller.wheelColliders["RearLeft"].rpm); // Access the rearleft wheel's rpm through the mediator
 
         // motor maximum value is 5000, so divide motor by a value greater than 7000 to give part of the sound to rearrot as well.
         engineAudioSource.volume = 0.25f + (Mathf.Abs(motor) * (0.75f / 9000f));

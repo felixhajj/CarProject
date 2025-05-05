@@ -8,15 +8,12 @@ using UnityEngine;
 public class VehiculeTrailEffect : MonoBehaviour
 {
 
-    private PowTrailContMediator mediator;
+    private CarController carcontroller;
 
     private Rigidbody rigidbody;
 
 	public TrailRenderer[] fronttyremarks;
 	public TrailRenderer[] backtyremarks;
-
-
-
 
 	private bool rearleftsmokePlaying = false;
 	private bool rearrightsmokePlaying = false;
@@ -44,7 +41,10 @@ public class VehiculeTrailEffect : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
 	{
-		ParticleSystem.MainModule main = rearwheelsmoke[0].main;
+        carcontroller = GetComponent<CarController>();
+
+
+        ParticleSystem.MainModule main = rearwheelsmoke[0].main;
 		maxsmokesize = main.startSize.constant;
 		Debug.Log(maxsmokesize);
 
@@ -100,15 +100,15 @@ public class VehiculeTrailEffect : MonoBehaviour
                 }
 
                 // Handle front-left wheel ground state
-                if (mediator.GetWheelGroundStates()[mediator.GetWheelCollider("frontleft")] == 1)
+                if (carcontroller.wheelGroundStates[carcontroller.wheelColliders["FrontLeft"]] == 1)
                 {
                     if (frontwheelsmoke[0] == null)
                     {
-                        frontwheelsmoke[0] = Instantiate(frontwheelsmoke[0], mediator.GetWheelTransform("frontleft").position, Quaternion.identity);
+                        frontwheelsmoke[0] = Instantiate(frontwheelsmoke[0], carcontroller.wheelColliders["FrontLeft"].transform.position, Quaternion.identity);
                     }
                     else
                     {
-                        frontwheelsmoke[0].transform.position = mediator.GetWheelTransform("frontleft").position;
+                        frontwheelsmoke[0].transform.position = carcontroller.wheelColliders["FrontLeft"].transform.position;
                         if (!frontleftsmokePlaying)
                         {
                             frontwheelsmoke[0].Play();
@@ -118,15 +118,15 @@ public class VehiculeTrailEffect : MonoBehaviour
                 }
 
                 // Handle front-right wheel ground state
-                if (mediator.GetWheelGroundStates()[mediator.GetWheelCollider("frontright")] == 1)
+                if (carcontroller.wheelGroundStates[carcontroller.wheelColliders["FrontRight"]] == 1)
                 {
                     if (frontwheelsmoke[1] == null)
                     {
-                        frontwheelsmoke[1] = Instantiate(frontwheelsmoke[1], mediator.GetWheelTransform("frontright").position, Quaternion.identity);
+                        frontwheelsmoke[1] = Instantiate(frontwheelsmoke[1], carcontroller.wheelColliders["FrontRight"].transform.position, Quaternion.identity);
                     }
                     else
                     {
-                        frontwheelsmoke[1].transform.position = mediator.GetWheelTransform("frontright").position;
+                        frontwheelsmoke[1].transform.position = carcontroller.wheelColliders["FrontRight"].transform.position;
                         if (!frontrightsmokePlaying)
                         {
                             frontwheelsmoke[1].Play();
@@ -161,12 +161,12 @@ public class VehiculeTrailEffect : MonoBehaviour
                 if (Frontlockstarted)
                 {
                     // Stop the tire screech audio
-                    mediator.GetTireScreechAudioSource().Stop();
+                    carcontroller.tirescreechAudioSource.Stop();
 
                     // Set new audio clip and play it
-                    mediator.GetTireScreechAudioSource().clip = mediator.GetTireScreechingEndClip();
-                    mediator.GetTireScreechAudioSource().loop = false;
-                    mediator.GetTireScreechAudioSource().Play();
+                    carcontroller.tirescreechAudioSource.clip = carcontroller.tirescreechingendClip;
+                    carcontroller.tirescreechAudioSource.loop = false;
+                    carcontroller.tirescreechAudioSource.Play();
 
                     // Reset the front lock started flag
                     Frontlockstarted = false;
@@ -178,6 +178,7 @@ public class VehiculeTrailEffect : MonoBehaviour
 			rearsmokeData.CarSliding(transform.forward, rigidbody.velocity, 0.99f, 0.7f);
 			rearsmokeData.Burnout(powertowheels.frontrot, powertowheels.rearrot);
 			rearsmokeData.AddSpeed(powertowheels.speedKMH, maxsmokespeed);
+
             if (rearsmokeData.slipNormalizedValueRearlock != 0 || ((rearsmokeData.slipNormalizedValueCarSliding != 0) && powertowheels.speedKMH > 15) || rearsmokeData.slipNormalizedValueBurnout != 0)
             {
                 // Calculate the final smoke intensity
@@ -196,16 +197,16 @@ public class VehiculeTrailEffect : MonoBehaviour
                     T.emitting = true;
                 }
 
-                // Handle rear-left wheel ground state using the mediator
-                if (mediator.GetWheelGroundStates()[mediator.GetWheelCollider("rearleft")] == 1)
+                // Handle rear-left wheel ground state using the carcontroller
+                if (carcontroller.wheelGroundStates[carcontroller.wheelColliders["RearLeft"]] == 1)
                 {
                     if (rearwheelsmoke[0] == null)
                     {
-                        rearwheelsmoke[0] = Instantiate(rearwheelsmoke[0], mediator.GetWheelTransform("rearleft").position, Quaternion.identity);
+                        rearwheelsmoke[0] = Instantiate(rearwheelsmoke[0], carcontroller.wheelColliders["RearLeft"].transform.position, Quaternion.identity);
                     }
                     else
                     {
-                        rearwheelsmoke[0].transform.position = mediator.GetWheelTransform("rearleft").position;
+                        rearwheelsmoke[0].transform.position = carcontroller.wheelColliders["RearLeft"].transform.position;
                         if (!rearleftsmokePlaying)
                         {
                             rearwheelsmoke[0].Play();
@@ -214,16 +215,16 @@ public class VehiculeTrailEffect : MonoBehaviour
                     }
                 }
 
-                // Handle rear-right wheel ground state using the mediator
-                if (mediator.GetWheelGroundStates()[mediator.GetWheelCollider("rearright")] == 1)
+                // Handle rear-right wheel ground state using the carcontroller
+                if (carcontroller.wheelGroundStates[carcontroller.wheelColliders["RearRight"]] == 1)
                 {
                     if (rearwheelsmoke[1] == null)
                     {
-                        rearwheelsmoke[1] = Instantiate(rearwheelsmoke[1], mediator.GetWheelTransform("rearright").position, Quaternion.identity);
+                        rearwheelsmoke[1] = Instantiate(rearwheelsmoke[1], carcontroller.wheelColliders["RearRight"].transform.position, Quaternion.identity);
                     }
                     else
                     {
-                        rearwheelsmoke[1].transform.position = mediator.GetWheelTransform("rearright").position;
+                        rearwheelsmoke[1].transform.position = carcontroller.wheelColliders["RearRight"].transform.position;
                         if (!rearrightsmokePlaying)
                         {
                             rearwheelsmoke[1].Play();
@@ -232,6 +233,7 @@ public class VehiculeTrailEffect : MonoBehaviour
                     }
                 }
             }
+
 
             else
             {

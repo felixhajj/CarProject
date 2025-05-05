@@ -8,7 +8,7 @@ using static Unity.VisualScripting.Dependencies.Sqlite.SQLite3;
 
 public interface ICar
 {
-    //not put a gameobject field because it is more of the data than the actual physical car.(might change that later?)
+    //everything data related, that doesnt use directly unity's physics. doesnt have 
     public ICar SetName(string name);
     public ICar SetMaxTorque(float maxTorque);
     public ICar SetTorque(AnimationCurve torque);
@@ -20,6 +20,7 @@ public interface ICar
     public ICar SetTractionCutoff(float tractioncutoff);
     public ICar SetFinalDriveAxle(float finaldriveaxle);
     public ICar SetDrivingWheels(float drivingwheels);
+    public ICar SetIsTractionControl(bool istractioncontrol);
     public ICar SetMass(float mass);
     public ICar SetWheelRadius(float wheelradius);
     public ICar SetWheelMass(float wheelmass);
@@ -41,6 +42,8 @@ public class Car : ICar
     public float TractionCutoff { get; set; }
     public float FinalDriveAxle { get; set; }
     public float DrivingWheels { get; set; } // Number of driving wheels (e.g., 2 for RWD)
+    public bool IsTractionControl { get; set; }
+
 
     // Properties to be set dynamically based on the game environment
     public float Mass { get; set; } // Mass of the car in kg
@@ -100,6 +103,11 @@ public class Car : ICar
     public ICar SetDrivingWheels(float drivingwheels)
     {
         DrivingWheels = drivingwheels;
+        return this;
+    }
+    public ICar SetIsTractionControl(bool istractioncontrol)
+    {
+        IsTractionControl = istractioncontrol; 
         return this;
     }
     public ICar SetMass(float mass)
@@ -169,12 +177,12 @@ public class Car : ICar
 
 public class PlayerCar : Car
 {
-
+    //to fill
 }
 
 public class BotCar : Car
 {
-
+    // to fill
 }
 
 public class Inventory

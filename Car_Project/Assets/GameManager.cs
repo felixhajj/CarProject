@@ -4,6 +4,8 @@ using UnityEngine;
 using static UnityEngine.EventSystems.EventTrigger;
 using System.IO;
 using UnityEditor;
+//using OpenCover.Framework.Model;
+using System.Linq;
 
 
 public class GameManager : MonoBehaviour
@@ -33,6 +35,7 @@ public class GameManager : MonoBehaviour
         public float tractioncutoff;
         public float finaldriveaxle;
         public float drivingwheels;
+        public bool istractioncontrol;
         public float mass;
         public float wheelradius;
         public float wheelmass;
@@ -40,6 +43,7 @@ public class GameManager : MonoBehaviour
     }
     public Dictionary<string, ICar> CarsDict = new Dictionary<string, ICar>();
     private Dictionary<string, Inventory> CarsInvDict = new Dictionary<string, Inventory>();
+    //those dictionnaries are purely data related, and not directly tied to the object.
 
     public List<CarPrefabEntry> carPrefabs; // A list to define multiple prefabs via Unity Inspector
 
@@ -58,10 +62,13 @@ public class GameManager : MonoBehaviour
             string json = File.ReadAllText(filePath);
             JsonUtility.FromJsonOverwrite(json, this); // Load data into this instance
         }
+        
+        CarsDict.Clear();
+        CarsInvDict.Clear();
 
         foreach (var prefabEntry in carPrefabs)
         {
-            if ()
+            if (1==1)//temporary
             {
                 string uniqueCarName = EnsureUniqueCarNames(prefabEntry.carName);
 
@@ -77,6 +84,7 @@ public class GameManager : MonoBehaviour
                     .SetTractionCutoff(prefabEntry.tractioncutoff)
                     .SetFinalDriveAxle(prefabEntry.finaldriveaxle)
                     .SetDrivingWheels(prefabEntry.drivingwheels)
+                    .SetIsTractionControl(prefabEntry.istractioncontrol)
                     .SetMass(prefabEntry.mass)
                     .SetWheelRadius(prefabEntry.wheelradius)
                     .SetWheelMass(prefabEntry.wheelmass);
@@ -122,17 +130,40 @@ public class GameManager : MonoBehaviour
 
     private void CreateCar(string carRole, Inventory inventory, CarPrefabEntry prefab)
     {
+        //every class that needs an instance of Car will be called here: in this case: powertowheels ad carcontrolelr.
 
-        // instantiate a physical object into the unity world, but i dont need it at the current moment
+        // instantiate a physical object into the unity world, but i dont need it at the current moment, as the object itself is dragged into the prefab, so its available
         var carInstanceGO = Instantiate(prefab.Object);
 
         // Initialize the Car instance for the car using inventory
         var carInstance = inventory.createcar(carRole);
 
-        // Initialize CarMediator with the specific Car instance
-        var carMediator = carInstanceGO.GetComponent<CarMediator>();
-        carMediator.Initialize(carInstance as Car);
+        var initializers = carInstanceGO.GetComponents<MonoBehaviour>().OfType<IcarInitializer>();
 
+
+        foreach (var initializer in initializers)
+        {
+            initializer.Initialize(carInstance as Car);
+        }
+
+
+        /*
+        var carController = carInstanceGO.GetComponent<CarController>();
+        var powerToWheels = carInstanceGO.GetComponent<PowerToWheels>();
+
+        if (carController != null)
+        {
+            carController.Initialize(carInstance as Car);
+        }
+
+        if (powerToWheels != null)
+        {
+            powerToWheels.Initialize(carInstance as Car);
+        }
+        
+         */              
+        
+        
         //i should put SaveCarData(into Json) here, if im only adding cars occasionally, and not in abundance.
     }
 

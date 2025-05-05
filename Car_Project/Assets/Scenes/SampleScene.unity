@@ -5207,8 +5207,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6df59c0a12770a5449f5d7c4980769db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  filePath: 
-  carPrefabs: []
+  filePath: C:/Users/Felix/AppData/LocalLow/DefaultCompany/Car_Project\carData.json
+  carPrefabs:
+  - Object: {fileID: 0}
+    carRole: 0
+    carName: 
+    maxtorque: 0
+    torque:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 0
+      m_PostInfinity: 0
+      m_RotationOrder: 0
+    braketorque: 0
+    handbraketorque: 0
+    steeringmax: 0
+    maxspeed: 0
+    steeringcurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 0
+      m_PostInfinity: 0
+      m_RotationOrder: 0
+    tractioncutoff: 0
+    finaldriveaxle: 0
+    drivingwheels: 0
+    istractioncontrol: 0
+    mass: 0
+    wheelradius: 0
+    wheelmass: 0
 --- !u!4 &89490776
 Transform:
   m_ObjectHideFlags: 0
@@ -12683,59 +12710,10 @@ MonoBehaviour:
   brakeinput: 0
   rearrot: 0
   frontrot: 0
-  rearsidewaysfriction: 0
-  istractioncontrol: 0
-  torque:
-    serializedVersion: 2
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  steeringCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: -5.516407
-      value: 27.003563
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 32.155396
-      value: 11.873796
-      inSlope: -0.06015707
-      outSlope: -0.06015707
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.8571438
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 204.1038
-      value: 7.7237635
-      inSlope: -0.010311276
-      outSlope: -0.010311276
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.8660888
-      outWeight: 0.4662539
-    - serializedVersion: 3
-      time: 389.75122
-      value: 7.283676
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  minRPM: 100
+  rearsidewayfrictionstiffness: 0
   rearrighttorque: 0
   rearlefttorque: 0
+  minRPM: 100
 --- !u!114 &671144287
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12748,15 +12726,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7133391a2c68f354ebf0ff2af39c9469, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  car: {fileID: 671144285}
-  frontleftlow: {fileID: 673490212}
-  frontrightlow: {fileID: 1794677319}
-  highbeamleft: {fileID: 1851084322}
-  highbeamright: {fileID: 1544641874}
-  trailleft: {fileID: 762441811}
-  trailright: {fileID: 1825829624}
-  backtrail: {fileID: 1825829626}
-  minSpeed: 70
+  car: {fileID: 0}
+  frontleftlow: {fileID: 0}
+  frontrightlow: {fileID: 0}
+  highbeamleft: {fileID: 0}
+  highbeamright: {fileID: 0}
+  trailleft: {fileID: 0}
+  trailright: {fileID: 0}
+  backtrail: {fileID: 0}
+  minSpeed: 40
   fadeDuration: 1
 --- !u!114 &671144288
 MonoBehaviour:
@@ -12770,7 +12748,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c171967477d5ca418c62d125a3a8b92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  car: {fileID: 671144285}
   rotatespeed: 5
   thirdpersonrear: {fileID: 894390791}
   thirdpersonfront: {fileID: 362387366}
@@ -12920,7 +12897,32 @@ MonoBehaviour:
   m_GameObject: {fileID: 671144280}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8efdb35c1fd70b044bb5082e61c9210c, type: 3}
+  m_Script: {fileID: 11500000, guid: ce4ecbcd768d99d4082112abf3f0dc74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  engineturnon: 0
+  frontLeftLoad: 0
+  frontRightLoad: 0
+  rearLeftLoad: 0
+  rearRightLoad: 0
+  centerofmass: {fileID: 0}
+  engineAudioSource: {fileID: 0}
+  tirescreechAudioSource: {fileID: 0}
+  engineStartupClip: {fileID: 0}
+  engineLoopClip: {fileID: 0}
+  engineShutdownClip: {fileID: 0}
+  tirescreechingClip: {fileID: 0}
+  tirescreechingendClip: {fileID: 0}
+--- !u!114 &671144293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 671144280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15bdbfe0010ed684693e9f6ac17fc1ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &673490212
@@ -18897,6 +18899,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 360.363
       objectReference: {fileID: 0}
+    - target: {fileID: 4765316741040318482, guid: 257a2d584dbadce4884c7d8df6c17d77, type: 3}
+      propertyPath: m_Name
+      value: FrontLeftWheel
+      objectReference: {fileID: 0}
     - target: {fileID: 4815162811920289151, guid: 257a2d584dbadce4884c7d8df6c17d77, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.8228805
@@ -18920,6 +18926,10 @@ PrefabInstance:
     - target: {fileID: 4815162811920289151, guid: 257a2d584dbadce4884c7d8df6c17d77, type: 3}
       propertyPath: m_LocalPosition.z
       value: 2.49
+      objectReference: {fileID: 0}
+    - target: {fileID: 5176419100026448651, guid: 257a2d584dbadce4884c7d8df6c17d77, type: 3}
+      propertyPath: m_Name
+      value: FrontRightWheel
       objectReference: {fileID: 0}
     - target: {fileID: 5348966455386368635, guid: 257a2d584dbadce4884c7d8df6c17d77, type: 3}
       propertyPath: m_RootOrder
@@ -19705,8 +19715,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1095524556}
-  m_LocalRotation: {x: 0.69184726, y: 0.11273911, z: -0.110707544, w: 0.70454323}
-  m_LocalPosition: {x: -5.929632, y: -52.82475, z: -23.687393}
+  m_LocalRotation: {x: 0.6918474, y: 0.112738535, z: -0.11070696, w: 0.70454335}
+  m_LocalPosition: {x: -5.92964, y: -52.824734, z: -23.687439}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

@@ -3,7 +3,7 @@ using Cinemachine;
 
 public class CinemachineCameras : MonoBehaviour
 {
-	public Rigidbody car;
+
 	public float rotatespeed = 5f;
 	[SerializeField] private CinemachineVirtualCamera thirdpersonrear;
 	[SerializeField] private CinemachineVirtualCamera thirdpersonfront;
