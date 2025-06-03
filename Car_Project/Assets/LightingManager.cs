@@ -5,24 +5,17 @@ using UnityEngine;
 
 public class LightingManager : MonoBehaviour
 {
+	private CarObjects carobjects;
+
 	int active = 0;
 	bool isHoldingL = false;
 	float timeLPressed = 0f;
 	public Rigidbody car;
 
-	public GameObject frontleftlow;
-	public GameObject frontrightlow;
-	public GameObject highbeamleft;
-	public GameObject highbeamright;
-
-	public GameObject trailleft;
-	public GameObject trailright;
-
-	public TrailRenderer backtrail;
+	
 	public float minSpeed = 40f;
 	public float fadeDuration = 1f;
-	//float trailtime;
-	//float temptime;
+
 	private float startTrailTime; // initial value of trail time
 	private float elapsedTime;
 	private bool abovemin = false;
@@ -33,7 +26,9 @@ public class LightingManager : MonoBehaviour
 
 	private void Start()
 	{
-		startTrailTime = backtrail.time;
+		carobjects = GetComponent<CarObjects>();
+
+		startTrailTime = carobjects.backtrail.time;
 		elapsedTime = 0f;
 
 		
@@ -44,8 +39,8 @@ public class LightingManager : MonoBehaviour
 	{
 		if (car.velocity.magnitude > minSpeed)
 		{
-			trailleft.SetActive(true);
-			trailright.SetActive(true);
+            carobjects.trailleft.SetActive(true);
+            carobjects.trailright.SetActive(true);
 			abovemin = true;
 		}
 		else
@@ -70,44 +65,44 @@ public class LightingManager : MonoBehaviour
 
 			if (active == 0 && pressDuration < 0.5f) // none is turned on and clicked
 			{
-				frontleftlow.SetActive(true);
-				frontrightlow.SetActive(true);
+                carobjects.frontleftlow.SetActive(true);
+                carobjects.frontrightlow.SetActive(true);
 				active = 1;
 			}
 			else if (active == 0 && pressDuration >= 0.5f) // none is turned on and held
 			{
-				frontleftlow.SetActive(true);
-				frontrightlow.SetActive(true);
-				highbeamleft.SetActive(true);
-				highbeamright.SetActive(true);
+                carobjects.frontleftlow.SetActive(true);
+                carobjects.frontrightlow.SetActive(true);
+                carobjects.highbeamleft.SetActive(true);
+                carobjects.highbeamright.SetActive(true);
 				active = 2;
 			}
 			else if (active == 1 && pressDuration < 0.5f) // low beam is on and clicked
 			{
-				frontleftlow.SetActive(false);
-				frontrightlow.SetActive(false);
+                carobjects.frontleftlow.SetActive(false);
+                carobjects.frontrightlow.SetActive(false);
 				active = 0;
 			}
 			else if (active == 1 && pressDuration >= 0.5f) // low beam is on and held
 			{
-				highbeamleft.SetActive(true);
-				highbeamright.SetActive(true);
+                carobjects.highbeamleft.SetActive(true);
+                carobjects.highbeamright.SetActive(true);
 				active = 2;
 			}
 			else if (active == 2 && pressDuration < 0.5f) // high beam is on and clicked
 			{
-				frontleftlow.SetActive(false);
-				frontrightlow.SetActive(false);
-				highbeamleft.SetActive(false);
-				highbeamright.SetActive(false);
+                carobjects.frontleftlow.SetActive(false);
+                carobjects.frontrightlow.SetActive(false);
+                carobjects.highbeamleft.SetActive(false);
+                carobjects.highbeamright.SetActive(false);
 				active = 0;
 			}
 			else if (active == 2 && pressDuration >= 0.5f) // high beam is on and held
 			{
-				highbeamleft.SetActive(false);
-				highbeamright.SetActive(false);
-				frontleftlow.SetActive(true);
-				frontrightlow.SetActive(true);
+                carobjects.highbeamleft.SetActive(false);
+                carobjects.highbeamright.SetActive(false);
+                carobjects.frontleftlow.SetActive(true);
+                carobjects.frontrightlow.SetActive(true);
 				active = 1;
 			}
 
@@ -120,8 +115,8 @@ public class LightingManager : MonoBehaviour
 			{
 				if (Input.GetKeyUp(KeyCode.L))
 				{
-					highbeamleft.SetActive(false);
-					highbeamright.SetActive(false);
+                    carobjects.highbeamleft.SetActive(false);
+                    carobjects.highbeamright.SetActive(false);
 					active = 1;
 				}
 			}
@@ -129,35 +124,37 @@ public class LightingManager : MonoBehaviour
 			{
 				if (Input.GetKeyUp(KeyCode.L))
 				{
-					frontleftlow.SetActive(true);
-					frontrightlow.SetActive(true);
-					highbeamleft.SetActive(true);
-					highbeamright.SetActive(true);
+                    carobjects.frontleftlow.SetActive(true);
+                    carobjects.frontrightlow.SetActive(true);
+                    carobjects.highbeamleft.SetActive(true);
+                    carobjects.highbeamright.SetActive(true);
 					active = 2;
 				}
 			}
 		}
 	}
-	private void FadeOut()
-	{
+    private void FadeOut()
+    {
+        if (carobjects.trailLeftRenderer != null && carobjects.trailLeftRenderer.time > 0f)
+        {
+            elapsedTime += Time.deltaTime;
+            float t = elapsedTime / fadeDuration;
+            float targetTrailTime = Mathf.Lerp(startTrailTime, 0f, t);
 
-		if (backtrail != null && backtrail.time > 0f)
-		{
+            carobjects.trailLeftRenderer.time = targetTrailTime;
+            carobjects.trailRightRenderer.time = targetTrailTime;
 
-			elapsedTime += Time.deltaTime;
-			float t = elapsedTime / fadeDuration;
-			float targetTrailTime = Mathf.Lerp(startTrailTime, 0f, t);
-			backtrail.time = targetTrailTime;
+            if (elapsedTime >= fadeDuration)
+            {
+                carobjects.trailLeftRenderer.time = startTrailTime;
+                carobjects.trailRightRenderer.time = startTrailTime;
 
-			if (elapsedTime >= fadeDuration)
-			{
-				backtrail.time = startTrailTime;
-				trailleft.SetActive(false);
-				trailright.SetActive(false);
-				abovemin = false;
-				elapsedTime = 0f;
+                carobjects.trailleft.SetActive(false);
+                carobjects.trailright.SetActive(false);
+                abovemin = false;
+                elapsedTime = 0f;
+            }
+        }
+    }
 
-			}
-		}
-	}
 }

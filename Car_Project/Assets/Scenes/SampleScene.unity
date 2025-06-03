@@ -12233,7 +12233,7 @@ TrailRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 88eee773845f35143b56e6573dcbed99, type: 2}
+  - {fileID: 2100000, guid: bf373d7a39b2c1f409db86e2366effea, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -12936,7 +12936,7 @@ GameObject:
   - component: {fileID: 673490214}
   - component: {fileID: 673490213}
   m_Layer: 0
-  m_Name: leftllowight
+  m_Name: leftlowlight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18843,6 +18843,14 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: 0.08
       objectReference: {fileID: 0}
+    - target: {fileID: 4674107753674035967, guid: 257a2d584dbadce4884c7d8df6c17d77, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4674107753674035967, guid: 257a2d584dbadce4884c7d8df6c17d77, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: bf373d7a39b2c1f409db86e2366effea, type: 2}
     - target: {fileID: 4763899328562670808, guid: 257a2d584dbadce4884c7d8df6c17d77, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -19715,8 +19723,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1095524556}
-  m_LocalRotation: {x: 0.6918474, y: 0.112738535, z: -0.11070696, w: 0.70454335}
-  m_LocalPosition: {x: -5.92964, y: -52.824734, z: -23.687439}
+  m_LocalRotation: {x: 0.6918472, y: 0.11273814, z: -0.11070653, w: 0.7045436}
+  m_LocalPosition: {x: -5.92964, y: -52.824745, z: -23.687424}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

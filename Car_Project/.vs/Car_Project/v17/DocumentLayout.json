@@ -3,20 +3,16 @@
   "WorkspaceRootPath": "C:\\Projects\\Car_Project_Git\\CarProject\\Car_Project\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{CFB8AFEE-4BDC-AFD7-5821-58397BFB9025}|Assembly-CSharp.csproj|c:\\projects\\car_project_git\\carproject\\car_project\\assets\\carobjects.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CFB8AFEE-4BDC-AFD7-5821-58397BFB9025}|Assembly-CSharp.csproj|solutionrelative:assets\\carobjects.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CFB8AFEE-4BDC-AFD7-5821-58397BFB9025}|Assembly-CSharp.csproj|c:\\projects\\car_project_git\\carproject\\car_project\\assets\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CFB8AFEE-4BDC-AFD7-5821-58397BFB9025}|Assembly-CSharp.csproj|solutionrelative:assets\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{CFB8AFEE-4BDC-AFD7-5821-58397BFB9025}|Assembly-CSharp.csproj|C:\\Projects\\Car_Project_Git\\CarProject\\Car_Project\\assets\\carcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CFB8AFEE-4BDC-AFD7-5821-58397BFB9025}|Assembly-CSharp.csproj|solutionrelative:assets\\carcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CFB8AFEE-4BDC-AFD7-5821-58397BFB9025}|Assembly-CSharp.csproj|C:\\Projects\\Car_Project_Git\\CarProject\\Car_Project\\assets\\powertowheels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CFB8AFEE-4BDC-AFD7-5821-58397BFB9025}|Assembly-CSharp.csproj|solutionrelative:assets\\powertowheels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{CFB8AFEE-4BDC-AFD7-5821-58397BFB9025}|Assembly-CSharp.csproj|c:\\projects\\car_project_git\\carproject\\car_project\\assets\\carobjects.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CFB8AFEE-4BDC-AFD7-5821-58397BFB9025}|Assembly-CSharp.csproj|solutionrelative:assets\\carobjects.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CFB8AFEE-4BDC-AFD7-5821-58397BFB9025}|Assembly-CSharp.csproj|C:\\Projects\\Car_Project_Git\\CarProject\\Car_Project\\assets\\car.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CFB8AFEE-4BDC-AFD7-5821-58397BFB9025}|Assembly-CSharp.csproj|solutionrelative:assets\\car.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{CFB8AFEE-4BDC-AFD7-5821-58397BFB9025}|Assembly-CSharp.csproj|C:\\Projects\\Car_Project_Git\\CarProject\\Car_Project\\assets\\lightingmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -31,10 +27,6 @@
       "RelativeMoniker": "D:0:0:{CFB8AFEE-4BDC-AFD7-5821-58397BFB9025}|Assembly-CSharp.csproj|solutionrelative:assets\\antirollbar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CFB8AFEE-4BDC-AFD7-5821-58397BFB9025}|Assembly-CSharp.csproj|C:\\Projects\\Car_Project_Git\\CarProject\\Car_Project\\assets\\camerabehavior.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CFB8AFEE-4BDC-AFD7-5821-58397BFB9025}|Assembly-CSharp.csproj|solutionrelative:assets\\camerabehavior.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{CFB8AFEE-4BDC-AFD7-5821-58397BFB9025}|Assembly-CSharp.csproj|C:\\Projects\\Car_Project_Git\\CarProject\\Car_Project\\assets\\gears.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CFB8AFEE-4BDC-AFD7-5821-58397BFB9025}|Assembly-CSharp.csproj|solutionrelative:assets\\gears.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -43,15 +35,20 @@
       "RelativeMoniker": "D:0:0:{CFB8AFEE-4BDC-AFD7-5821-58397BFB9025}|Assembly-CSharp.csproj|solutionrelative:assets\\vehiculetraileffect.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Unity_Projects\\2nd_Project\\Assets\\CameraBehavior.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CFB8AFEE-4BDC-AFD7-5821-58397BFB9025}|Assembly-CSharp.csproj|C:\\Projects\\Car_Project_Git\\CarProject\\Car_Project\\assets\\car.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CFB8AFEE-4BDC-AFD7-5821-58397BFB9025}|Assembly-CSharp.csproj|solutionrelative:assets\\car.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{CFB8AFEE-4BDC-AFD7-5821-58397BFB9025}|Assembly-CSharp.csproj|C:\\Projects\\Car_Project_Git\\CarProject\\Car_Project\\assets\\powertowheels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CFB8AFEE-4BDC-AFD7-5821-58397BFB9025}|Assembly-CSharp.csproj|solutionrelative:assets\\powertowheels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{CFB8AFEE-4BDC-AFD7-5821-58397BFB9025}|Assembly-CSharp.csproj|C:\\Projects\\Car_Project_Git\\CarProject\\Car_Project\\assets\\icarinitializer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CFB8AFEE-4BDC-AFD7-5821-58397BFB9025}|Assembly-CSharp.csproj|solutionrelative:assets\\icarinitializer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CFB8AFEE-4BDC-AFD7-5821-58397BFB9025}|Assembly-CSharp.csproj|C:\\Projects\\Car_Project_Git\\CarProject\\Car_Project\\assets\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CFB8AFEE-4BDC-AFD7-5821-58397BFB9025}|Assembly-CSharp.csproj|solutionrelative:assets\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7FDFA2EC-F43F-C661-A280-B83B5290F97B}|Assembly-CSharp-Editor.csproj|C:\\Projects\\Car_Project_Git\\CarProject\\Car_Project\\assets\\editor\\gamemanagereditor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7FDFA2EC-F43F-C661-A280-B83B5290F97B}|Assembly-CSharp-Editor.csproj|solutionrelative:assets\\editor\\gamemanagereditor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -61,37 +58,35 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "CarObjects.cs",
-              "DocumentMoniker": "C:\\Projects\\Car_Project_Git\\CarProject\\Car_Project\\Assets\\CarObjects.cs",
-              "RelativeDocumentMoniker": "Assets\\CarObjects.cs",
-              "ToolTip": "C:\\Projects\\Car_Project_Git\\CarProject\\Car_Project\\Assets\\CarObjects.cs",
-              "RelativeToolTip": "Assets\\CarObjects.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAEAAAAAAAAAA==",
+              "DocumentIndex": 11,
+              "Title": "GameManagerEditor.cs",
+              "DocumentMoniker": "C:\\Projects\\Car_Project_Git\\CarProject\\Car_Project\\Assets\\Editor\\GameManagerEditor.cs",
+              "RelativeDocumentMoniker": "Assets\\Editor\\GameManagerEditor.cs",
+              "ToolTip": "C:\\Projects\\Car_Project_Git\\CarProject\\Car_Project\\Assets\\Editor\\GameManagerEditor.cs",
+              "RelativeToolTip": "Assets\\Editor\\GameManagerEditor.cs",
+              "ViewState": "AgIAACcAAAAAAAAAAAAAAFcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-05T12:28:18.808Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-03T20:29:45.128Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 10,
               "Title": "GameManager.cs",
               "DocumentMoniker": "C:\\Projects\\Car_Project_Git\\CarProject\\Car_Project\\Assets\\GameManager.cs",
               "RelativeDocumentMoniker": "Assets\\GameManager.cs",
               "ToolTip": "C:\\Projects\\Car_Project_Git\\CarProject\\Car_Project\\Assets\\GameManager.cs",
               "RelativeToolTip": "Assets\\GameManager.cs",
-              "ViewState": "AgIAAFAAAAAAAAAAAAAswJUAAAAKAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAL4AAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-04T13:38:13.516Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-04T13:38:13.516Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 9,
               "Title": "IcarInitializer.cs",
               "DocumentMoniker": "C:\\Projects\\Car_Project_Git\\CarProject\\Car_Project\\Assets\\IcarInitializer.cs",
               "RelativeDocumentMoniker": "Assets\\IcarInitializer.cs",
@@ -103,7 +98,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 2,
               "Title": "Car.cs",
               "DocumentMoniker": "C:\\Projects\\Car_Project_Git\\CarProject\\Car_Project\\Assets\\Car.cs",
               "RelativeDocumentMoniker": "Assets\\Car.cs",
@@ -115,111 +110,101 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "PowerToWheels.cs",
-              "DocumentMoniker": "C:\\Projects\\Car_Project_Git\\CarProject\\Car_Project\\Assets\\PowerToWheels.cs",
-              "RelativeDocumentMoniker": "Assets\\PowerToWheels.cs",
-              "ToolTip": "C:\\Projects\\Car_Project_Git\\CarProject\\Car_Project\\Assets\\PowerToWheels.cs",
-              "RelativeToolTip": "Assets\\PowerToWheels.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEYAAAAFAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "CarObjects.cs",
+              "DocumentMoniker": "C:\\Projects\\Car_Project_Git\\CarProject\\Car_Project\\Assets\\CarObjects.cs",
+              "RelativeDocumentMoniker": "Assets\\CarObjects.cs",
+              "ToolTip": "C:\\Projects\\Car_Project_Git\\CarProject\\Car_Project\\Assets\\CarObjects.cs",
+              "RelativeToolTip": "Assets\\CarObjects.cs",
+              "ViewState": "AgIAAEoAAAAAAAAAAIBJwEwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-19T10:47:45.613Z"
+              "WhenOpened": "2025-05-05T12:28:18.808Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "CarController.cs",
               "DocumentMoniker": "C:\\Projects\\Car_Project_Git\\CarProject\\Car_Project\\Assets\\CarController.cs",
               "RelativeDocumentMoniker": "Assets\\CarController.cs",
               "ToolTip": "C:\\Projects\\Car_Project_Git\\CarProject\\Car_Project\\Assets\\CarController.cs",
               "RelativeToolTip": "Assets\\CarController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAtAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-30T15:56:40.175Z"
+              "WhenOpened": "2024-10-30T15:56:40.175Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 8,
+              "Title": "PowerToWheels.cs",
+              "DocumentMoniker": "C:\\Projects\\Car_Project_Git\\CarProject\\Car_Project\\Assets\\PowerToWheels.cs",
+              "RelativeDocumentMoniker": "Assets\\PowerToWheels.cs",
+              "ToolTip": "C:\\Projects\\Car_Project_Git\\CarProject\\Car_Project\\Assets\\PowerToWheels.cs",
+              "RelativeToolTip": "Assets\\PowerToWheels.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-19T10:47:45.613Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
               "Title": "VehiculeTrailEffect.cs",
               "DocumentMoniker": "C:\\Projects\\Car_Project_Git\\CarProject\\Car_Project\\Assets\\VehiculeTrailEffect.cs",
               "RelativeDocumentMoniker": "Assets\\VehiculeTrailEffect.cs",
               "ToolTip": "C:\\Projects\\Car_Project_Git\\CarProject\\Car_Project\\Assets\\VehiculeTrailEffect.cs",
               "RelativeToolTip": "Assets\\VehiculeTrailEffect.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACsAAAAVAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFsAAABFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-09-04T11:23:07.185Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 6,
               "Title": "Gears.cs",
               "DocumentMoniker": "C:\\Projects\\Car_Project_Git\\CarProject\\Car_Project\\Assets\\Gears.cs",
               "RelativeDocumentMoniker": "Assets\\Gears.cs",
               "ToolTip": "C:\\Projects\\Car_Project_Git\\CarProject\\Car_Project\\Assets\\Gears.cs",
               "RelativeToolTip": "Assets\\Gears.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAFAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAACFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-28T14:44:55.002Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "CameraBehavior.cs",
-              "DocumentMoniker": "C:\\Projects\\Car_Project_Git\\CarProject\\Car_Project\\Assets\\CameraBehavior.cs",
-              "RelativeDocumentMoniker": "Assets\\CameraBehavior.cs",
-              "ToolTip": "C:\\Projects\\Car_Project_Git\\CarProject\\Car_Project\\Assets\\CameraBehavior.cs",
-              "RelativeToolTip": "Assets\\CameraBehavior.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAACAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-19T10:47:45.738Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 5,
               "Title": "AntiRollBar.cs",
               "DocumentMoniker": "C:\\Projects\\Car_Project_Git\\CarProject\\Car_Project\\Assets\\AntiRollBar.cs",
               "RelativeDocumentMoniker": "Assets\\AntiRollBar.cs",
               "ToolTip": "C:\\Projects\\Car_Project_Git\\CarProject\\Car_Project\\Assets\\AntiRollBar.cs",
               "RelativeToolTip": "Assets\\AntiRollBar.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACsAAACFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-09-05T09:15:18.296Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 4,
               "Title": "CinemachineCameras.cs",
               "DocumentMoniker": "C:\\Projects\\Car_Project_Git\\CarProject\\Car_Project\\Assets\\CinemachineCameras.cs",
               "RelativeDocumentMoniker": "Assets\\CinemachineCameras.cs",
               "ToolTip": "C:\\Projects\\Car_Project_Git\\CarProject\\Car_Project\\Assets\\CinemachineCameras.cs",
               "RelativeToolTip": "Assets\\CinemachineCameras.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-19T10:47:45.308Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 3,
               "Title": "LightingManager.cs",
               "DocumentMoniker": "C:\\Projects\\Car_Project_Git\\CarProject\\Car_Project\\Assets\\LightingManager.cs",
               "RelativeDocumentMoniker": "Assets\\LightingManager.cs",
               "ToolTip": "C:\\Projects\\Car_Project_Git\\CarProject\\Car_Project\\Assets\\LightingManager.cs",
               "RelativeToolTip": "Assets\\LightingManager.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAVAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-19T10:47:45.733Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "CameraBehavior.cs",
-              "DocumentMoniker": "C:\\Unity_Projects\\2nd_Project\\Assets\\CameraBehavior.cs",
-              "RelativeDocumentMoniker": "..\\..\\..\\..\\Unity_Projects\\2nd_Project\\Assets\\CameraBehavior.cs",
-              "ToolTip": "C:\\Unity_Projects\\2nd_Project\\Assets\\CameraBehavior.cs",
-              "RelativeToolTip": "..\\..\\..\\..\\Unity_Projects\\2nd_Project\\Assets\\CameraBehavior.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACMAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2023-04-14T20:58:10.483Z"
             }
           ]
         }

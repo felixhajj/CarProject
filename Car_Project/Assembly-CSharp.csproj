@@ -62,7 +62,6 @@
     <Compile Include="Assets\AntiRollBar.cs" />
     <Compile Include="Assets\CarObjects.cs" />
     <Compile Include="Assets\PowerToWheels.cs" />
-    <Compile Include="Assets\CameraBehavior.cs" />
     <Compile Include="Assets\GameManager.cs" />
     <Compile Include="Assets\LightingManager.cs" />
     <Compile Include="Assets\VehiculeTrailEffect.cs" />

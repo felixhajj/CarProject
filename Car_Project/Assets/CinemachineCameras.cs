@@ -3,31 +3,25 @@ using Cinemachine;
 
 public class CinemachineCameras : MonoBehaviour
 {
+	private CarObjects carobjects;
+    private PowerToWheels powertowheels;
 
-	public float rotatespeed = 5f;
-	[SerializeField] private CinemachineVirtualCamera thirdpersonrear;
-	[SerializeField] private CinemachineVirtualCamera thirdpersonfront;
-	[SerializeField] private CinemachineVirtualCamera worldupcamera;
-	[SerializeField] private CinemachineVirtualCamera firstperson;
-
-	[SerializeField] private CinemachineBrain Brain;
-	[SerializeField] private GameObject worldup;
-
+    public float rotatespeed = 5f;
+	
 	private bool worldupcurr;
-	private PowerToWheels power;
 	private CinemachineVirtualCamera currcamera;
-
 	private int currview;
+
 
 	private void Start()
 	{
-		currcamera = thirdpersonrear;
+        carobjects = GetComponent<CarObjects>();
+        powertowheels = GetComponent<PowerToWheels>();
+
+        currcamera = carobjects.thirdpersonrear;
 		worldupcurr = false;
-		SwitchToCamera(currcamera, thirdpersonrear);
+		SwitchToCamera(currcamera, carobjects.thirdpersonrear);
 		currview = 0;
-
-		power = GetComponent<PowerToWheels>();
-
 	}
 
 
@@ -39,35 +33,35 @@ public class CinemachineCameras : MonoBehaviour
 			currview++;
 			if(currview%3==0)
 			{
-				SwitchToCamera(currcamera,thirdpersonrear);
+				SwitchToCamera(currcamera, carobjects.thirdpersonrear);
 				currview = 0;
 			}
 			else if(currview%3==1)
 			{
-				Brain.m_WorldUpOverride = worldup.transform;
-				SwitchToCamera(currcamera, worldupcamera);
+                carobjects.Brain.m_WorldUpOverride = carobjects.worldup.transform;
+				SwitchToCamera(currcamera, carobjects.worldupcamera);
 				worldupcurr = true;
 			}
 			else if(currview%3==2)
 			{
-				Brain.m_WorldUpOverride = null;
-				SwitchToCamera(currcamera, firstperson);
+                carobjects.Brain.m_WorldUpOverride = null;
+				SwitchToCamera(currcamera, carobjects.firstperson);
 				worldupcurr = false;
 			}
 		}
 
 		if (currview==0)
 		{
-			if (power.gasinput == -1)
+			if (powertowheels.gasinput == -1)
 			{
-				SwitchToCamera(currcamera, thirdpersonfront);
+				SwitchToCamera(currcamera, carobjects.thirdpersonfront);
 			}
 			else
 			{
-				if (currcamera != thirdpersonrear)
+				if (currcamera != carobjects.thirdpersonrear)
 				{
-					SwitchToCamera(currcamera, thirdpersonrear);
-					Debug.Log(power.gasinput);
+					SwitchToCamera(currcamera, carobjects.thirdpersonrear);
+					Debug.Log(powertowheels.gasinput);
 				}
 			}
 		}

@@ -7,39 +7,17 @@ using UnityEngine;
 public class CarController : MonoBehaviour, IcarInitializer
 {
     //everything related to the car and its logic, and not mechanic related,(the wheelgroundstate, centerofmass,etc.. are not considered mechanic).
-    //or accessing car parts from different script, you put them here and other scripts use them from here(like wheelcolliders and centerofmass) ?????doesnt make sense as other scripts are accessing car parts like fronttyremarks in vehiculetraukeffect and lights in Lighting Manager
     private Car car;
+    private CarObjects carobjects;
 
     public bool engineturnon = false;
 
-    //if one of those is equal to 0, means the tyre is in the air, if its other, 1 would be for road, 2 for offroad,etc... should work more on it
-    public Dictionary<WheelCollider, int> wheelGroundStates;
-
-    public Dictionary<string, WheelCollider> wheelColliders = new Dictionary<string, WheelCollider>();
-
-
-    public Dictionary<string, GameObject> wheelsToAnimate = new Dictionary<string, GameObject>();
-
+    //tracking values(which i definitely need also)
+    public Dictionary<WheelCollider, int> wheelGroundStates;//if one of those is equal to 0, means the tyre is in the air, if its other, 1 would be for road, 2 for offroad,etc... should work more on it
     public float frontLeftLoad;
     public float frontRightLoad;
     public float rearLeftLoad;
     public float rearRightLoad;
-
-    public GameObject centerofmass;
-
-
-    //public TrailRenderer[] fronttyremarks;
-    //public TrailRenderer[] reartyremarks;
-
-
-    public AudioSource engineAudioSource;
-    public AudioSource tirescreechAudioSource;
-    public AudioClip engineStartupClip;
-    public AudioClip engineLoopClip;
-    public AudioClip engineShutdownClip;
-    public AudioClip tirescreechingClip;
-    public AudioClip tirescreechingendClip;
-
     float wheelCircumference;
 
 
@@ -50,52 +28,20 @@ public class CarController : MonoBehaviour, IcarInitializer
 
     void Start()
     {
-        //Vector3 cardim = cardimensions.bounds.size;
-
-        foreach (WheelCollider wheelcollider in GetComponentsInChildren<WheelCollider>())
-        {
-            if (wheelcollider == null)
-            {
-                Debug.LogError($"[CarController] Missing WheelCollider on {gameObject.name}");
-                continue;
-            }
-
-            wheelColliders[wheelcollider.name] = wheelcollider;
-        }
-
-        foreach (Transform wheeltoanimate in GetComponentsInChildren<Transform>())
-        {
-            if (wheeltoanimate.name.EndsWith("Wheel"))
-            {
-                if (wheeltoanimate.gameObject == null)
-                {
-                    Debug.LogError($"[CarController] Missing visual wheel object for {wheeltoanimate.name} in {gameObject.name}");
-                    continue;
-                }
-
-                wheelsToAnimate[wheeltoanimate.name] = wheeltoanimate.gameObject;
-            }
-        }
+        carobjects= GetComponent<CarObjects>();
 
 
-        centerofmass = transform.Find("CenterOfMass")?.gameObject;
-
-        if (centerofmass == null)
-        {
-            Debug.LogError("Center of Mass not found in " + gameObject.name);
-        }
-
-        GetComponent<Rigidbody>().centerOfMass = centerofmass.transform.localPosition;
+        GetComponent<Rigidbody>().centerOfMass = carobjects.centerofmass.transform.localPosition;
 
 
         wheelCircumference = 2f * Mathf.PI * car.WheelRadius;
 
         wheelGroundStates = new Dictionary<WheelCollider, int>
         {
-            { wheelColliders["FrontLeft"], 0 },
-            { wheelColliders["FrontRight"], 0 },
-            { wheelColliders["RearLeft"], 0 },
-            { wheelColliders["RearRight"], 0 }
+            { carobjects.wheelColliders["FrontLeft"], 0 },
+            { carobjects.wheelColliders["FrontRight"], 0 },
+            { carobjects.wheelColliders["RearLeft"], 0 },
+            { carobjects.wheelColliders["RearRight"], 0 }
         };
     }
 
@@ -109,29 +55,29 @@ public class CarController : MonoBehaviour, IcarInitializer
             if (engineturnon)
             {
                 // Play engine startup audio
-                engineAudioSource.clip = engineStartupClip;
-                engineAudioSource.loop = false;
-                engineAudioSource.Play();
+                carobjects.engineAudioSource.clip = carobjects.engineStartupClip;
+                carobjects.engineAudioSource.loop = false;
+                carobjects.engineAudioSource.Play();
             }
             else
             {
-                engineAudioSource.Stop();
+                carobjects.engineAudioSource.Stop();
 
                 // Play engine turnoff audio
-                engineAudioSource.clip = engineShutdownClip;
-                engineAudioSource.loop = false;
-                engineAudioSource.Play();
+                carobjects.engineAudioSource.clip = carobjects.engineShutdownClip;
+                carobjects.engineAudioSource.loop = false;
+                carobjects.engineAudioSource.Play();
 
             }
         }
 
-        if (engineturnon && !engineAudioSource.isPlaying)
+        if (engineturnon && !carobjects.engineAudioSource.isPlaying)
         {
 
             // Play engine loop
-            engineAudioSource.clip = engineLoopClip;
-            engineAudioSource.loop = true;
-            engineAudioSource.Play();
+            carobjects.engineAudioSource.clip = carobjects.engineLoopClip;
+            carobjects.engineAudioSource.loop = true;
+            carobjects.engineAudioSource.Play();
 
         }
 
@@ -154,16 +100,16 @@ public class CarController : MonoBehaviour, IcarInitializer
     }
     private void FixedUpdate()
     {
-        UpdateWheelGroundState(wheelColliders["FrontLeft"]);
-        UpdateWheelGroundState(wheelColliders["FrontRight"]);
-        UpdateWheelGroundState(wheelColliders["RearLeft"]);
-        UpdateWheelGroundState(wheelColliders["RearRight"]);
+        UpdateWheelGroundState(carobjects.wheelColliders["FrontLeft"]);
+        UpdateWheelGroundState(carobjects.wheelColliders["FrontRight"]);
+        UpdateWheelGroundState(carobjects.wheelColliders["RearLeft"]);
+        UpdateWheelGroundState(carobjects.wheelColliders["RearRight"]);
 
 
-        frontLeftLoad = GetWheelLoad(wheelColliders["FrontLeft"]);
-        frontRightLoad = GetWheelLoad(wheelColliders["FrontRight"]);
-        rearLeftLoad = GetWheelLoad(wheelColliders["RearLeft"]);
-        rearRightLoad = GetWheelLoad(wheelColliders["RearRight"]);
+        frontLeftLoad = GetWheelLoad(carobjects.wheelColliders["FrontLeft"]);
+        frontRightLoad = GetWheelLoad(carobjects.wheelColliders["FrontRight"]);
+        rearLeftLoad = GetWheelLoad(carobjects.wheelColliders["RearLeft"]);
+        rearRightLoad = GetWheelLoad(carobjects.wheelColliders["RearRight"]);
 
         animatewheels();
 
@@ -173,14 +119,14 @@ public class CarController : MonoBehaviour, IcarInitializer
         Vector3 wheelposition = Vector3.zero;
         Quaternion wheelRotation = Quaternion.identity;
 
-        foreach (var pair in wheelColliders) // Iterates through all wheel colliders
+        foreach (var pair in carobjects.wheelColliders) // Iterates through all wheel colliders
         {
             pair.Value.GetWorldPose(out wheelposition, out wheelRotation); // Get the position & rotation
 
-            if (wheelsToAnimate.ContainsKey(pair.Key + "Wheel")) // Match the correct visual wheel
+            if (carobjects.wheelsToAnimate.ContainsKey(pair.Key + "Wheel")) // Match the correct visual wheel
             {
-                wheelsToAnimate[pair.Key + "Wheel"].transform.position = wheelposition;
-                wheelsToAnimate[pair.Key + "Wheel"].transform.rotation = wheelRotation;
+                carobjects.wheelsToAnimate[pair.Key + "Wheel"].transform.position = wheelposition;
+                carobjects.wheelsToAnimate[pair.Key + "Wheel"].transform.rotation = wheelRotation;
             }
         }
     }

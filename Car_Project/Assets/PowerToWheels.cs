@@ -12,12 +12,13 @@ public class PowerToWheels : MonoBehaviour, IcarInitializer
     //-the mechanics of the car. everything related to steering, and power translated to the wheels.
 
 //here, it contains values that are not static, and change overtime. thats why they're here and not 
+    private CarObjects carobjects;
     private CarController carcontroller;
     private Car car;
 
 
 
-    //tracking values
+    //tracking values(which i definitely need also)
     public float finalwheeltorque;
     public float speedKMH;
     private float slipangle;
@@ -60,14 +61,14 @@ public class PowerToWheels : MonoBehaviour, IcarInitializer
 
     void Start()
     {
-        carcontroller = GetComponent<CarController>();
+        carobjects = GetComponent<CarObjects>();
 
-        var rearLeftFriction = carcontroller.wheelColliders["RearLeft"].forwardFriction;
+        var rearLeftFriction = carobjects.wheelColliders["RearLeft"].forwardFriction;
         rearoriginalSlip = rearLeftFriction.extremumSlip;
         lastRearrot = rearrot;
 
         // Other initialization logic using the mediator
-        rearsidewayfrictionstiffness = carcontroller.wheelColliders["RearLeft"].sidewaysFriction.stiffness;
+        rearsidewayfrictionstiffness = carobjects.wheelColliders["RearLeft"].sidewaysFriction.stiffness;
     }
 
     void Update()
@@ -76,11 +77,11 @@ public class PowerToWheels : MonoBehaviour, IcarInitializer
         speedKMH = Mathf.RoundToInt(speed) * 3.6f;
 
         // Using mediator to get motorTorque and rpm values
-        rearlefttorque = carcontroller.wheelColliders["RearLeft"].motorTorque;
-        rearrighttorque = carcontroller.wheelColliders["RearRight"].motorTorque;
+        rearlefttorque = carobjects.wheelColliders["RearLeft"].motorTorque;
+        rearrighttorque = carobjects.wheelColliders["RearRight"].motorTorque;
 
-        rearrot = carcontroller.wheelColliders["RearLeft"].rpm;
-        frontrot = carcontroller.wheelColliders["FrontLeft"].rpm;
+        rearrot = carobjects.wheelColliders["RearLeft"].rpm;
+        frontrot = carobjects.wheelColliders["FrontLeft"].rpm;
     }
 
 
@@ -132,8 +133,8 @@ public class PowerToWheels : MonoBehaviour, IcarInitializer
     {
         if (!inGlitchMode)
         {
-            WheelCollider rearLeftWheel = carcontroller.wheelColliders["RearLeft"];
-            WheelCollider rearRightWheel = carcontroller.wheelColliders["RearRight"];
+            WheelCollider rearLeftWheel = carobjects.wheelColliders["RearLeft"];
+            WheelCollider rearRightWheel = carobjects.wheelColliders["RearRight"];
 
             inGlitchMode = true;
 
@@ -153,8 +154,8 @@ public class PowerToWheels : MonoBehaviour, IcarInitializer
     {
         if (inGlitchMode)
         {
-            WheelCollider rearLeftWheel = carcontroller.wheelColliders["RearLeft"];
-            WheelCollider rearRightWheel = carcontroller.wheelColliders["RearRight"];
+            WheelCollider rearLeftWheel = carobjects.wheelColliders["RearLeft"];
+            WheelCollider rearRightWheel = carobjects.wheelColliders["RearRight"];
 
             inGlitchMode = false;
 
@@ -194,8 +195,8 @@ public class PowerToWheels : MonoBehaviour, IcarInitializer
         }
         else
         {
-            WheelCollider rearLeft = carcontroller.wheelColliders["RearLeft"];
-            WheelCollider rearRight = carcontroller.wheelColliders["RearRight"];
+            WheelCollider rearLeft = carobjects.wheelColliders["RearLeft"];
+            WheelCollider rearRight = carobjects.wheelColliders["RearRight"];
 
             rearLeft.motorTorque = 0;
             rearRight.motorTorque = 0;
@@ -219,10 +220,10 @@ public class PowerToWheels : MonoBehaviour, IcarInitializer
     */
     void braking()
     {
-        WheelCollider rearLeftWheel = carcontroller.wheelColliders["RearLeft"];
-        WheelCollider rearRightWheel = carcontroller.wheelColliders["RearRight"];
-        WheelCollider frontLeftWheel = carcontroller.wheelColliders["FrontLeft"];
-        WheelCollider frontRightWheel = carcontroller.wheelColliders["FrontRight"];
+        WheelCollider rearLeftWheel = carobjects.wheelColliders["RearLeft"];
+        WheelCollider rearRightWheel = carobjects.wheelColliders["RearRight"];
+        WheelCollider frontLeftWheel = carobjects.wheelColliders["FrontLeft"];
+        WheelCollider frontRightWheel = carobjects.wheelColliders["FrontRight"];
 
         // Calculate slip angle first
         slipangle = Vector3.Angle(transform.forward, GetComponent<Rigidbody>().velocity - transform.forward);
@@ -296,8 +297,8 @@ public class PowerToWheels : MonoBehaviour, IcarInitializer
 
     void steering()
     {
-        WheelCollider frontLeftWheel = carcontroller.wheelColliders["Frontleft"];
-        WheelCollider frontRightWheel = carcontroller.wheelColliders["FrontRight"];
+        WheelCollider frontLeftWheel = carobjects.wheelColliders["Frontleft"];
+        WheelCollider frontRightWheel = carobjects.wheelColliders["FrontRight"];
 
         float steeringAngle = steeringInput * car.SteeringCurve.Evaluate(speedKMH);
 
@@ -336,8 +337,8 @@ public class PowerToWheels : MonoBehaviour, IcarInitializer
 
     public void enginesound(float motor)
     {
-        AudioSource engineAudioSource = carcontroller.engineAudioSource; // Get the AudioSource through the mediator
-        float rearrot = Mathf.Abs(carcontroller.wheelColliders["RearLeft"].rpm); // Access the rearleft wheel's rpm through the mediator
+        AudioSource engineAudioSource = carobjects.engineAudioSource; // Get the AudioSource through the mediator
+        float rearrot = Mathf.Abs(carobjects.wheelColliders["RearLeft"].rpm); // Access the rearleft wheel's rpm through the mediator
 
         // motor maximum value is 5000, so divide motor by a value greater than 7000 to give part of the sound to rearrot as well.
         engineAudioSource.volume = 0.25f + (Mathf.Abs(motor) * (0.75f / 9000f));

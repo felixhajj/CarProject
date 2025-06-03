@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Gears : IcarInitializer
 {
+    //should be worked on, didnt put its values that can be changed in the CarObjects class, so i tweak with this class in the future
     public Car car;
     public int gear;
     public float gearratio;

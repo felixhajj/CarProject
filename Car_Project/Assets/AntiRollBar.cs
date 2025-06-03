@@ -4,28 +4,19 @@ using UnityEngine;
 
 public class AntiRollBar : MonoBehaviour 
 {
-
+	CarObjects carobjects;
 	CarController carController;
 
-
-    public WheelCollider WheelL;
-	public WheelCollider WheelR;
 	public float AntiRoll = 3000;
-
 	private Rigidbody car;
 
-	void Start(){
-		car = GetComponent<Rigidbody> ();
-        carController = GetComponent<CarController>();
-        if (carController != null)
-        {
-            WheelL = carController.wheelColliders["FrontLeft"];
-            WheelR = carController.wheelColliders["FrontRight"];
-        }
-        else
-        {
-            Debug.LogError("[AntiRollBar] CarController not found on " + gameObject.name);
-        }
+
+	void Start()
+	{
+		carobjects = GetComponent<CarObjects>();
+		carController = GetComponent<CarController>();
+		car = GetComponent<Rigidbody>();
+        
     }
 
 	void FixedUpdate ()
@@ -35,24 +26,24 @@ public class AntiRollBar : MonoBehaviour
 		float travelR = 1.0f;
 
 
-		bool groundedL = WheelL.GetGroundHit (out hit);
+		bool groundedL = carobjects.wheelColliders["RearLeft"].GetGroundHit (out hit);
 		if (groundedL) 
 		{
-			travelL = (-WheelL.transform.InverseTransformPoint (hit.point).y - WheelL.radius) / WheelL.suspensionDistance;
+			travelL = (-carobjects.wheelColliders["RearLeft"].transform.InverseTransformPoint (hit.point).y - carobjects.wheelColliders["RearLeft"].radius) / carobjects.wheelColliders["RearLeft"].suspensionDistance;
 		}
 
-		bool groundedR = WheelR.GetGroundHit (out hit);
+		bool groundedR = carobjects.wheelColliders["RearRight"].GetGroundHit (out hit);
 		if (groundedR) 
 		{
-			travelR = (-WheelR.transform.InverseTransformPoint (hit.point).y - WheelR.radius) / WheelR.suspensionDistance;
+			travelR = (-carobjects.wheelColliders["RearRight"].transform.InverseTransformPoint (hit.point).y - carobjects.wheelColliders["RearRight"].radius) / carobjects.wheelColliders["RearRight"].suspensionDistance;
 		}
 
 		float antiRollForce = (travelL - travelR) * AntiRoll;
 
 		if (groundedL)
-			car.AddForceAtPosition (WheelL.transform.up * -antiRollForce, WheelL.transform.position);
+			car.AddForceAtPosition (carobjects.wheelColliders["RearLeft"].transform.up * -antiRollForce, carobjects.wheelColliders["RearLeft"].transform.position);
 
 		if (groundedR)
-			car.AddForceAtPosition (WheelR.transform.up * antiRollForce, WheelR.transform.position);
+			car.AddForceAtPosition (carobjects.wheelColliders["RearRight"].transform.up * antiRollForce, carobjects.wheelColliders["RearRight"].transform.position);
 	}
 }
