@@ -15,7 +15,7 @@ C:/Projects/Car_Project_Git/CarProject/Car_Project
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-55876
+55334
 Successfully changed project path to: C:/Projects/Car_Project_Git/CarProject/Car_Project
 C:/Projects/Car_Project_Git/CarProject/Car_Project
 [UnityMemory] Configuration Parameters - Can be set up in boot.config
@@ -47,11 +47,11 @@ C:/Projects/Car_Project_Git/CarProject/Car_Project
     "memorysetup-temp-allocator-size-cloud-worker=32768"
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gfx=262144"
-Player connection [9520] Host "[IP] 192.168.0.101 [Port] 0 [Flags] 2 [Guid] 2089158249 [EditorId] 2089158249 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-9B3REL2) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
+Player connection [15684] Host "[IP] 192.168.0.101 [Port] 0 [Flags] 2 [Guid] 1981962161 [EditorId] 1981962161 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-9B3REL2) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
 
-Player connection [9520] Host "[IP] 192.168.0.101 [Port] 0 [Flags] 2 [Guid] 2089158249 [EditorId] 2089158249 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-9B3REL2) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
+Player connection [15684] Host "[IP] 192.168.0.101 [Port] 0 [Flags] 2 [Guid] 1981962161 [EditorId] 1981962161 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-9B3REL2) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
 
-Refreshing native plugins compatible for Editor in 62.47 ms, found 5 plugins.
+Refreshing native plugins compatible for Editor in 71.83 ms, found 5 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2021.3.17f1 (3e8111cac19d)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2021.3.17f1/Editor/Data/Resources/UnitySubsystems
@@ -67,89 +67,101 @@ Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2021.3.17f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2021.3.17f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/2021.3.17f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56860
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56088
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.3.17f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.003489 seconds.
+Registered in 0.003497 seconds.
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 60.22 ms, found 5 plugins.
+Refreshing native plugins compatible for Editor in 65.00 ms, found 5 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.487 seconds
+- Completed reload, in  0.486 seconds
 Domain Reload Profiling:
-	ReloadAssembly (487ms)
+	ReloadAssembly (486ms)
 		BeginReloadAssembly (52ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (0ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
 			CreateAndSetChildDomain (1ms)
-		EndReloadAssembly (349ms)
+		EndReloadAssembly (357ms)
 			LoadAssemblies (51ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
 			SetupTypeCache (73ms)
 			ReleaseScriptCaches (0ms)
-			RebuildScriptCaches (19ms)
-			SetupLoadedEditorAssemblies (220ms)
+			RebuildScriptCaches (18ms)
+			SetupLoadedEditorAssemblies (226ms)
 				LogAssemblyErrors (0ms)
 				InitializePlatformSupportModulesInManaged (5ms)
 				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (60ms)
+				RefreshPlugins (65ms)
 				BeforeProcessingInitializeOnLoad (1ms)
-				ProcessInitializeOnLoadAttributes (116ms)
-				ProcessInitializeOnLoadMethodAttributes (38ms)
+				ProcessInitializeOnLoadAttributes (120ms)
+				ProcessInitializeOnLoadMethodAttributes (34ms)
 				AfterProcessingInitializeOnLoad (0ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (0ms)
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.004250 seconds.
+Registered in 0.006203 seconds.
 Begin MonoManager ReloadAssembly
 Symbol file LoadedFromMemory doesn't match image C:\Projects\Car_Project_Git\CarProject\Car_Project\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
 Symbol file LoadedFromMemory doesn't match image C:\Projects\Car_Project_Git\CarProject\Car_Project\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.46 ms, found 5 plugins.
+Refreshing native plugins compatible for Editor in 0.48 ms, found 5 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.805 seconds
+- Completed reload, in  0.824 seconds
 Domain Reload Profiling:
-	ReloadAssembly (806ms)
-		BeginReloadAssembly (81ms)
+	ReloadAssembly (825ms)
+		BeginReloadAssembly (83ms)
 			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (5ms)
+			DisableScriptedObjects (4ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (14ms)
-		EndReloadAssembly (638ms)
+			CreateAndSetChildDomain (12ms)
+		EndReloadAssembly (648ms)
 			LoadAssemblies (63ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (194ms)
+			SetupTypeCache (210ms)
 			ReleaseScriptCaches (0ms)
-			RebuildScriptCaches (53ms)
-			SetupLoadedEditorAssemblies (301ms)
+			RebuildScriptCaches (45ms)
+			SetupLoadedEditorAssemblies (305ms)
 				LogAssemblyErrors (0ms)
 				InitializePlatformSupportModulesInManaged (4ms)
 				SetLoadedEditorAssemblies (0ms)
 				RefreshPlugins (1ms)
 				BeforeProcessingInitializeOnLoad (63ms)
 				ProcessInitializeOnLoadAttributes (211ms)
-				ProcessInitializeOnLoadMethodAttributes (18ms)
-				AfterProcessingInitializeOnLoad (4ms)
+				ProcessInitializeOnLoadMethodAttributes (22ms)
+				AfterProcessingInitializeOnLoad (5ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (4ms)
 Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
+Shader '/Vefects/SH_Vefects_Extra_Grid_01': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader '/_Vefects_/SH_Vefects_Grid_01': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader 'Vefects/SH_Vefects_URP_VFX_Character_Showoff': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader 'Vefects/SH_Vefects_VFX_URP_Trail_Distortion': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader '/Vefects/SH_Vefects_Extra_Billboard_01': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader 'Vefects/SH_Vefects_URP_VFX_Character_Showoff': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader '/_Vefects_/SH_Vefects_Grid_01': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader '/Vefects/SH_Vefects_Extra_Billboard_01': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader 'Vefects/SH_Vefects_URP_VFX_Character_Showoff': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader 'Vefects/SH_Vefects_URP_VFX_Character_Showoff': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader '/Vefects/SH_Vefects_Extra_Grid_01': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader 'Vefects/SH_Vefects_VFX_URP_Trail_Distortion': fallback shader 'Hidden/Shader Graph/FallbackError' not found
 Launched and connected shader compiler UnityShaderCompiler.exe after 0.03 seconds
-Refreshing native plugins compatible for Editor in 0.44 ms, found 5 plugins.
+Refreshing native plugins compatible for Editor in 0.46 ms, found 5 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 3688 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 43 unused Assets / (184.3 KB). Loaded Objects now: 4146.
-Memory consumption went from 201.8 MB to 201.6 MB.
-Total: 2.585700 ms (FindLiveObjects: 0.180600 ms CreateObjectMapping: 0.095400 ms MarkObjects: 2.197100 ms  DeleteObjects: 0.111800 ms)
+Unloading 3706 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 50 unused Assets / (2.0 MB). Loaded Objects now: 4160.
+Memory consumption went from 208.7 MB to 206.7 MB.
+Total: 2.683200 ms (FindLiveObjects: 0.170700 ms CreateObjectMapping: 0.074900 ms MarkObjects: 2.059000 ms  DeleteObjects: 0.378100 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
@@ -163,19 +175,1321 @@ AssetImportParameters requested are different than current active one (requested
   custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
 Received Import Request.
-  Time since last request: 1732060.249317 seconds.
-  path: Assets/PowerToWheels.cs
-  artifactKey: Guid(ff190aca93a3c9a408bd2a18b7b89d2e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/PowerToWheels.cs using Guid(ff190aca93a3c9a408bd2a18b7b89d2e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '219111e7d386fd3733dd8075a6ab91ca') in 0.058230 seconds 
+  Time since last request: 981923.707735 seconds.
+  path: Assets/Trails/Trails VFX/VFX
+  artifactKey: Guid(eba7688ce21e7a24fb8ce46532b68928) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Trails/Trails VFX/VFX using Guid(eba7688ce21e7a24fb8ce46532b68928) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ac65757c7d82efb0c0212870b4df8966') in 0.006600 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 5906.114869 seconds.
-  path: Assets/audio sounds_audacity
-  artifactKey: Guid(e0090459d7cd719498e71c0edcb113d5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/audio sounds_audacity using Guid(e0090459d7cd719498e71c0edcb113d5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2dd6c30433d890e1792efffcf167a9e5') in 0.014849 seconds 
+  Time since last request: 0.000035 seconds.
+  path: Assets/Trails/Trails VFX
+  artifactKey: Guid(10a28174e3167be408b8fbe4c667f848) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Trails/Trails VFX using Guid(10a28174e3167be408b8fbe4c667f848) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a025c573659499759f67358d95895193') in 0.004590 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 23.711520 seconds.
-  path: Assets/audio sounds_audacity/audio files/5.tire_screeching.mp3
-  artifactKey: Guid(4f600ae23157da5408218976e0f81b50) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/audio sounds_audacity/audio files/5.tire_screeching.mp3 using Guid(4f600ae23157da5408218976e0f81b50) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b88517d06a206e3d40e47bb6765ad9fd') in 0.237646 seconds 
+  Time since last request: 0.105479 seconds.
+  path: Assets/Trails/Trails VFX/VFX/Materials
+  artifactKey: Guid(fab91c64b031dd54f94983f461f7c7dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Trails/Trails VFX/VFX/Materials using Guid(fab91c64b031dd54f94983f461f7c7dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '03e12ba97b83213f2c531b5efb940345') in 0.004555 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.065706 seconds.
+  path: Assets/Trails/Trails VFX/VFX/Materials/M_VFX_BIRP_Trail_Cosmos_01.mat
+  artifactKey: Guid(d6c4055723cfb564e86f319cd5230e68) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Trails/Trails VFX/VFX/Materials/M_VFX_BIRP_Trail_Cosmos_01.mat using Guid(d6c4055723cfb564e86f319cd5230e68) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a932a83fdcc72460cf27a8043b54d9b0') in 0.197814 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000032 seconds.
+  path: Assets/Trails/Trails VFX/VFX/Materials/M_VFX_BIRP_Trail_Electric_01.mat
+  artifactKey: Guid(175baa0dfb5c395448ee21e2718edfda) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Trails/Trails VFX/VFX/Materials/M_VFX_BIRP_Trail_Electric_01.mat using Guid(175baa0dfb5c395448ee21e2718edfda) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '84c01063c80622b73e9c6e3ca38e9110') in 0.011389 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000036 seconds.
+  path: Assets/Trails/Trails VFX/VFX/Materials/M_VFX_BIRP_Trail_Sound_01.mat
+  artifactKey: Guid(286f3f0555f6d954daff3da5a228845d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Trails/Trails VFX/VFX/Materials/M_VFX_BIRP_Trail_Sound_01.mat using Guid(286f3f0555f6d954daff3da5a228845d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '16dc065b3afa3408bb3be757caa6d08f') in 0.010250 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000041 seconds.
+  path: Assets/Trails/Trails VFX/VFX/Materials/M_VFX_BIRP_Trail_Fire_01.mat
+  artifactKey: Guid(6defce089a88b6b4fb3f40b6fdd50731) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Trails/Trails VFX/VFX/Materials/M_VFX_BIRP_Trail_Fire_01.mat using Guid(6defce089a88b6b4fb3f40b6fdd50731) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '884fb3ffa44b02b990632543241489e9') in 0.008601 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000018 seconds.
+  path: Assets/Trails/Trails VFX/VFX/Materials/M_VFX_BIRP_Trail_Void_02.mat
+  artifactKey: Guid(bcf16c20dcb057345907caaca55013a0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Trails/Trails VFX/VFX/Materials/M_VFX_BIRP_Trail_Void_02.mat using Guid(bcf16c20dcb057345907caaca55013a0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f627cad31f43b8520b39e678a3cc7f69') in 0.015433 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/Trails/Trails VFX/VFX/Materials/M_VFX_BIRP_Trail_Cosmos_02.mat
+  artifactKey: Guid(6065b0b546f36dc46a9067260e702dbf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Trails/Trails VFX/VFX/Materials/M_VFX_BIRP_Trail_Cosmos_02.mat using Guid(6065b0b546f36dc46a9067260e702dbf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9307497427c1e9eed9ce7a7efec99ed5') in 0.013539 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/Trails/Trails VFX/VFX/Materials/M_VFX_BIRP_Trail_Dark_01.mat
+  artifactKey: Guid(8f9b48c56a1919748ad9560232989862) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Trails/Trails VFX/VFX/Materials/M_VFX_BIRP_Trail_Dark_01.mat using Guid(8f9b48c56a1919748ad9560232989862) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ceff6c44478b57552404c309d73ffed1') in 0.008116 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000015 seconds.
+  path: Assets/Trails/Trails VFX/VFX/Materials/M_VFX_BIRP_Trail_Earth_02.mat
+  artifactKey: Guid(d2df49cc6c955c84ab42932af8b7ebf5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Trails/Trails VFX/VFX/Materials/M_VFX_BIRP_Trail_Earth_02.mat using Guid(d2df49cc6c955c84ab42932af8b7ebf5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b4849e86742c11562c0448141baa35ee') in 0.008482 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000015 seconds.
+  path: Assets/Trails/Trails VFX/VFX/Materials/M_VFX_BIRP_Trail_Nature_01.mat
+  artifactKey: Guid(ebac090c3a2706242a50f93654b8757f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Trails/Trails VFX/VFX/Materials/M_VFX_BIRP_Trail_Nature_01.mat using Guid(ebac090c3a2706242a50f93654b8757f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bdffc2a204ceb444cd5aa2224983ce1f') in 0.008383 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/Trails/Trails VFX/VFX/Materials/M_VFX_BIRP_Trail_Fire_02.mat
+  artifactKey: Guid(a0fa3c8c3a9ef0e4091fe8e5f4588496) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Trails/Trails VFX/VFX/Materials/M_VFX_BIRP_Trail_Fire_02.mat using Guid(a0fa3c8c3a9ef0e4091fe8e5f4588496) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1acb0bd60c71c660b670b25d4a112909') in 0.013914 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/Trails/Trails VFX/VFX/Materials/M_VFX_BIRP_Trail_Ice_02.mat
+  artifactKey: Guid(f90f7de459d8d544ca1f26e465b327c7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Trails/Trails VFX/VFX/Materials/M_VFX_BIRP_Trail_Ice_02.mat using Guid(f90f7de459d8d544ca1f26e465b327c7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '07443843d7a43765278331446cb99e53') in 0.013042 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/Trails/Trails VFX/VFX/Materials/M_VFX_BIRP_Trail_Void_01.mat
+  artifactKey: Guid(4a7610def29ce88468cd6f5a0d006c33) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Trails/Trails VFX/VFX/Materials/M_VFX_BIRP_Trail_Void_01.mat using Guid(4a7610def29ce88468cd6f5a0d006c33) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e6980017adf7bb03b46d548a4a81be3e') in 0.009208 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000015 seconds.
+  path: Assets/Trails/Trails VFX/VFX/Materials/M_VFX_BIRP_Trail_Electric_02.mat
+  artifactKey: Guid(37060e2c46ce93348be44e344409c0fd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Trails/Trails VFX/VFX/Materials/M_VFX_BIRP_Trail_Electric_02.mat using Guid(37060e2c46ce93348be44e344409c0fd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c34e67cf1045e8d082d59b0eb413f5a0') in 0.007846 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Trails/Trails VFX/VFX/Materials/M_VFX_BIRP_Trail_Ice_01.mat
+  artifactKey: Guid(f3fb1779c2012bc47bf8221c97ffc4a9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Trails/Trails VFX/VFX/Materials/M_VFX_BIRP_Trail_Ice_01.mat using Guid(f3fb1779c2012bc47bf8221c97ffc4a9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1b037ec2a5e6b1c1aa3fd6368fa92fa1') in 0.008555 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000015 seconds.
+  path: Assets/Trails/Trails VFX/VFX/Materials/M_VFX_BIRP_Trail_Nature_02.mat
+  artifactKey: Guid(b3f8bcbe26b3217439f50a26cc573bf4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Trails/Trails VFX/VFX/Materials/M_VFX_BIRP_Trail_Nature_02.mat using Guid(b3f8bcbe26b3217439f50a26cc573bf4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b91d4633fbec817272d57af1f785d1a5') in 0.013086 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000015 seconds.
+  path: Assets/Trails/Trails VFX/VFX/Materials/M_VFX_BIRP_Trail_Water_01.mat
+  artifactKey: Guid(ff46927862fd0be40b4ff7dcf70d40a4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Trails/Trails VFX/VFX/Materials/M_VFX_BIRP_Trail_Water_01.mat using Guid(ff46927862fd0be40b4ff7dcf70d40a4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dcfe228738028ce52c5c55e01714ce1c') in 0.016139 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000036 seconds.
+  path: Assets/Trails/Trails VFX/VFX/Materials/M_VFX_BIRP_Trail_Water_02.mat
+  artifactKey: Guid(ee907ef4297b1274c8b77bca00212538) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Trails/Trails VFX/VFX/Materials/M_VFX_BIRP_Trail_Water_02.mat using Guid(ee907ef4297b1274c8b77bca00212538) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '88e06f4097e0f1043e79c3bae01a9eec') in 0.007973 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000025 seconds.
+  path: Assets/Trails/Trails VFX/VFX/Materials/M_VFX_BIRP_Trail_Distortion_01.mat
+  artifactKey: Guid(bca1bfa84be79314fbc4cd84761c254a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Trails/Trails VFX/VFX/Materials/M_VFX_BIRP_Trail_Distortion_01.mat using Guid(bca1bfa84be79314fbc4cd84761c254a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0fd05342bb43f1a8c4a9906506ff95ed') in 0.089193 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/Trails/Trails VFX/VFX/Materials/M_VFX_BIRP_Trail_Earth_01.mat
+  artifactKey: Guid(bf00bfdbd8412544a81014939fc7d160) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Trails/Trails VFX/VFX/Materials/M_VFX_BIRP_Trail_Earth_01.mat using Guid(bf00bfdbd8412544a81014939fc7d160) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a3f42ebc62adb0e95778107c9fe459f0') in 0.010265 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/Trails/Trails VFX/VFX/Materials/M_VFX_BIRP_Trail_Dark_02.mat
+  artifactKey: Guid(434e33fe2551e2e4dafed2d8b2d2bfb5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Trails/Trails VFX/VFX/Materials/M_VFX_BIRP_Trail_Dark_02.mat using Guid(434e33fe2551e2e4dafed2d8b2d2bfb5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6804e527eff6ef50de379b91d009e843') in 0.014863 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 3.409828 seconds.
+  path: Assets/Trails/Trails VFX/VFX/Particles
+  artifactKey: Guid(0455858e58086484990b3fa44974c3d6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Trails/Trails VFX/VFX/Particles using Guid(0455858e58086484990b3fa44974c3d6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b878d611690fb3b38871ee19ae460c05') in 0.011152 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.045662 seconds.
+  path: Assets/Trails/Trails VFX/VFX/Particles/VFX_Trail_Cosmos.prefab
+  artifactKey: Guid(fb3f223c70fbf584eacf016e821db74d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Trails/Trails VFX/VFX/Particles/VFX_Trail_Cosmos.prefab using Guid(fb3f223c70fbf584eacf016e821db74d) Importer(815301076,1909f56bfc062723c751e8b465ee728b) Shader 'Vefects/SH_Vefects_VFX_URP_Trail_Distortion': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+ -> (artifact id: 'b56b2f5a0d2e1ea3a338dba64449f03a') in 0.063489 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000015 seconds.
+  path: Assets/Trails/Trails VFX/VFX/Particles/VFX_Trail_Void.prefab
+  artifactKey: Guid(5efc0c60c3182ee408a5ddb60911a00b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Trails/Trails VFX/VFX/Particles/VFX_Trail_Void.prefab using Guid(5efc0c60c3182ee408a5ddb60911a00b) Importer(815301076,1909f56bfc062723c751e8b465ee728b) Shader 'Vefects/SH_Vefects_VFX_URP_Trail_Distortion': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+ -> (artifact id: '5af3f85bcc195dff333dadd250fbcfda') in 0.037515 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/Trails/Trails VFX/VFX/Particles/VFX_Trail_Fire.prefab
+  artifactKey: Guid(b4c1bfd5be8ad00479bd60386a8baed9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Trails/Trails VFX/VFX/Particles/VFX_Trail_Fire.prefab using Guid(b4c1bfd5be8ad00479bd60386a8baed9) Importer(815301076,1909f56bfc062723c751e8b465ee728b) Shader 'Vefects/SH_Vefects_VFX_URP_Trail_Distortion': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+ -> (artifact id: '03db6b38363f0e5f6405a67afbb57624') in 0.041046 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Trails/Trails VFX/VFX/Particles/VFX_Trail_Ice.prefab
+  artifactKey: Guid(4f7934a9a08ef81419d6c0952cd1c4ee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Trails/Trails VFX/VFX/Particles/VFX_Trail_Ice.prefab using Guid(4f7934a9a08ef81419d6c0952cd1c4ee) Importer(815301076,1909f56bfc062723c751e8b465ee728b) Shader 'Vefects/SH_Vefects_VFX_URP_Trail_Distortion': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+ -> (artifact id: '9a65daf268272ef73fcaf934a22c1880') in 0.034839 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/Trails/Trails VFX/VFX/Particles/VFX_Trail_Dark.prefab
+  artifactKey: Guid(1a3719d77e73ee04ab700674aab8f4bf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Trails/Trails VFX/VFX/Particles/VFX_Trail_Dark.prefab using Guid(1a3719d77e73ee04ab700674aab8f4bf) Importer(815301076,1909f56bfc062723c751e8b465ee728b) Shader 'Vefects/SH_Vefects_VFX_URP_Trail_Distortion': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+ -> (artifact id: 'ed5f6197a68056d1301a70513caa49f8') in 0.039925 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000014 seconds.
+  path: Assets/Trails/Trails VFX/VFX/Particles/VFX_Trail_Water.prefab
+  artifactKey: Guid(30da639c379c09f418650dee43e78d43) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Trails/Trails VFX/VFX/Particles/VFX_Trail_Water.prefab using Guid(30da639c379c09f418650dee43e78d43) Importer(815301076,1909f56bfc062723c751e8b465ee728b) Shader 'Vefects/SH_Vefects_VFX_URP_Trail_Distortion': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+ -> (artifact id: '0eeafa185602af33166bc1a111eb35f1') in 0.034385 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Trails/Trails VFX/VFX/Particles/VFX_Trail_Earth.prefab
+  artifactKey: Guid(d8d3facee41330a4bbf2189a876ba97b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Trails/Trails VFX/VFX/Particles/VFX_Trail_Earth.prefab using Guid(d8d3facee41330a4bbf2189a876ba97b) Importer(815301076,1909f56bfc062723c751e8b465ee728b) Shader 'Vefects/SH_Vefects_VFX_URP_Trail_Distortion': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+ -> (artifact id: 'bc3bf96dde0625ae5d65a6706fe5f295') in 0.035211 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/Trails/Trails VFX/VFX/Particles/VFX_Trail_Nature.prefab
+  artifactKey: Guid(b3ee44d233719374e847dce561b1f589) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Trails/Trails VFX/VFX/Particles/VFX_Trail_Nature.prefab using Guid(b3ee44d233719374e847dce561b1f589) Importer(815301076,1909f56bfc062723c751e8b465ee728b) Shader 'Vefects/SH_Vefects_VFX_URP_Trail_Distortion': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+ -> (artifact id: '2b903f2908ccc87f7db33fac551b163a') in 0.035205 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/Trails/Trails VFX/VFX/Particles/VFX_Trail_Sound.prefab
+  artifactKey: Guid(e8112c58d9ac6be46aff388797a204c9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Trails/Trails VFX/VFX/Particles/VFX_Trail_Sound.prefab using Guid(e8112c58d9ac6be46aff388797a204c9) Importer(815301076,1909f56bfc062723c751e8b465ee728b) Shader 'Vefects/SH_Vefects_VFX_URP_Trail_Distortion': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+ -> (artifact id: '22935a131bbbaeeca70a94454fad182b') in 0.028583 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/Trails/Trails VFX/VFX/Particles/VFX_Trail_Electric.prefab
+  artifactKey: Guid(5f7ccd9e384d4b547a42ed354aa5aa89) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Trails/Trails VFX/VFX/Particles/VFX_Trail_Electric.prefab using Guid(5f7ccd9e384d4b547a42ed354aa5aa89) Importer(815301076,1909f56bfc062723c751e8b465ee728b) Shader 'Vefects/SH_Vefects_VFX_URP_Trail_Distortion': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+ -> (artifact id: '7564f3fdd19f4f4b1438c930065ae277') in 0.036001 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 2.473468 seconds.
+  path: Assets/Trails/Trails VFX/VFX/Shaders
+  artifactKey: Guid(b3b95354444753a4699941736e2210bb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Trails/Trails VFX/VFX/Shaders using Guid(b3b95354444753a4699941736e2210bb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '55d621d48990ad7288c8f4cff2c06f12') in 0.011224 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 1.761477 seconds.
+  path: Assets/Trails/Trails VFX/VFX/Textures
+  artifactKey: Guid(bad34a551638b004aac211f8a816ab46) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Trails/Trails VFX/VFX/Textures using Guid(bad34a551638b004aac211f8a816ab46) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '40425382ec63b7da8d38a936367bcf23') in 0.013366 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.061176 seconds.
+  path: Assets/Trails/Trails VFX/VFX/Textures/T_VFX_Glow_01.tga
+  artifactKey: Guid(6ca0cd80586cdf64e910b78be64f5e68) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Trails/Trails VFX/VFX/Textures/T_VFX_Glow_01.tga using Guid(6ca0cd80586cdf64e910b78be64f5e68) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'daa64ffcf5522c82bf146fedbc832848') in 0.028392 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000015 seconds.
+  path: Assets/Trails/Trails VFX/VFX/Textures/T_VFX_Trail_06.tga
+  artifactKey: Guid(c24610ab9bdf6954db158313485db2a2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Trails/Trails VFX/VFX/Textures/T_VFX_Trail_06.tga using Guid(c24610ab9bdf6954db158313485db2a2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0c9c4788b747fda9bec1bc74e147c7f3') in 0.014298 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/Trails/Trails VFX/VFX/Textures/T_VFX_Noise_07.tga
+  artifactKey: Guid(d82d6a3f8366da445bc8f96f8f23b662) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Trails/Trails VFX/VFX/Textures/T_VFX_Noise_07.tga using Guid(d82d6a3f8366da445bc8f96f8f23b662) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd9da2f96a7ae6a0832660037fdb6339f') in 0.013125 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/Trails/Trails VFX/VFX/Textures/T_VFX_Trail_02.tga
+  artifactKey: Guid(ca6f867d0166090429d62697ea34940d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Trails/Trails VFX/VFX/Textures/T_VFX_Trail_02.tga using Guid(ca6f867d0166090429d62697ea34940d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bfaee2173700696d8ce1f1ddcfcc561d') in 0.013086 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000020 seconds.
+  path: Assets/Trails/Trails VFX/VFX/Textures/T_VFX_Trail_Mask_01.tga
+  artifactKey: Guid(7ecfa12a9ff45a34eacb518018f1ecfd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Trails/Trails VFX/VFX/Textures/T_VFX_Trail_Mask_01.tga using Guid(7ecfa12a9ff45a34eacb518018f1ecfd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8d4cd32c9a7efac2bd2df4a054b055a7') in 0.012419 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/Trails/Trails VFX/VFX/Textures/T_VFX_Noise_01.tga
+  artifactKey: Guid(c749e71deb36bbe49bfe605dd1b41934) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Trails/Trails VFX/VFX/Textures/T_VFX_Noise_01.tga using Guid(c749e71deb36bbe49bfe605dd1b41934) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '37de856435015307e1286a1e6109e13d') in 0.014195 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/Trails/Trails VFX/VFX/Textures/T_VFX_Normal_Noise_01.tga
+  artifactKey: Guid(54b00866d74737b489f217771467a492) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Trails/Trails VFX/VFX/Textures/T_VFX_Normal_Noise_01.tga using Guid(54b00866d74737b489f217771467a492) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd3c9e371a00f0201f2aabffb40f21ed7') in 0.014959 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/Trails/Trails VFX/VFX/Textures/T_VFX_Trail_01.tga
+  artifactKey: Guid(3e82a47194e8ff54c925fa9b9fc605c9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Trails/Trails VFX/VFX/Textures/T_VFX_Trail_01.tga using Guid(3e82a47194e8ff54c925fa9b9fc605c9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '683deabdd536f61051e7dff003bfa48f') in 0.008104 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/Trails/Trails VFX/VFX/Textures/T_VFX_Perlin_Noise_01.tga
+  artifactKey: Guid(8e4ded9a8b7082840833ba961c87f2c8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Trails/Trails VFX/VFX/Textures/T_VFX_Perlin_Noise_01.tga using Guid(8e4ded9a8b7082840833ba961c87f2c8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c7d787e4b8ab34b308e3f6f84c7a1e7a') in 0.012442 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/Trails/Trails VFX/VFX/Textures/T_VFX_Noise_03.tga
+  artifactKey: Guid(0a541603db6f8f646a6105347af20166) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Trails/Trails VFX/VFX/Textures/T_VFX_Noise_03.tga using Guid(0a541603db6f8f646a6105347af20166) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a3da522bd34552f3f9ffb9fe20077453') in 0.013186 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/Trails/Trails VFX/VFX/Textures/T_VFX_Gradient_01.tga
+  artifactKey: Guid(2254b7d5718931a4bacab6f27087c718) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Trails/Trails VFX/VFX/Textures/T_VFX_Gradient_01.tga using Guid(2254b7d5718931a4bacab6f27087c718) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ee2cb660a083b3f6904f9729f641dade') in 0.012120 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000018 seconds.
+  path: Assets/Trails/Trails VFX/VFX/Textures/T_VFX_White_01.tga
+  artifactKey: Guid(7506c9e075b482b44a8241b396c6a94f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Trails/Trails VFX/VFX/Textures/T_VFX_White_01.tga using Guid(7506c9e075b482b44a8241b396c6a94f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a8ad3c3d5a77cec6ef89448371d314ab') in 0.012250 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/Trails/Trails VFX/VFX/Textures/T_VFX_Noise_08.tga
+  artifactKey: Guid(84474218c9d4f6a4b9e86b8467aa77e9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Trails/Trails VFX/VFX/Textures/T_VFX_Noise_08.tga using Guid(84474218c9d4f6a4b9e86b8467aa77e9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '56a58aa86cada19de78dd128bbd538ec') in 0.012965 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000024 seconds.
+  path: Assets/Trails/Trails VFX/VFX/Textures/T_VFX_Noise_04.tga
+  artifactKey: Guid(86fc489877e16654bbce253da7a52e62) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Trails/Trails VFX/VFX/Textures/T_VFX_Noise_04.tga using Guid(86fc489877e16654bbce253da7a52e62) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ed3e2757c1a0702101abf63aa20541a7') in 0.012849 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/Trails/Trails VFX/VFX/Textures/T_VFX_Gradient_02.tga
+  artifactKey: Guid(fa0ce28773119d14ebabae6f68313faf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Trails/Trails VFX/VFX/Textures/T_VFX_Gradient_02.tga using Guid(fa0ce28773119d14ebabae6f68313faf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6e2833a4f0de18c38edb935144fb3126') in 0.012390 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/Trails/Trails VFX/VFX/Textures/T_VFX_Noise_05.tga
+  artifactKey: Guid(ac3ddd885b408544a8d8dea62a33c9de) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Trails/Trails VFX/VFX/Textures/T_VFX_Noise_05.tga using Guid(ac3ddd885b408544a8d8dea62a33c9de) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '938f514e5960a76391e30e1f861803b2') in 0.011464 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/Trails/Trails VFX/VFX/Textures/T_VFX_Trail_Mask_02.tga
+  artifactKey: Guid(266a594e6c9429e46a0a5495e38ca339) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Trails/Trails VFX/VFX/Textures/T_VFX_Trail_Mask_02.tga using Guid(266a594e6c9429e46a0a5495e38ca339) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1329104ad9b95b60b4392666ebf8feb4') in 0.012106 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/Trails/Trails VFX/VFX/Textures/T_VFX_Trail_05.tga
+  artifactKey: Guid(83f5582005888014cb34706a260e4e7c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Trails/Trails VFX/VFX/Textures/T_VFX_Trail_05.tga using Guid(83f5582005888014cb34706a260e4e7c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '83d78d8445646c01257478b846ad03d9') in 0.012835 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000020 seconds.
+  path: Assets/Trails/Trails VFX/VFX/Textures/T_VFX_Noise_06.tga
+  artifactKey: Guid(16bce8efa342d9743981af0294a8a17e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Trails/Trails VFX/VFX/Textures/T_VFX_Noise_06.tga using Guid(16bce8efa342d9743981af0294a8a17e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0e553281ce1bd5cd25bbc31502fe1e3f') in 0.013280 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000018 seconds.
+  path: Assets/Trails/Trails VFX/VFX/Textures/T_VFX_Perlin_Noise_01_Normal.tga
+  artifactKey: Guid(b92d27de8b8a728448f5b4595109196e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Trails/Trails VFX/VFX/Textures/T_VFX_Perlin_Noise_01_Normal.tga using Guid(b92d27de8b8a728448f5b4595109196e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b64b3d05e3b5a9148f26faa5378d3079') in 0.013986 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/Trails/Trails VFX/VFX/Textures/T_VFX_Trail_Mask_03.tga
+  artifactKey: Guid(abc9da85102f6db4a9d27a76e56a8a81) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Trails/Trails VFX/VFX/Textures/T_VFX_Trail_Mask_03.tga using Guid(abc9da85102f6db4a9d27a76e56a8a81) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '922b3f05c58b31554ada68bacdde365c') in 0.013160 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/Trails/Trails VFX/VFX/Textures/T_VFX_Trail_04.tga
+  artifactKey: Guid(627ad7493e185e644887624c101cc69f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Trails/Trails VFX/VFX/Textures/T_VFX_Trail_04.tga using Guid(627ad7493e185e644887624c101cc69f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e3ff4edccc9f7f9c12eb3cfa959f0f00') in 0.013300 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000027 seconds.
+  path: Assets/Trails/Trails VFX/VFX/Textures/T_VFX_Gradient_03.tga
+  artifactKey: Guid(e694d5d552d8692409bad03a3b90dc88) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Trails/Trails VFX/VFX/Textures/T_VFX_Gradient_03.tga using Guid(e694d5d552d8692409bad03a3b90dc88) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3b6b4b6fb35686ecc76ad51195cdadea') in 0.013553 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/Trails/Trails VFX/VFX/Textures/T_VFX_Trail_03.tga
+  artifactKey: Guid(b8c73f59620157248b9ef16e0d35c76e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Trails/Trails VFX/VFX/Textures/T_VFX_Trail_03.tga using Guid(b8c73f59620157248b9ef16e0d35c76e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bef53f027a1880e36c46e8d2639669cd') in 0.007172 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/Trails/Trails VFX/VFX/Textures/T_VFX_Noise_02.tga
+  artifactKey: Guid(69578779944b7ef46bf0cbae2e55f260) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Trails/Trails VFX/VFX/Textures/T_VFX_Noise_02.tga using Guid(69578779944b7ef46bf0cbae2e55f260) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ab68f26e8a1caafea255675fbc79198c') in 0.013654 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 133.504198 seconds.
+  path: Assets/Trails/Trails VFX/Scripts
+  artifactKey: Guid(de2b90f6976a9fd40a515b3ce90cd916) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Trails/Trails VFX/Scripts using Guid(de2b90f6976a9fd40a515b3ce90cd916) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'de08c22265926c4d8b82fa5217b85c4c') in 0.014422 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 6.516482 seconds.
+  path: Assets/Trails/Trails VFX/Scripts/Demo_FreeCam.cs
+  artifactKey: Guid(12610effb7b1d21458793b837a395a93) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Trails/Trails VFX/Scripts/Demo_FreeCam.cs using Guid(12610effb7b1d21458793b837a395a93) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1cd9c0b4f43d7977d0d1b1b65764506d') in 0.013326 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 3.248225 seconds.
+  path: Assets/Trails/Trails VFX/Scripts/Demo_TurningAround.cs
+  artifactKey: Guid(9454f0cbad09fc94fb4d3a1eb87d3c7b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Trails/Trails VFX/Scripts/Demo_TurningAround.cs using Guid(9454f0cbad09fc94fb4d3a1eb87d3c7b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '51fd46468caa7004d229af4f8ee3ca1e') in 0.010592 seconds 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.003844 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image C:\Projects\Car_Project_Git\CarProject\Car_Project\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image C:\Projects\Car_Project_Git\CarProject\Car_Project\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.72 ms, found 5 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.825 seconds
+Domain Reload Profiling:
+	ReloadAssembly (826ms)
+		BeginReloadAssembly (122ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (3ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (28ms)
+		EndReloadAssembly (629ms)
+			LoadAssemblies (80ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (226ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (36ms)
+			SetupLoadedEditorAssemblies (260ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (12ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (61ms)
+				ProcessInitializeOnLoadAttributes (163ms)
+				ProcessInitializeOnLoadMethodAttributes (19ms)
+				AfterProcessingInitializeOnLoad (4ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (4ms)
+Platform modules already initialized, skipping
+Shader '/Vefects/SH_Vefects_Extra_Grid_01': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader '/_Vefects_/SH_Vefects_Grid_01': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader 'Vefects/SH_Vefects_URP_VFX_Character_Showoff': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader 'Vefects/SH_Vefects_VFX_URP_Trail_Distortion': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader '/Vefects/SH_Vefects_Extra_Billboard_01': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader 'Vefects/SH_Vefects_URP_VFX_Character_Showoff': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader '/Vefects/SH_Vefects_Extra_Grid_01': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader 'Vefects/SH_Vefects_VFX_URP_Trail_Distortion': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader 'Vefects/SH_Vefects_URP_VFX_Character_Showoff': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader 'Vefects/SH_Vefects_URP_VFX_Character_Showoff': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader '/Vefects/SH_Vefects_Extra_Billboard_01': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader '/_Vefects_/SH_Vefects_Grid_01': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Refreshing native plugins compatible for Editor in 2.88 ms, found 5 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3686 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 33 unused Assets / (2.0 MB). Loaded Objects now: 4221.
+Memory consumption went from 211.7 MB to 209.6 MB.
+Total: 2.752300 ms (FindLiveObjects: 0.178500 ms CreateObjectMapping: 0.084400 ms MarkObjects: 2.061800 ms  DeleteObjects: 0.426900 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.004419 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image C:\Projects\Car_Project_Git\CarProject\Car_Project\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image C:\Projects\Car_Project_Git\CarProject\Car_Project\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.86 ms, found 5 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.863 seconds
+Domain Reload Profiling:
+	ReloadAssembly (863ms)
+		BeginReloadAssembly (103ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (3ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (29ms)
+		EndReloadAssembly (682ms)
+			LoadAssemblies (67ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (238ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (45ms)
+			SetupLoadedEditorAssemblies (291ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (12ms)
+				SetLoadedEditorAssemblies (1ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (60ms)
+				ProcessInitializeOnLoadAttributes (196ms)
+				ProcessInitializeOnLoadMethodAttributes (17ms)
+				AfterProcessingInitializeOnLoad (4ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (4ms)
+Platform modules already initialized, skipping
+Shader '/Vefects/SH_Vefects_Extra_Grid_01': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader '/_Vefects_/SH_Vefects_Grid_01': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader 'Vefects/SH_Vefects_URP_VFX_Character_Showoff': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader 'Vefects/SH_Vefects_VFX_URP_Trail_Distortion': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader '/Vefects/SH_Vefects_Extra_Billboard_01': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader 'Vefects/SH_Vefects_URP_VFX_Character_Showoff': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader '/Vefects/SH_Vefects_Extra_Billboard_01': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader 'Vefects/SH_Vefects_URP_VFX_Character_Showoff': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader 'Vefects/SH_Vefects_URP_VFX_Character_Showoff': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader '/_Vefects_/SH_Vefects_Grid_01': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader '/Vefects/SH_Vefects_Extra_Grid_01': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader 'Vefects/SH_Vefects_VFX_URP_Trail_Distortion': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Refreshing native plugins compatible for Editor in 2.67 ms, found 5 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3686 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 31 unused Assets / (2.0 MB). Loaded Objects now: 4236.
+Memory consumption went from 211.7 MB to 209.6 MB.
+Total: 3.188900 ms (FindLiveObjects: 0.240200 ms CreateObjectMapping: 0.088200 ms MarkObjects: 2.369100 ms  DeleteObjects: 0.490500 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.003874 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image C:\Projects\Car_Project_Git\CarProject\Car_Project\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image C:\Projects\Car_Project_Git\CarProject\Car_Project\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.54 ms, found 5 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.854 seconds
+Domain Reload Profiling:
+	ReloadAssembly (855ms)
+		BeginReloadAssembly (106ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (3ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (28ms)
+		EndReloadAssembly (675ms)
+			LoadAssemblies (68ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (213ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (40ms)
+			SetupLoadedEditorAssemblies (314ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (11ms)
+				SetLoadedEditorAssemblies (1ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (59ms)
+				ProcessInitializeOnLoadAttributes (213ms)
+				ProcessInitializeOnLoadMethodAttributes (24ms)
+				AfterProcessingInitializeOnLoad (6ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (5ms)
+Platform modules already initialized, skipping
+Shader '/Vefects/SH_Vefects_Extra_Grid_01': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader '/_Vefects_/SH_Vefects_Grid_01': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader 'Vefects/SH_Vefects_URP_VFX_Character_Showoff': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader 'Vefects/SH_Vefects_VFX_URP_Trail_Distortion': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader '/Vefects/SH_Vefects_Extra_Billboard_01': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader 'Vefects/SH_Vefects_URP_VFX_Character_Showoff': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader '/Vefects/SH_Vefects_Extra_Grid_01': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader 'Vefects/SH_Vefects_VFX_URP_Trail_Distortion': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader '/Vefects/SH_Vefects_Extra_Billboard_01': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader 'Vefects/SH_Vefects_URP_VFX_Character_Showoff': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader 'Vefects/SH_Vefects_URP_VFX_Character_Showoff': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader '/_Vefects_/SH_Vefects_Grid_01': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Refreshing native plugins compatible for Editor in 2.58 ms, found 5 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3686 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 31 unused Assets / (2.0 MB). Loaded Objects now: 4251.
+Memory consumption went from 211.7 MB to 209.7 MB.
+Total: 3.460500 ms (FindLiveObjects: 0.212700 ms CreateObjectMapping: 0.088600 ms MarkObjects: 2.698400 ms  DeleteObjects: 0.460000 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.003791 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image C:\Projects\Car_Project_Git\CarProject\Car_Project\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image C:\Projects\Car_Project_Git\CarProject\Car_Project\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.56 ms, found 5 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.877 seconds
+Domain Reload Profiling:
+	ReloadAssembly (877ms)
+		BeginReloadAssembly (111ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (3ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (32ms)
+		EndReloadAssembly (700ms)
+			LoadAssemblies (73ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (222ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (44ms)
+			SetupLoadedEditorAssemblies (324ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (11ms)
+				SetLoadedEditorAssemblies (1ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (62ms)
+				ProcessInitializeOnLoadAttributes (219ms)
+				ProcessInitializeOnLoadMethodAttributes (24ms)
+				AfterProcessingInitializeOnLoad (6ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (6ms)
+Platform modules already initialized, skipping
+Shader '/Vefects/SH_Vefects_Extra_Grid_01': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader '/_Vefects_/SH_Vefects_Grid_01': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader 'Vefects/SH_Vefects_URP_VFX_Character_Showoff': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader 'Vefects/SH_Vefects_VFX_URP_Trail_Distortion': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader '/Vefects/SH_Vefects_Extra_Billboard_01': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader 'Vefects/SH_Vefects_URP_VFX_Character_Showoff': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader '/_Vefects_/SH_Vefects_Grid_01': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader 'Vefects/SH_Vefects_VFX_URP_Trail_Distortion': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader '/Vefects/SH_Vefects_Extra_Billboard_01': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader '/Vefects/SH_Vefects_Extra_Grid_01': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader 'Vefects/SH_Vefects_URP_VFX_Character_Showoff': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader 'Vefects/SH_Vefects_URP_VFX_Character_Showoff': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Refreshing native plugins compatible for Editor in 2.08 ms, found 5 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3686 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 31 unused Assets / (2.0 MB). Loaded Objects now: 4266.
+Memory consumption went from 211.7 MB to 209.7 MB.
+Total: 4.541000 ms (FindLiveObjects: 0.265900 ms CreateObjectMapping: 0.233600 ms MarkObjects: 3.504100 ms  DeleteObjects: 0.536500 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.003805 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image C:\Projects\Car_Project_Git\CarProject\Car_Project\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image C:\Projects\Car_Project_Git\CarProject\Car_Project\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.73 ms, found 5 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.880 seconds
+Domain Reload Profiling:
+	ReloadAssembly (881ms)
+		BeginReloadAssembly (103ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (4ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (25ms)
+		EndReloadAssembly (705ms)
+			LoadAssemblies (65ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (230ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (40ms)
+			SetupLoadedEditorAssemblies (329ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (12ms)
+				SetLoadedEditorAssemblies (1ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (57ms)
+				ProcessInitializeOnLoadAttributes (227ms)
+				ProcessInitializeOnLoadMethodAttributes (25ms)
+				AfterProcessingInitializeOnLoad (6ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (6ms)
+Platform modules already initialized, skipping
+Shader '/Vefects/SH_Vefects_Extra_Grid_01': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader '/_Vefects_/SH_Vefects_Grid_01': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader 'Vefects/SH_Vefects_URP_VFX_Character_Showoff': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader 'Vefects/SH_Vefects_VFX_URP_Trail_Distortion': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader '/Vefects/SH_Vefects_Extra_Billboard_01': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader 'Vefects/SH_Vefects_URP_VFX_Character_Showoff': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader '/_Vefects_/SH_Vefects_Grid_01': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader 'Vefects/SH_Vefects_VFX_URP_Trail_Distortion': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader '/Vefects/SH_Vefects_Extra_Billboard_01': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader '/Vefects/SH_Vefects_Extra_Grid_01': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader 'Vefects/SH_Vefects_URP_VFX_Character_Showoff': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader 'Vefects/SH_Vefects_URP_VFX_Character_Showoff': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Refreshing native plugins compatible for Editor in 2.20 ms, found 5 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3686 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 31 unused Assets / (2.0 MB). Loaded Objects now: 4281.
+Memory consumption went from 211.7 MB to 209.7 MB.
+Total: 3.487300 ms (FindLiveObjects: 0.259600 ms CreateObjectMapping: 0.094500 ms MarkObjects: 2.651900 ms  DeleteObjects: 0.480000 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.005706 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image C:\Projects\Car_Project_Git\CarProject\Car_Project\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image C:\Projects\Car_Project_Git\CarProject\Car_Project\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.48 ms, found 5 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.880 seconds
+Domain Reload Profiling:
+	ReloadAssembly (881ms)
+		BeginReloadAssembly (140ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (3ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (53ms)
+		EndReloadAssembly (673ms)
+			LoadAssemblies (75ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (215ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (38ms)
+			SetupLoadedEditorAssemblies (315ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (9ms)
+				SetLoadedEditorAssemblies (1ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (52ms)
+				ProcessInitializeOnLoadAttributes (219ms)
+				ProcessInitializeOnLoadMethodAttributes (27ms)
+				AfterProcessingInitializeOnLoad (6ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (5ms)
+Platform modules already initialized, skipping
+Shader '/Vefects/SH_Vefects_Extra_Grid_01': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader '/_Vefects_/SH_Vefects_Grid_01': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader 'Vefects/SH_Vefects_URP_VFX_Character_Showoff': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader 'Vefects/SH_Vefects_VFX_URP_Trail_Distortion': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader '/Vefects/SH_Vefects_Extra_Billboard_01': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader 'Vefects/SH_Vefects_URP_VFX_Character_Showoff': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader '/_Vefects_/SH_Vefects_Grid_01': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader 'Vefects/SH_Vefects_URP_VFX_Character_Showoff': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader '/Vefects/SH_Vefects_Extra_Grid_01': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader 'Vefects/SH_Vefects_VFX_URP_Trail_Distortion': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader '/Vefects/SH_Vefects_Extra_Billboard_01': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader 'Vefects/SH_Vefects_URP_VFX_Character_Showoff': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Refreshing native plugins compatible for Editor in 2.46 ms, found 5 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3686 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 31 unused Assets / (2.0 MB). Loaded Objects now: 4296.
+Memory consumption went from 211.7 MB to 209.7 MB.
+Total: 3.088900 ms (FindLiveObjects: 0.197400 ms CreateObjectMapping: 0.112600 ms MarkObjects: 2.300800 ms  DeleteObjects: 0.477300 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.003843 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image C:\Projects\Car_Project_Git\CarProject\Car_Project\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image C:\Projects\Car_Project_Git\CarProject\Car_Project\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.53 ms, found 5 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.859 seconds
+Domain Reload Profiling:
+	ReloadAssembly (859ms)
+		BeginReloadAssembly (106ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (3ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (27ms)
+		EndReloadAssembly (681ms)
+			LoadAssemblies (73ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (212ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (41ms)
+			SetupLoadedEditorAssemblies (319ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (11ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (58ms)
+				ProcessInitializeOnLoadAttributes (216ms)
+				ProcessInitializeOnLoadMethodAttributes (26ms)
+				AfterProcessingInitializeOnLoad (6ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (5ms)
+Platform modules already initialized, skipping
+Shader '/Vefects/SH_Vefects_Extra_Grid_01': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader '/_Vefects_/SH_Vefects_Grid_01': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader 'Vefects/SH_Vefects_URP_VFX_Character_Showoff': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader 'Vefects/SH_Vefects_VFX_URP_Trail_Distortion': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader '/Vefects/SH_Vefects_Extra_Billboard_01': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader 'Vefects/SH_Vefects_URP_VFX_Character_Showoff': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader '/_Vefects_/SH_Vefects_Grid_01': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader 'Vefects/SH_Vefects_VFX_URP_Trail_Distortion': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader '/Vefects/SH_Vefects_Extra_Billboard_01': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader 'Vefects/SH_Vefects_URP_VFX_Character_Showoff': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader 'Vefects/SH_Vefects_URP_VFX_Character_Showoff': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader '/Vefects/SH_Vefects_Extra_Grid_01': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Refreshing native plugins compatible for Editor in 2.33 ms, found 5 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3686 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 31 unused Assets / (2.0 MB). Loaded Objects now: 4311.
+Memory consumption went from 211.8 MB to 209.7 MB.
+Total: 3.220600 ms (FindLiveObjects: 0.265700 ms CreateObjectMapping: 0.110700 ms MarkObjects: 2.352300 ms  DeleteObjects: 0.490600 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 330.979714 seconds.
+  path: Assets/Trails/Trails VFX URP/VFX/Textures/T_VFX_Noise_08.tga
+  artifactKey: Guid(fa6235bc65ac4064f8d49fcc0c8ff503) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Trails/Trails VFX URP/VFX/Textures/T_VFX_Noise_08.tga using Guid(fa6235bc65ac4064f8d49fcc0c8ff503) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '81cb796b5b83040229da4d14a70d3e74') in 0.068382 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000037 seconds.
+  path: Assets/Trails/Trails VFX URP/VFX/Textures/T_VFX_Noise_04.tga
+  artifactKey: Guid(aec738f429fa4ab4a8b574c7c804886c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Trails/Trails VFX URP/VFX/Textures/T_VFX_Noise_04.tga using Guid(aec738f429fa4ab4a8b574c7c804886c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9973cfe5494de46869d976c3b13a067d') in 0.013533 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000030 seconds.
+  path: Assets/Trails/Trails VFX URP/VFX/Textures/T_VFX_Trail_01.tga
+  artifactKey: Guid(808d46c12c9252f498ac7166c5e53282) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Trails/Trails VFX URP/VFX/Textures/T_VFX_Trail_01.tga using Guid(808d46c12c9252f498ac7166c5e53282) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e37a18dc76f790a96b518e4257887003') in 0.006714 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000038 seconds.
+  path: Assets/Trails/Trails VFX URP/VFX/Textures/T_VFX_Perlin_Noise_01.tga
+  artifactKey: Guid(3327b545e30728e47b34b9588ff64aef) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Trails/Trails VFX URP/VFX/Textures/T_VFX_Perlin_Noise_01.tga using Guid(3327b545e30728e47b34b9588ff64aef) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ddb132a0d4bbf9fc7dc9e324e85461f5') in 0.012274 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 1.574240 seconds.
+  path: Assets/Trails/Trails VFX URP/VFX/Textures/T_VFX_Trail_02.tga
+  artifactKey: Guid(06ae8cc8bd06ae2488f1c9c630a3ebfe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Trails/Trails VFX URP/VFX/Textures/T_VFX_Trail_02.tga using Guid(06ae8cc8bd06ae2488f1c9c630a3ebfe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4a625d4ed5c349dd7b8acf3c7b2184cf') in 0.008663 seconds 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.003919 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image C:\Projects\Car_Project_Git\CarProject\Car_Project\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image C:\Projects\Car_Project_Git\CarProject\Car_Project\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.48 ms, found 5 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.833 seconds
+Domain Reload Profiling:
+	ReloadAssembly (834ms)
+		BeginReloadAssembly (119ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (6ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (39ms)
+		EndReloadAssembly (633ms)
+			LoadAssemblies (63ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (223ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (38ms)
+			SetupLoadedEditorAssemblies (281ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (9ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (46ms)
+				ProcessInitializeOnLoadAttributes (202ms)
+				ProcessInitializeOnLoadMethodAttributes (19ms)
+				AfterProcessingInitializeOnLoad (5ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (4ms)
+Platform modules already initialized, skipping
+Shader '/Vefects/SH_Vefects_Extra_Grid_01': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader '/_Vefects_/SH_Vefects_Grid_01': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader 'Vefects/SH_Vefects_URP_VFX_Character_Showoff': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader 'Vefects/SH_Vefects_VFX_URP_Trail_Distortion': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader '/Vefects/SH_Vefects_Extra_Billboard_01': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader 'Vefects/SH_Vefects_URP_VFX_Character_Showoff': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader '/Vefects/SH_Vefects_Extra_Grid_01': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader '/Vefects/SH_Vefects_Extra_Billboard_01': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader 'Vefects/SH_Vefects_URP_VFX_Character_Showoff': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader 'Vefects/SH_Vefects_VFX_URP_Trail_Distortion': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader '/_Vefects_/SH_Vefects_Grid_01': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader 'Vefects/SH_Vefects_URP_VFX_Character_Showoff': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Refreshing native plugins compatible for Editor in 1.58 ms, found 5 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3686 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 31 unused Assets / (2.0 MB). Loaded Objects now: 4326.
+Memory consumption went from 211.8 MB to 209.8 MB.
+Total: 3.160900 ms (FindLiveObjects: 0.196900 ms CreateObjectMapping: 0.085800 ms MarkObjects: 2.268900 ms  DeleteObjects: 0.608400 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.004123 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image C:\Projects\Car_Project_Git\CarProject\Car_Project\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image C:\Projects\Car_Project_Git\CarProject\Car_Project\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.70 ms, found 5 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.877 seconds
+Domain Reload Profiling:
+	ReloadAssembly (877ms)
+		BeginReloadAssembly (107ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (3ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (28ms)
+		EndReloadAssembly (694ms)
+			LoadAssemblies (64ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (214ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (43ms)
+			SetupLoadedEditorAssemblies (325ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (11ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (60ms)
+				ProcessInitializeOnLoadAttributes (222ms)
+				ProcessInitializeOnLoadMethodAttributes (24ms)
+				AfterProcessingInitializeOnLoad (6ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (6ms)
+Platform modules already initialized, skipping
+Shader '/Vefects/SH_Vefects_Extra_Grid_01': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader '/_Vefects_/SH_Vefects_Grid_01': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader 'Vefects/SH_Vefects_URP_VFX_Character_Showoff': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader 'Vefects/SH_Vefects_VFX_URP_Trail_Distortion': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader '/Vefects/SH_Vefects_Extra_Billboard_01': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader 'Vefects/SH_Vefects_URP_VFX_Character_Showoff': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader 'Vefects/SH_Vefects_URP_VFX_Character_Showoff': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader '/Vefects/SH_Vefects_Extra_Grid_01': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader '/_Vefects_/SH_Vefects_Grid_01': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader 'Vefects/SH_Vefects_VFX_URP_Trail_Distortion': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader '/Vefects/SH_Vefects_Extra_Billboard_01': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader 'Vefects/SH_Vefects_URP_VFX_Character_Showoff': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Refreshing native plugins compatible for Editor in 2.78 ms, found 5 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3686 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 31 unused Assets / (2.0 MB). Loaded Objects now: 4341.
+Memory consumption went from 211.8 MB to 209.8 MB.
+Total: 3.338300 ms (FindLiveObjects: 0.229100 ms CreateObjectMapping: 0.090600 ms MarkObjects: 2.477200 ms  DeleteObjects: 0.540000 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.003476 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image C:\Projects\Car_Project_Git\CarProject\Car_Project\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image C:\Projects\Car_Project_Git\CarProject\Car_Project\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.51 ms, found 5 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.859 seconds
+Domain Reload Profiling:
+	ReloadAssembly (860ms)
+		BeginReloadAssembly (140ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (4ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (52ms)
+		EndReloadAssembly (646ms)
+			LoadAssemblies (71ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (213ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (29ms)
+			SetupLoadedEditorAssemblies (298ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (17ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (61ms)
+				ProcessInitializeOnLoadAttributes (189ms)
+				ProcessInitializeOnLoadMethodAttributes (24ms)
+				AfterProcessingInitializeOnLoad (6ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (4ms)
+Platform modules already initialized, skipping
+Shader '/Vefects/SH_Vefects_Extra_Grid_01': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader '/_Vefects_/SH_Vefects_Grid_01': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader 'Vefects/SH_Vefects_URP_VFX_Character_Showoff': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader 'Vefects/SH_Vefects_VFX_URP_Trail_Distortion': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader '/Vefects/SH_Vefects_Extra_Billboard_01': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader 'Vefects/SH_Vefects_URP_VFX_Character_Showoff': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader 'Vefects/SH_Vefects_URP_VFX_Character_Showoff': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader '/_Vefects_/SH_Vefects_Grid_01': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader 'Vefects/SH_Vefects_VFX_URP_Trail_Distortion': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader '/Vefects/SH_Vefects_Extra_Billboard_01': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader 'Vefects/SH_Vefects_URP_VFX_Character_Showoff': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader '/Vefects/SH_Vefects_Extra_Grid_01': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Refreshing native plugins compatible for Editor in 3.61 ms, found 5 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3686 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 31 unused Assets / (2.0 MB). Loaded Objects now: 4356.
+Memory consumption went from 211.8 MB to 209.8 MB.
+Total: 5.681400 ms (FindLiveObjects: 0.234200 ms CreateObjectMapping: 0.163200 ms MarkObjects: 4.474900 ms  DeleteObjects: 0.807900 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.003338 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image C:\Projects\Car_Project_Git\CarProject\Car_Project\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image C:\Projects\Car_Project_Git\CarProject\Car_Project\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.49 ms, found 5 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.790 seconds
+Domain Reload Profiling:
+	ReloadAssembly (791ms)
+		BeginReloadAssembly (110ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (3ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (32ms)
+		EndReloadAssembly (604ms)
+			LoadAssemblies (67ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (215ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (37ms)
+			SetupLoadedEditorAssemblies (254ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (11ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (48ms)
+				ProcessInitializeOnLoadAttributes (171ms)
+				ProcessInitializeOnLoadMethodAttributes (18ms)
+				AfterProcessingInitializeOnLoad (5ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (4ms)
+Platform modules already initialized, skipping
+Shader '/Vefects/SH_Vefects_Extra_Grid_01': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader '/_Vefects_/SH_Vefects_Grid_01': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader 'Vefects/SH_Vefects_URP_VFX_Character_Showoff': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader 'Vefects/SH_Vefects_VFX_URP_Trail_Distortion': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader '/Vefects/SH_Vefects_Extra_Billboard_01': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader 'Vefects/SH_Vefects_URP_VFX_Character_Showoff': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader '/Vefects/SH_Vefects_Extra_Grid_01': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader '/_Vefects_/SH_Vefects_Grid_01': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader 'Vefects/SH_Vefects_VFX_URP_Trail_Distortion': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader '/Vefects/SH_Vefects_Extra_Billboard_01': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader 'Vefects/SH_Vefects_URP_VFX_Character_Showoff': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader 'Vefects/SH_Vefects_URP_VFX_Character_Showoff': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Refreshing native plugins compatible for Editor in 1.60 ms, found 5 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3686 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 31 unused Assets / (2.0 MB). Loaded Objects now: 4371.
+Memory consumption went from 211.8 MB to 209.8 MB.
+Total: 2.771400 ms (FindLiveObjects: 0.289000 ms CreateObjectMapping: 0.107600 ms MarkObjects: 1.950400 ms  DeleteObjects: 0.423500 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 6718.033056 seconds.
+  path: Assets/GameManager.cs
+  artifactKey: Guid(6df59c0a12770a5449f5d7c4980769db) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GameManager.cs using Guid(6df59c0a12770a5449f5d7c4980769db) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '87bcc424cf97393e86e7e7d6e70fbc46') in 0.015863 seconds 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.004231 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image C:\Projects\Car_Project_Git\CarProject\Car_Project\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image C:\Projects\Car_Project_Git\CarProject\Car_Project\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 1.20 ms, found 5 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.087 seconds
+Domain Reload Profiling:
+	ReloadAssembly (1089ms)
+		BeginReloadAssembly (153ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (7ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (38ms)
+		EndReloadAssembly (849ms)
+			LoadAssemblies (92ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (325ms)
+			ReleaseScriptCaches (3ms)
+			RebuildScriptCaches (39ms)
+			SetupLoadedEditorAssemblies (361ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (17ms)
+				SetLoadedEditorAssemblies (1ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (68ms)
+				ProcessInitializeOnLoadAttributes (247ms)
+				ProcessInitializeOnLoadMethodAttributes (22ms)
+				AfterProcessingInitializeOnLoad (5ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (4ms)
+Platform modules already initialized, skipping
+Shader '/Vefects/SH_Vefects_Extra_Grid_01': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader '/_Vefects_/SH_Vefects_Grid_01': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader 'Vefects/SH_Vefects_URP_VFX_Character_Showoff': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader 'Vefects/SH_Vefects_VFX_URP_Trail_Distortion': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader '/Vefects/SH_Vefects_Extra_Billboard_01': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader 'Vefects/SH_Vefects_URP_VFX_Character_Showoff': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader '/Vefects/SH_Vefects_Extra_Grid_01': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader 'Vefects/SH_Vefects_URP_VFX_Character_Showoff': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader 'Vefects/SH_Vefects_VFX_URP_Trail_Distortion': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader '/Vefects/SH_Vefects_Extra_Billboard_01': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader 'Vefects/SH_Vefects_URP_VFX_Character_Showoff': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader '/_Vefects_/SH_Vefects_Grid_01': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Refreshing native plugins compatible for Editor in 3.49 ms, found 5 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3686 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 31 unused Assets / (2.0 MB). Loaded Objects now: 4386.
+Memory consumption went from 211.9 MB to 209.8 MB.
+Total: 4.634300 ms (FindLiveObjects: 0.323600 ms CreateObjectMapping: 0.131900 ms MarkObjects: 3.329000 ms  DeleteObjects: 0.848200 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 92.100744 seconds.
+  path: Assets/GameManager.cs
+  artifactKey: Guid(6df59c0a12770a5449f5d7c4980769db) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GameManager.cs using Guid(6df59c0a12770a5449f5d7c4980769db) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '41b81231d0f64818d80ba9a5e0c59a7d') in 0.015990 seconds 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.004353 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image C:\Projects\Car_Project_Git\CarProject\Car_Project\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image C:\Projects\Car_Project_Git\CarProject\Car_Project\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.57 ms, found 5 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.810 seconds
+Domain Reload Profiling:
+	ReloadAssembly (811ms)
+		BeginReloadAssembly (107ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (3ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (28ms)
+		EndReloadAssembly (631ms)
+			LoadAssemblies (65ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (208ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (37ms)
+			SetupLoadedEditorAssemblies (278ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (11ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (53ms)
+				ProcessInitializeOnLoadAttributes (190ms)
+				ProcessInitializeOnLoadMethodAttributes (19ms)
+				AfterProcessingInitializeOnLoad (5ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (4ms)
+Platform modules already initialized, skipping
+Shader '/Vefects/SH_Vefects_Extra_Grid_01': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader '/_Vefects_/SH_Vefects_Grid_01': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader 'Vefects/SH_Vefects_URP_VFX_Character_Showoff': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader 'Vefects/SH_Vefects_VFX_URP_Trail_Distortion': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader '/Vefects/SH_Vefects_Extra_Billboard_01': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader 'Vefects/SH_Vefects_URP_VFX_Character_Showoff': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader '/Vefects/SH_Vefects_Extra_Grid_01': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader 'Vefects/SH_Vefects_VFX_URP_Trail_Distortion': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader '/Vefects/SH_Vefects_Extra_Billboard_01': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader 'Vefects/SH_Vefects_URP_VFX_Character_Showoff': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader '/_Vefects_/SH_Vefects_Grid_01': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Shader 'Vefects/SH_Vefects_URP_VFX_Character_Showoff': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+Refreshing native plugins compatible for Editor in 1.96 ms, found 5 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3686 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 31 unused Assets / (2.0 MB). Loaded Objects now: 4401.
+Memory consumption went from 211.9 MB to 209.9 MB.
+Total: 4.679400 ms (FindLiveObjects: 0.351800 ms CreateObjectMapping: 0.109900 ms MarkObjects: 3.428300 ms  DeleteObjects: 0.788200 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 

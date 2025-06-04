@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using static UnityEngine.EventSystems.EventTrigger;
 using System.IO;
-using UnityEditor;
 //using OpenCover.Framework.Model;
 using System.Linq;
 
@@ -189,4 +188,5 @@ public class GameManager : MonoBehaviour
 
         return uniqueName; // Return the unique name
     }
+
 }

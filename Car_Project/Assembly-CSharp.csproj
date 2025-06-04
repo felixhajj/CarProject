@@ -61,16 +61,31 @@
     <Compile Include="Assets\Gears.cs" />
     <Compile Include="Assets\AntiRollBar.cs" />
     <Compile Include="Assets\CarObjects.cs" />
+    <Compile Include="Assets\Trails\Trails VFX URP\Scripts\Demo_FreeCam.cs" />
     <Compile Include="Assets\PowerToWheels.cs" />
     <Compile Include="Assets\GameManager.cs" />
     <Compile Include="Assets\LightingManager.cs" />
+    <Compile Include="Assets\Trails\Trails VFX URP\Scripts\Demo_TurningAround.cs" />
     <Compile Include="Assets\VehiculeTrailEffect.cs" />
     <Compile Include="Assets\IcarInitializer.cs" />
     <Compile Include="Assets\Car.cs" />
     <Compile Include="Assets\CarController.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\Trails\Trails VFX URP\Demo\Resources\Character\Shaders\SH_Vefects_URP_VFX_Character_Showoff.shader" />
+    <None Include="Assets\Trails\Trails VFX URP\VFX\Shaders\SH_Vefects_VFX_URP_Trail_Distortion.shader" />
+    <None Include="Assets\Trails\Trails VFX\VFX\Shaders\SH_Vefects_VFX_BIRP_Trail_Distortion.shader" />
     <None Include="Assets\Monqo Sci-Fi Car\READ ME!.txt" />
+    <None Include="Assets\Trails\Trails VFX URP\_ Extra\Shaders\SH_Vefects_Extra_Billboard_01.shader" />
+    <None Include="Assets\Trails\Trails VFX\Demo\Resources\Environment\Shaders\SH_Vefects_Grid_01_BIRP.shader" />
+    <None Include="Assets\Trails\Trails VFX\Demo\Resources\Character\Shaders\SH_Vefects_URP_VFX_Character_Showoff.shader" />
+    <None Include="Assets\Trails\Trails VFX URP\VFX\Shaders\SH_Vefects_VFX_URP_Trail_New.shader" />
+    <None Include="Assets\Trails\Trails VFX\VFX\Shaders\SH_Vefects_VFX_BIRP_Trail_New.shader" />
+    <None Include="Assets\Trails\Trails VFX\Demo\Resources\Character\Shaders\SH_Vefects_BIRP_VFX_Character_Showoff.shader" />
+    <None Include="Assets\Trails\Trails VFX URP\Demo\Resources\Environment\Shaders\SH_Vefects_Grid_01.shader" />
+    <None Include="Assets\Trails\Trails VFX\_ Extra\Shaders\SH_Vefects_Extra_Billboard_01_BIRP.shader" />
+    <None Include="Assets\Trails\Trails VFX URP\_ Extra\Shaders\SH_Vefects_Extra_Grid_01.shader" />
+    <None Include="Assets\Trails\Trails VFX\_ Extra\Shaders\SH_Vefects_Extra_Grid_01_BIRP.shader" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

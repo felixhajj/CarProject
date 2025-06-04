@@ -9,20 +9,20 @@ public class CarObjects : MonoBehaviour
     //all objects that should be dragged from the car or somewhere else and used in the classes that are inside the car
 
     //carcontroller
-
+    
     public Dictionary<string, WheelCollider> wheelColliders = new Dictionary<string, WheelCollider>();
     public Dictionary<string, GameObject> wheelsToAnimate = new Dictionary<string, GameObject>();
 
     public GameObject centerofmass;
 
     //customizable(from Resources folder)
-    public AudioSource engineAudioSource;//
-    public AudioSource tirescreechAudioSource;//
-    public AudioClip engineStartupClip;//
-    public AudioClip engineLoopClip;//
-    public AudioClip engineShutdownClip;//
-    public AudioClip tirescreechingClip;//
-    public AudioClip tirescreechingendClip;//
+    public AudioSource engineAudioSource;
+    public AudioSource tirescreechAudioSource;
+    public AudioClip engineStartupClip;
+    public AudioClip engineLoopClip;
+    public AudioClip engineShutdownClip;
+    public AudioClip tirescreechingClip;
+    public AudioClip tirescreechingendClip;
 
 
 
@@ -97,6 +97,14 @@ public class CarObjects : MonoBehaviour
         {
             Debug.LogError("Center of Mass not found in " + gameObject.name);
         }
+
+        engineStartupClip = Resources.Load<AudioClip>("1-Audio/1-engine/2.acceleration");
+        engineLoopClip = Resources.Load<AudioClip>("1-Audio/1-engine/3.looped engine");
+        engineShutdownClip = Resources.Load<AudioClip>("1-Audio/1-engine/4.engine off");
+
+        tirescreechingClip = Resources.Load<AudioClip>("1-Audio/1-Tires/1.tire_screeching");
+        tirescreechingendClip = Resources.Load<AudioClip>("1-Audio/1-Tires/2.tire_screeching_end");
+
 
         //vehiculetraileffect
         fronttyremarks[0] = transform.Find("skidmarkfrontleft")?.GetComponent<TrailRenderer>();

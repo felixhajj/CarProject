@@ -28,11 +28,9 @@ public class LightingManager : MonoBehaviour
 	{
 		carobjects = GetComponent<CarObjects>();
 
-		startTrailTime = carobjects.backtrail.time;
+		startTrailTime = carobjects.trailLeftRenderer.time;
 		elapsedTime = 0f;
 
-		
-		
 	}
 
 	void Update()

@@ -365,6 +365,8 @@
 "Assets/LightingManager.cs"
 "Assets/PowerToWheels.cs"
 "Assets/TrailBehavior.cs"
+"Assets/Trails/Trails VFX URP/Scripts/Demo_FreeCam.cs"
+"Assets/Trails/Trails VFX URP/Scripts/Demo_TurningAround.cs"
 "Assets/VehiculeTrailEffect.cs"
 -langversion:9.0
 
