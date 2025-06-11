@@ -61,13 +61,13 @@ public class GameManager : MonoBehaviour
             string json = File.ReadAllText(filePath);
             JsonUtility.FromJsonOverwrite(json, this); // Load data into this instance
         }
-        
+
         CarsDict.Clear();
         CarsInvDict.Clear();
 
         foreach (var prefabEntry in carPrefabs)
         {
-            if (1==1)//temporary
+            if (1 == 1)//temporary
             {
                 string uniqueCarName = EnsureUniqueCarNames(prefabEntry.carName);
 
@@ -160,9 +160,9 @@ public class GameManager : MonoBehaviour
             powerToWheels.Initialize(carInstance as Car);
         }
         
-         */              
-        
-        
+         */
+
+
         //i should put SaveCarData(into Json) here, if im only adding cars occasionally, and not in abundance.
     }
 

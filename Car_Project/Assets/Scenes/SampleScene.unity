@@ -5223,7 +5223,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   filePath: 
-  carPrefabs: []
+  carPrefabs:
+  - Object: {fileID: 0}
+    carRole: 0
+    carName: 
+    maxtorque: 0
+    torque:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 0
+      m_PostInfinity: 0
+      m_RotationOrder: 0
+    braketorque: 0
+    handbraketorque: 0
+    steeringmax: 0
+    maxspeed: 0
+    steeringcurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 0
+      m_PostInfinity: 0
+      m_RotationOrder: 0
+    tractioncutoff: 0
+    finaldriveaxle: 0
+    drivingwheels: 0
+    istractioncontrol: 0
+    mass: 0
+    wheelradius: 0
+    wheelmass: 0
 --- !u!1 &92092806
 GameObject:
   m_ObjectHideFlags: 0
@@ -19691,8 +19718,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1095524556}
-  m_LocalRotation: {x: 0.6918473, y: 0.112738274, z: -0.1107067, w: 0.7045435}
-  m_LocalPosition: {x: -5.92964, y: -52.824738, z: -23.687424}
+  m_LocalRotation: {x: 0.69184744, y: 0.11273759, z: -0.110706024, w: 0.70454353}
+  m_LocalPosition: {x: -5.9296436, y: -52.824738, z: -23.687439}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
